@@ -1,6 +1,7 @@
 # Hallo David. Ich bin mir nicht sicher ob Du das so haben möchtest. Ich hab das Ganze mit einem Patienten ausprobiert und es klappt tatsächlich.
 # Ich wollte Dich noch fragen, ob ich auch die Werte aus deiner Excel Tabelle verwenden kann, weil ich manchmal nicht alle Informationen finde.
 # Ich müsste auch die ".ui" dann hochladen oder?
+# Natürlich kommt noch eine Verbesserung des Layouts und spezielle Anpassungen dazu, aber ich wollte erst einmal fragen, ob ich das so überhaupt machen soll. 
 
 
 import sys
