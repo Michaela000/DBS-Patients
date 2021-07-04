@@ -1,3 +1,8 @@
+# Hallo David. Ich bin mir nicht sicher ob Du das so haben möchtest. Ich hab das Ganze mit einem Patienten ausprobiert und es klappt tatsächlich.
+# Ich wollte Dich noch fragen, ob ich auch die Werte aus deiner Excel Tabelle verwenden kann, weil ich manchmal nicht alle Informationen finde.
+# Ich müsste auch die ".ui" dann hochladen oder?
+
+
 import sys
 from PyQt5.uic import loadUi
 from PyQt5 import QtWidgets
