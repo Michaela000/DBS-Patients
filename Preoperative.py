@@ -17,6 +17,7 @@ import Pandas as pds
 # daran zu halten, da hilft Dir Pycharm mit den gelben gewellten Linien. Wenn Du da mit der Maus rechts drauf klickst,
 # empfiehlt es Dir etwas. Leider geht der Code bei mir nicht, weil der Fehler kommt:
 # "FileNotFoundError: [Errno 2] Datei oder Verzeichnis nicht gefunden: 'DBS_Patients_Preoperative.ui'"
+# Also ja, man braucht die Datei auch.
 
 # kleinere Details zu dem Code weiter unten
 
