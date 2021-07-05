@@ -1,3 +1,8 @@
+# Hallo David
+# Ich habe mal versucht deine Vorschläge umzusetzen aber irgendwie bekomme ich trotzdem Error-Nachrichten raus. Ich bin mir nicht sicher was ich falsch gemacht habe,
+# "for key, value in content.items()" -> aber ich erhalte bei diesem Teil mehrere Errors leider. 
+# Ich habe irgendwie auch allgemeine Verständisprobleme bei dem Part. 
+
 import sys
 from PyQt5.uic import loadUi
 from PyQt5 import QtWidgets
