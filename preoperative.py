@@ -45,6 +45,7 @@ class MainWindow(QMainWindow):
 
     def loaddata(self):
         patients_old = pd.read_csv("Preoperative_CSV.csv")
+        print(os.path.join("mnt/c/Users/Anwender/PycharmProjects/pythonProject", "Preoperative_CSV.csv"))
         patients = pd.read_csv("Preoperative_CSV.csv", sep=';')  # TODO: filename with os.path.join and include ROOTDIR
         print(patients)
 
