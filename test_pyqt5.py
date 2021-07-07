@@ -29,7 +29,7 @@ class Dialog(QDialog):
     def __init__(self, parent=None):
         """Initializer."""
         super().__init__(parent)
-        self.setWindowTitle('QDialog')
+        self.setWindowTitle('Dialog_Test')
         self.setGeometry(200, 100, 280, 170)
         self.move(850, 425)
         helloMsg = QLabel('<h1>Hello!</h1>', parent=self)
