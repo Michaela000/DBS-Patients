@@ -1,8 +1,5 @@
 # Hallo David
 # Danke für die vielen Kommentare. Das ist wirklich sehr hilfreich.
-# Ich habe heute leider nicht so viel geschafft, da ich noch zwei weitere Module habe in denen ich arbeiten muss.
-# Morgen werde ich auf jeden Fall viel mit der Test_pyqt5 Datei arbeiten.
-# Ich versuche dann auch diese GUI noch zu verbessern. 
 
 
 import sys  # handles exit status of the application
