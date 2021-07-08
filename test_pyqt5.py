@@ -1,8 +1,9 @@
 # Filename: test_pyqt5.py
 
-# Hi David. Das war schwieriger als ich gedacht habe. Ich hab eigentlich den ganzen Tag damit verbracht diese Datei zu speichern. Trotzdem klappt das ganze noch nicht
+# Hi David. Das war schwieriger als ich gedacht habe. Ich habe eigentlich den ganzen Tag damit verbracht diese Datei zu speichern. Trotzdem klappt das ganze noch nicht
 # 100%, da er zwar das Fenster öffnet zum abspeichern aber nichts abspeichert. 
 # Ich habe noch eine Frage zum Inhalt. Ich dachte, ich darf den Namen und das Alter nicht veröffentlichen aber Du meintest, ich sollte schon einmal die Inhalte einfügen.
+# Tut mir Leid, dass ich im Moment nicht so schnell voran komme. Ich glaube aber, sobald ich eine Box fertig habe, wird das ganze viel schneller gehen. 
 
 """Dialog-Style application."""
 
