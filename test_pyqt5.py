@@ -12,7 +12,8 @@ from PyQt5.QtWidgets import QLineEdit
 from PyQt5.QtWidgets import QVBoxLayout
 from PyQt5.QtWidgets import QGroupBox
 from PyQt5.QtWidgets import QHBoxLayout
-from PyQt5.QtWidgets import QLabel
+from PyQt5.QtWidgets import QLabel, QFileDialog, QWidget, QMainWindow
+
 
 # Hi Michaela, ich habe das mal vom Aufbau geändert. Das GUI wirkt in seiner Form zwar etwas komplexer, aber ist in
 # seiner Logik viel stimmiger alles in allem. Kurze Erklärung: self.layout ist das gesamte Layout und ist vertikal
@@ -83,10 +84,28 @@ class Dialog(QDialog):
     # In the next lines, actions are defined when Buttons are pressed
     @QtCore.pyqtSlot()
     def onClickedSaveReturn(self):
-        print('here a function is needed to update files')
+        self.saveFileDialog()
+
+    def close(self):
+        self.saveFileDialog()
+
+    def saveFileDialog(self):
+        options = QFileDialog.Options()
+        options |= QFileDialog.DontUseNativeDialog
+        fileName, _ = QFileDialog.getSaveFileName(self, "QFileDialog.getSaveFileName()", "test.txt", "All Files(*)", options=options)
+        print(fileName)
+
+    # for opening
+    def open_dialog_box (self):
+        option = QFileDialog.Options()
+        # first parameter is self; second is the Window Title, third title is Default File Name, fourth is FileType, fifth is options
+        file = QFileDialog.getOpenFileName(self, "Save File Window Title", "default.txt", "All Files (*)", options=option)
+        print(file)
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
+    widget = QWidget
     dlg = Dialog()
     dlg.show()
     sys.exit(app.exec_())
