@@ -1,4 +1,9 @@
 # Filename: test_pyqt5.py
+
+# Hi David. Das war schwieriger als ich gedacht habe. Ich hab eigentlich den ganzen Tag damit verbracht diese Datei zu speichern. Trotzdem klappt das ganze noch nicht
+# 100%, da er zwar das Fenster öffnet zum abspeichern aber nichts abspeichert. 
+# Ich habe noch eine Frage zum Inhalt. Ich dachte, ich darf den Namen und das Alter nicht veröffentlichen aber Du meintest, ich sollte schon einmal die Inhalte einfügen.
+
 """Dialog-Style application."""
 
 import sys
