@@ -1,3 +1,5 @@
+# Hallo David. Ich war mir nicht ganz sicher wie genau Du die GUI haben möchtest, daher hab ich einfach mal zwei verschiedene Ansätze verwendet.
+
 import sys
 import os
 from PyQt5.uic import loadUi
