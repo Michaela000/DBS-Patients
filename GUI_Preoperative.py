@@ -20,7 +20,7 @@ class Dialog(QDialog):
     def __init__(self, parent=None):
         """Initializer."""
         super().__init__(parent)
-        self.setWindowTitle('Subject Information')
+        self.setWindowTitle('Patient Information')
         self.setGeometry(200, 100, 280, 170)
         self.move(850, 200)
 
