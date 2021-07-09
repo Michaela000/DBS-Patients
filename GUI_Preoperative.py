@@ -20,12 +20,12 @@ class Dialog(QDialog):
     def __init__(self, parent=None):
         """Initializer."""
         super().__init__(parent)
-        self.setWindowTitle('Parkinson Medication')
+        self.setWindowTitle('Subject Information')
         self.setGeometry(200, 100, 280, 170)
         self.move(850, 200)
 
         self.layout = QVBoxLayout(self)
-        self.optionbox1 = QGroupBox('Subject Medication')
+        self.optionbox1 = QGroupBox('Preoperative')
         self.settings_list = QVBoxLayout(self.optionbox1)
 
         # ====================    Create Content for First Option box on Top left      ====================
