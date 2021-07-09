@@ -1,0 +1,7 @@
+# Config file saving all important settings that have been set; A recovery to default mode is possible
+%YAML 1.1
+
+---
+folders:
+  dpedr: 'D:\\DBS_patients'
+  # TODO: Michaela missing, use import getpass; getpass.getuser() and add this together with output from os.getcwd()

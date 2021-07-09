@@ -5,15 +5,9 @@
 import sys
 from PyQt5 import QtCore
 
-from PyQt5.QtWidgets import QApplication
-from PyQt5.QtWidgets import QDialog
-from PyQt5.QtWidgets import QDialogButtonBox
-from PyQt5.QtWidgets import QPushButton
-from PyQt5.QtWidgets import QLineEdit
-from PyQt5.QtWidgets import QVBoxLayout
-from PyQt5.QtWidgets import QGroupBox
-from PyQt5.QtWidgets import QHBoxLayout
-from PyQt5.QtWidgets import QLabel, QFileDialog, QWidget, QMainWindow
+from PyQt5.QtWidgets import QApplication, QDialog, QPushButton, QLineEdit, QVBoxLayout, QGroupBox, QHBoxLayout, \
+    QFileDialog, QWidget, QLabel
+from dependencies import ROOTDIR
 
 # Hey, also alles gut! Ehrlicherweise hast Du viel mehr gemacht, als was ich wollte. Es ging mir eigentlich nur
 # darum, dass Du mal ein wenig mit dem Code spielst und versuchst Inhalt einzufügen. Das mit dem Speichern und
@@ -25,23 +19,23 @@ from PyQt5.QtWidgets import QLabel, QFileDialog, QWidget, QMainWindow
 # Zum jetzigen Zeitpunkt noch keine Funktionen und keine Verknüpfungen, reines Aussehen des GUI. Den Rest machen wir
 # noch. Das speicherst Du unter einem Ordner GUI im Hauptverzeichnis.
 
-# P.S.: Du hast natürlich Recht, kein personenbezogener Inhalt, das war verwirrend von mir. Sorry! Mir ist
-# nichts besseres eingefallen.
+# Habe ein wenig den Code aufgeräumt und ein Paar kleinere Extras ergänzt, die später klarer werden ; )
 
 
-class Dialog(QDialog):
+class Preoperative(QDialog):
     """Dialog."""
 
     def __init__(self, parent=None):
         """Initializer."""
         super().__init__(parent)
-        self.setWindowTitle('Dialog_Test')
-        self.setGeometry(200, 100, 280, 170)
+        self.setWindowTitle('Preoperative testing')
+        self.setGeometry(400, 100, 2800, 1700)  # left, right, height, width
         self.move(850, 425)
 
-        self.layout = QVBoxLayout(self)
+        self.entire_layout = QVBoxLayout(self)
+        self.content_boxes = QHBoxLayout(self)
         self.optionbox1 = QGroupBox('Personal data')
-        self.settings_list = QVBoxLayout(self.optionbox1)
+        self.settings_optionsbox1 = QVBoxLayout(self.optionbox1)
 
         # ====================    Create Content for First Option box on Top left      ====================
         self.subj_name = QLabel('Name:\t\t')
@@ -60,11 +54,18 @@ class Dialog(QDialog):
         lay2.addWidget(self.lineEditFilename)
         lay2.addStretch()
 
-        self.settings_list.addLayout(lay1)
-        self.settings_list.addLayout(lay2)
+        self.settings_optionsbox1.addLayout(lay1)
+        self.settings_optionsbox1.addLayout(lay2)
 
         # ====================    Create Content for Second Option box on Top right      ====================
-        # TODO: rechte Seite
+        # TODO: fill right side (optionsbox2) with content analogue to left box
+
+        self.optionbox2 = QGroupBox('Surgery')
+        self.settings_optionsbox2 = QVBoxLayout(self.optionbox2)
+
+        # ====================    Merge boxes      ====================
+        self.content_boxes.addWidget(self.optionbox1)
+        self.content_boxes.addWidget(self.optionbox2)
 
         # ====================    Create Content for Buttons at the Bottom      ====================
         layout_bottom = QHBoxLayout()
@@ -77,8 +78,9 @@ class Dialog(QDialog):
         layout_bottom.addWidget(self.button_savereturn)
         layout_bottom.addWidget(self.button_close)
 
-        self.layout.addWidget(self.optionbox1)
-        self.layout.addLayout(layout_bottom)
+        # ====================    Add boxes and buttons to self.entire_layout      ====================
+        self.entire_layout.addLayout(self.content_boxes)
+        self.entire_layout.addLayout(layout_bottom)
 
     # In the next lines, actions are defined when Buttons are pressed
     @QtCore.pyqtSlot()
@@ -106,6 +108,6 @@ class Dialog(QDialog):
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     widget = QWidget
-    dlg = Dialog()
+    dlg = Preoperative()
     dlg.show()
     sys.exit(app.exec_())
