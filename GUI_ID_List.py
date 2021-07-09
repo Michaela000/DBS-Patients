@@ -1,3 +1,8 @@
+# Hi David. Ich wusste nicht wie Du die GUI gerne haben möchtest also habe ich wieder zwei verschiedene Methoden angewendet. Ich könnte jeweils die verschiedenen
+# Daten eintragen, aber da wollte ich auch nochmal fragen, wo ich am besten die "echten" Namen speichere. Wenn ich einen File mit den PID-Daten hochladen soll,
+# dann muss ich auch die Original Daten irgendwo sichern, oder? 
+# Ich wollte auch nochmal fragen, ob ich die Werte/Daten aus Deiner Tabelle verwenden kann, weil ich nicht sicher bin, ob ich alle Arztbriefe habe. 
+
 import sys
 import os
 from PyQt5.uic import loadUi
