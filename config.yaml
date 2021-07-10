@@ -1,7 +1,20 @@
+# Hi David. Ich hatte leider einige Probleme mit diesem kleinen Teil des Codes. Ich war mir insgesamt nicht so sicher, was genau ich eigentlich tun soll.
+
+
 # Config file saving all important settings that have been set; A recovery to default mode is possible
-%YAML 1.1
+
+%YAML 1.1  #egal wie oft ich "pip install pyyaml" eingebe, es akzeptiert nicht das package in Pycharm. Daher kann das ganze Programm nicht laufen.
+
+import getpass
+import os, sys
+
+Michaela000 = getpass.getuser() #muss ich meinen Github-Account Namen angeben oder irgendeinen? 
+
+# Print current working directory
+print ("C:\Users\Anwender\PycharmProjects\pythonProject: %s" % os.getcwd()) # Ich bin mir nicht sicher, ob das so richtig ist aber ich kann das Programm nicht laufen lassen, weil er Yaml nicht erkennt.
 
 ---
 folders:
-  dpedr: 'D:\\DBS_patients'
+  dpedr: 'D:\\DBS_patients' # soll ich zusätzlich auch einen folder erstellen? Denn ich habe bisher keinen auf meinem PC.
+  
   # TODO: Michaela missing, use import getpass; getpass.getuser() and add this together with output from os.getcwd()
