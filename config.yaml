@@ -1,7 +1,20 @@
+# Hi David. Ich hatte leider einige Probleme mit diesem kleinen Teil des Codes. Ich war mir insgesamt nicht so sicher, was genau ich eigentlich machen soll.
+
+
 # Config file saving all important settings that have been set; A recovery to default mode is possible
-%YAML 1.1
+
+%YAML 1.1  
+# egal wie oft ich "pip install pyyaml" eingebe, es akzeptiert nicht das package in Pycharm. Daher kann ich das ganze Programm nicht starten lassen.
+# Gibt es Dir eine Fehlermeldung heraus?
+
+import getpass
+import os, sys
 
 ---
 folders:
   dpedr: 'D:\\DBS_patients'
-  # TODO: Michaela missing, use import getpass; getpass.getuser() and add this together with output from os.getcwd()
+  michaela: 'C:\Users\Anwender\PycharmProjects\pythonProject'
+
+# Hier geht es darum, dass wir unterschiedliche Verzeichnisse auf unseren REchnern haben. Also erstellen wir eine konfigurationsdatei, mit der wir dann später sagen können: if getpass.getuser() == 'dpedr' ...
+# Ich glaube den Ordner haben wir, jetzt fehlt noch Dein Anmeldename bei Windows. Den bekommst Du raus, indem Du in der Python Konsole erst das Modul getpass importierst ("import getpass")
+# und danach einfach das was getpass.getuser() asusspuckt anstelle von michaela in Zeile 16 eintragen
