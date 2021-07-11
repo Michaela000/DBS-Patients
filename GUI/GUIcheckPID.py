@@ -1,4 +1,4 @@
-# Filename: test_pyqt5.py
+# Filename: GUIcheckPID.py
 
 """Dialog-Style application."""
 
@@ -7,7 +7,7 @@ from PyQt5 import QtCore
 
 from PyQt5.QtWidgets import QApplication, QDialog, QPushButton, QLineEdit, QVBoxLayout, QGroupBox, QHBoxLayout, \
     QFileDialog, QWidget, QLabel
-from dependencies import ROOTDIR
+
 
 # Hey, also alles gut! Ehrlicherweise hast Du viel mehr gemacht, als was ich wollte. Es ging mir eigentlich nur
 # darum, dass Du mal ein wenig mit dem Code spielst und versuchst Inhalt einzufügen. Das mit dem Speichern und
@@ -22,19 +22,19 @@ from dependencies import ROOTDIR
 # Habe ein wenig den Code aufgeräumt und ein Paar kleinere Extras ergänzt, die später klarer werden ; )
 
 
-class Preoperative(QDialog):
+class CheckPID(QDialog):
     """Dialog."""
 
     def __init__(self, parent=None):
         """Initializer."""
         super().__init__(parent)
-        self.setWindowTitle('Preoperative testing')
-        self.setGeometry(400, 100, 2800, 1700)  # left, right, height, width
+        self.setWindowTitle('Check for information related so far to the entered PID')
+        self.setGeometry(400, 100, 750, 900)  # left, right, height, width
         self.move(850, 425)
 
         self.entire_layout = QVBoxLayout(self)
         self.content_boxes = QHBoxLayout(self)
-        self.optionbox1 = QGroupBox('Personal data')
+        self.optionbox1 = QGroupBox('Is the information related to PID correct?')
         self.settings_optionsbox1 = QVBoxLayout(self.optionbox1)
 
         # ====================    Create Content for First Option box on Top left      ====================
@@ -46,32 +46,25 @@ class Preoperative(QDialog):
         lay1.addWidget(self.lineEditFilename)
         lay1.addStretch()
 
-        self.subj_age = QLabel('Age:\t\t')
+        self.subj_code = QLabel('Code:\t\t')
         self.lineEditFilename = QLineEdit()
 
         lay2 = QHBoxLayout()
-        lay2.addWidget(self.subj_age)
+        lay2.addWidget(self.subj_code)
         lay2.addWidget(self.lineEditFilename)
         lay2.addStretch()
 
         self.settings_optionsbox1.addLayout(lay1)
         self.settings_optionsbox1.addLayout(lay2)
 
-        # ====================    Create Content for Second Option box on Top right      ====================
-        # TODO: fill right side (optionsbox2) with content analogue to left box
-
-        self.optionbox2 = QGroupBox('Surgery')
-        self.settings_optionsbox2 = QVBoxLayout(self.optionbox2)
-
         # ====================    Merge boxes      ====================
         self.content_boxes.addWidget(self.optionbox1)
-        self.content_boxes.addWidget(self.optionbox2)
 
         # ====================    Create Content for Buttons at the Bottom      ====================
         layout_bottom = QHBoxLayout()
-        self.button_savereturn = QPushButton('Save settings \nand return')
+        self.button_savereturn = QPushButton('Yes. \nContinue')
         self.button_savereturn.clicked.connect(self.onClickedSaveReturn)
-        self.button_close = QPushButton('Save and \nclose')
+        self.button_close = QPushButton('No. \nReturn')
         self.button_close.clicked.connect(self.close)
 
         layout_bottom.addStretch(1)
@@ -108,6 +101,6 @@ class Preoperative(QDialog):
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     widget = QWidget
-    dlg = Preoperative()
+    dlg = CheckPID()
     dlg.show()
     sys.exit(app.exec_())

@@ -1,20 +1,20 @@
 # Hi David. Ich hab tatsächlich das Problem, dass nicht alle Punkte auf den Bildschirm passen.
 
+# Hey! Ja das stimmt aber wir wissen jetzt, was alles drin ist. Versuch das doch mal zu sortieren thematisch in Blöcke
+# und dann "Boxen" zu erstellen (QGroupBox). Dann sortieren wir das weiter und nutzen auch die rechte Seite des Bild-
+# schirms besser aus. Die anderen Optionen, die DU erstellt hast fand ich nicht so gut, weil sie mehr Voraussetzungen
+# haben. Also lass uns so bleiben. Darf ich Dich darum bitten, dass Du bei data mal ein Paar Dateien einfügst (ohne)
+# Namen also preoperative.csv und postoperative.csv. Ich würde mich die Tage darum kümmern, dass die Daten eingelesen
+# werden als Vorlage für Dich für die anderen GUIs
+
 import sys
 from PyQt5 import QtCore
 
-from PyQt5.QtWidgets import QApplication
-from PyQt5.QtWidgets import QDialog
-from PyQt5.QtWidgets import QDialogButtonBox
-from PyQt5.QtWidgets import QPushButton
-from PyQt5.QtWidgets import QLineEdit
-from PyQt5.QtWidgets import QVBoxLayout
-from PyQt5.QtWidgets import QGroupBox
-from PyQt5.QtWidgets import QHBoxLayout
-from PyQt5.QtWidgets import QLabel, QFileDialog, QWidget
+from PyQt5.QtWidgets import QApplication, QDialog, QDialogButtonBox, QPushButton, QLineEdit, QVBoxLayout, QGroupBox, \
+    QHBoxLayout, QLabel, QFileDialog, QWidget
 
 
-class Dialog(QDialog):
+class PreoperativeDialog(QDialog):
     """Dialog."""
 
     def __init__(self, parent=None):
@@ -225,125 +225,6 @@ class Dialog(QDialog):
         lay28.addWidget(self.lineEditFilename)
         lay28.addStretch()
 
-        self.subj_Levodopa_Carbidopa = QLabel('Levodopa/Carbidopa:\t\t')
-        self.lineEditFilename = QLineEdit()
-        lay29 = QHBoxLayout()
-        lay29.addWidget(self.subj_Levodopa_Carbidopa)
-        lay29.addWidget(self.lineEditFilename)
-        lay29.addStretch()
-
-        self.subj_Levodopa_Carbidopa_CR = QLabel('Levodopa/Carbidopa CR:\t\t')
-        self.lineEditFilename = QLineEdit()
-        lay30 = QHBoxLayout()
-        lay30.addWidget(self.subj_Levodopa_Carbidopa_CR)
-        lay30.addWidget(self.lineEditFilename)
-        lay30.addStretch()
-
-        self.subj_Entacapone = QLabel('Entacapone:\t\t')
-        self.lineEditFilename = QLineEdit()
-        lay31 = QHBoxLayout()
-        lay31.addWidget(self.subj_Entacapone)
-        lay31.addWidget(self.lineEditFilename)
-        lay31.addStretch()
-
-        self.subj_Tolcapone = QLabel('Tolcapone:\t\t')
-        self.lineEditFilename = QLineEdit()
-        lay32 = QHBoxLayout()
-        lay32.addWidget(self.subj_Tolcapone)
-        lay32.addWidget(self.lineEditFilename)
-        lay32.addStretch()
-
-        self.subj_Pramipexole = QLabel('Pramipexole:\t\t')
-        self.lineEditFilename = QLineEdit()
-        lay33 = QHBoxLayout()
-        lay33.addWidget(self.subj_Pramipexole)
-        lay33.addWidget(self.lineEditFilename)
-        lay33.addStretch()
-
-        self.subj_Ropinirole = QLabel('Ropinirole:\t\t')
-        self.lineEditFilename = QLineEdit()
-        lay34 = QHBoxLayout()
-        lay34.addWidget(self.subj_Ropinirole)
-        lay34.addWidget(self.lineEditFilename)
-        lay34.addStretch()
-
-        self.subj_Rotigotine = QLabel('Rotigotine:\t\t')
-        self.lineEditFilename = QLineEdit()
-        lay35 = QHBoxLayout()
-        lay35.addWidget(self.subj_Rotigotine)
-        lay35.addWidget(self.lineEditFilename)
-        lay35.addStretch()
-
-        self.subj_Selegiline_oral = QLabel('Selegiline oral:\t\t')
-        self.lineEditFilename = QLineEdit()
-        lay36 = QHBoxLayout()
-        lay36.addWidget(self.subj_Selegiline_oral)
-        lay36.addWidget(self.lineEditFilename)
-        lay36.addStretch()
-
-        self.subj_Selegiline_sublingual = QLabel('Selegiline sublingual:\t\t')
-        self.lineEditFilename = QLineEdit()
-        lay37 = QHBoxLayout()
-        lay37.addWidget(self.subj_Selegiline_sublingual)
-        lay37.addWidget(self.lineEditFilename)
-        lay37.addStretch()
-
-        self.subj_Rasagiline = QLabel('Rasagiline:\t\t')
-        self.lineEditFilename = QLineEdit()
-        lay38 = QHBoxLayout()
-        lay38.addWidget(self.subj_Rasagiline)
-        lay38.addWidget(self.lineEditFilename)
-        lay38.addStretch()
-
-        self.subj_Amantadine = QLabel('Amantadine:\t\t')
-        self.lineEditFilename = QLineEdit()
-        lay39 = QHBoxLayout()
-        lay39.addWidget(self.subj_Amantadine)
-        lay39.addWidget(self.lineEditFilename)
-        lay39.addStretch()
-
-        self.subj_Apomorphine = QLabel('Apomorphine:\t\t')
-        self.lineEditFilename = QLineEdit()
-        lay40 = QHBoxLayout()
-        lay40.addWidget(self.subj_Apomorphine)
-        lay40.addWidget(self.lineEditFilename)
-        lay40.addStretch()
-
-        self.subj_Piribedil = QLabel('Piribedil:\t\t')
-        self.lineEditFilename = QLineEdit()
-        lay41 = QHBoxLayout()
-        lay41.addWidget(self.subj_Piribedil)
-        lay41.addWidget(self.lineEditFilename)
-        lay41.addStretch()
-
-        self.subj_Safinamid = QLabel('Safinamid:\t\t')
-        self.lineEditFilename = QLineEdit()
-        lay42 = QHBoxLayout()
-        lay42.addWidget(self.subj_Safinamid)
-        lay42.addWidget(self.lineEditFilename)
-        lay42.addStretch()
-
-        self.subj_Opicapone = QLabel('Opicapone:\t\t')
-        self.lineEditFilename = QLineEdit()
-        lay43 = QHBoxLayout()
-        lay43.addWidget(self.subj_Opicapone)
-        lay43.addWidget(self.lineEditFilename)
-        lay43.addStretch()
-
-        self.subj_Ongentys = QLabel('Ongentys:\t\t')
-        self.lineEditFilename = QLineEdit()
-        lay44 = QHBoxLayout()
-        lay44.addWidget(self.subj_Ongentys)
-        lay44.addWidget(self.lineEditFilename)
-        lay44.addStretch()
-
-        self.subj_Other = QLabel('Other:\t\t')
-        self.lineEditFilename = QLineEdit()
-        lay45 = QHBoxLayout()
-        lay45.addWidget(self.subj_Other)
-        lay45.addWidget(self.lineEditFilename)
-        lay45.addStretch()
-
         self.subj_UPDRSII = QLabel('UPDRSII:\t\t')
         self.lineEditFilename = QLineEdit()
         lay46 = QHBoxLayout()
@@ -428,23 +309,6 @@ class Dialog(QDialog):
         self.settings_list.addLayout(lay26)
         self.settings_list.addLayout(lay27)
         self.settings_list.addLayout(lay28)
-        self.settings_list.addLayout(lay29)
-        self.settings_list.addLayout(lay30)
-        self.settings_list.addLayout(lay31)
-        self.settings_list.addLayout(lay32)
-        self.settings_list.addLayout(lay33)
-        self.settings_list.addLayout(lay34)
-        self.settings_list.addLayout(lay35)
-        self.settings_list.addLayout(lay36)
-        self.settings_list.addLayout(lay37)
-        self.settings_list.addLayout(lay38)
-        self.settings_list.addLayout(lay39)
-        self.settings_list.addLayout(lay40)
-        self.settings_list.addLayout(lay41)
-        self.settings_list.addLayout(lay42)
-        self.settings_list.addLayout(lay43)
-        self.settings_list.addLayout(lay44)
-        self.settings_list.addLayout(lay45)
         self.settings_list.addLayout(lay46)
         self.settings_list.addLayout(lay47)
         self.settings_list.addLayout(lay48)
@@ -493,6 +357,6 @@ class Dialog(QDialog):
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     widget = QWidget
-    dlg = Dialog()
+    dlg = PreopersativeDialog()
     dlg.show()
     sys.exit(app.exec_())
