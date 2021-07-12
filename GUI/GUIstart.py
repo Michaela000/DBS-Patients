@@ -1,11 +1,15 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import sys
+# Hallo David. Ich habe versucht die drei TODO's umzusetzen aber bei dem Verbinden von den zwei GUI's bin ich mir noch sehr unsicher. Durch die erstellte Funktion kann ich bisher
+# nur eine weitere Datei öffnen in der ich dann suchen kann, aber ich glaube das soll eher automatisch funktionieren oder?
 
-from PyQt5 import QtCore
+import sys
+from PyQt5 import QtCore, QtWidgets
 from PyQt5.QtWidgets import QApplication, QDialog, QPushButton, QLineEdit, QVBoxLayout, QGroupBox, QHBoxLayout, \
-    QWidget, QLabel
+    QWidget, QLabel, QFileDialog
+import random
+import string
 
 
 class CheckForPID(QDialog):
@@ -21,7 +25,7 @@ class CheckForPID(QDialog):
 
         super().__init__(parent)
         self.setWindowTitle('Check for existence of subject in database')
-        self.setGeometry(400, 100, 800, 300)  # left, right, width, height
+        self.setGeometry(400, 100, 500, 300)  # left, right, width, height
         self.move(850, 425)
 
         self.layout = QVBoxLayout(self)  # entire layout for GUI
@@ -31,8 +35,12 @@ class CheckForPID(QDialog):
         self.optionbox_guistart = QGroupBox('Please enter PID')
         self.settings_optionsbox1 = QVBoxLayout(self.optionbox_guistart)
 
-        self.subj_name = QLabel('PID:\t\t')
+        self.subj_name = QLabel('PID:\t\t', )
         self.lineEditFilename = QLineEdit()
+
+        # Todo 2: Change the Width/Height of the text window
+        self.lineEditFilename.setFixedWidth(150)
+        self.lineEditFilename.setFixedHeight(50)
 
         lay1 = QHBoxLayout()
         lay1.addWidget(self.subj_name)
@@ -55,9 +63,24 @@ class CheckForPID(QDialog):
         self.layout.addLayout(layout_buttons)
 
         # In the next lines, actions are defined when Buttons are pressed
+
+    # TODO 3: Connect with another GUI
     @QtCore.pyqtSlot()
     def onClickedCheckPID(self):
+        self.PID_List()
         print('implement check for PID existence')
+
+    def PID_List(self):
+        filename = QFileDialog.getOpenFileName()
+        print (filename)
+
+    # Todo 1 - Create random String
+    def get_random_alphanumeric_string(self):
+        letters_and_digits = string.ascii_letters + string.digits
+        result_str = ''.join((random.choice(letters_and_digits) for i in range(self)))
+        print("Random alphanumeric String is:", result_str)
+
+    get_random_alphanumeric_string(8)
 
 
 if __name__ == '__main__':
