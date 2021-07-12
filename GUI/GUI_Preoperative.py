@@ -1,5 +1,5 @@
 # Hi David. Ich hab mal versucht Gruppen zu erstellen und das hat schlussendlich sogar funktioniert. Mein einziges Problem ist, dass ich bei manchen Abkürzungen nicht weiß was genau das 
-# eigentlich ist (z.B. H&Y) und daher hab ich sie einfach zu irgendeiner Gruppe hinzugefügt. Gibt es vielleicht irgendwo eine Liste mit den Abkürzungen. Ich würde mir dann da auch durchlesen wollen, was genau
+# eigentlich ist (z.B. H&Y) und daher hab ich sie einfach zu irgendeiner Gruppe hinzugefügt. Gibt es vielleicht irgendwo eine Liste mit den Abkürzungen? Ich würde mir dann da auch durchlesen wollen, was genau
 # mit "Report" oder so gemeint ist.
 
 import sys
