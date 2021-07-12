@@ -1,8 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# Hallo David. Ich habe versucht die drei TODO's umzusetzen aber bei dem Verbinden von den zwei GUI's bin ich mir noch sehr unsicher. Durch die erstellte Funktion kann ich bisher
-# nur eine weitere Datei öffnen in der ich dann suchen kann, aber ich glaube das soll eher automatisch funktionieren oder?
+# Hallo David. Ich habe versucht die drei TODO's umzusetzen aber bei dem Verbinden von den zwei GUI's bin ich mir trotzdem noch etwas unsicher. 
 
 import sys
 from PyQt5 import QtCore, QtWidgets
@@ -10,6 +9,7 @@ from PyQt5.QtWidgets import QApplication, QDialog, QPushButton, QLineEdit, QVBox
     QWidget, QLabel, QFileDialog
 import random
 import string
+import GUI_Preoperative
 
 
 class CheckForPID(QDialog):
@@ -71,8 +71,8 @@ class CheckForPID(QDialog):
         print('implement check for PID existence')
 
     def PID_List(self):
-        filename = QFileDialog.getOpenFileName()
-        print (filename)
+        PID_List = GUI_Preoperative
+        print(PID_List)
 
     # Todo 1 - Create random String
     def get_random_alphanumeric_string(self):
