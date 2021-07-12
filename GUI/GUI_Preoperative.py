@@ -1,6 +1,9 @@
 # Hi David. Ich hab mal versucht Gruppen zu erstellen und das hat schlussendlich sogar funktioniert. Mein einziges Problem ist, dass ich bei manchen Abkürzungen nicht weiß was genau das 
 # eigentlich ist (z.B. H&Y) und daher hab ich sie einfach zu irgendeiner Gruppe hinzugefügt. Gibt es vielleicht irgendwo eine Liste mit den Abkürzungen? Ich würde mir dann da auch durchlesen wollen, was genau
 # mit "Report" oder so gemeint ist.
+# Ich habe Dir per Email auch die beiden Tabellen geschickt, mir ist aber erst nach dem Abschicken aufgefallen, dass die "ID" in der Tabelle nicht die PID, sondern eine
+# zufällig generierte Nummer ist. Soll ich nochmal eine neue Tabelle erstellen, in denen ich das genau zuordnen kann? Auf Grund der knappen Zeit, habe ich die Daten aus
+# Deiner Tablle fürs Erste verwendet. 
 
 import sys
 from PyQt5 import QtCore
