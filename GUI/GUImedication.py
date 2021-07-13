@@ -151,11 +151,11 @@ class MedicationDialog(QDialog):
 
         # ====================    Create Content for Buttons at the Bottom      ====================
         layout_bottom = QHBoxLayout()
-        self.button_savereturn = QPushButton('Save settings \nand return')
-        self.button_savereturn.clicked.connect(self.onClickedSaveReturn)
+        self.button_save_return = QPushButton('Save settings \nand return')
+        self.button_save_return.clicked.connect(self.onClickedSaveReturn)
 
         layout_bottom.addStretch(1)
-        layout_bottom.addWidget(self.button_savereturn)
+        layout_bottom.addWidget(self.button_save_return)
 
         self.layout.addWidget(self.optionbox1)
         self.layout.addLayout(layout_bottom)

@@ -9,19 +9,6 @@ from PyQt5.QtWidgets import QApplication, QDialog, QPushButton, QLineEdit, QVBox
     QFileDialog, QWidget, QLabel
 
 
-# Hey, also alles gut! Ehrlicherweise hast Du viel mehr gemacht, als was ich wollte. Es ging mir eigentlich nur
-# darum, dass Du mal ein wenig mit dem Code spielst und versuchst Inhalt einzufügen. Das mit dem Speichern und
-# Löschen, das bekommen wir alles noch später hin. Ich habe den Eindruck,  es würde Dir mehr bringen, wenn wir erst noch
-# ein Paar Zwischenschritte einfügen, bevor wir mit "decorator" starten (trotzdem mega
-# gut, dass Du das hinbekommen hast). Meine Bitte für die nächsten Tage wäre also, dass Du ein GUI erstellst wie das
-# aus dem Makro der Excel Datei (preoperative) ein GUI für die Medikation (also alle Parkinson Medikamente die es gibt)
-# und ein GUI für die Eingabe der Daten (also der PID), sodass man prüfen kann, ob es den Menschen gibt oder nicht.
-# Zum jetzigen Zeitpunkt noch keine Funktionen und keine Verknüpfungen, reines Aussehen des GUI. Den Rest machen wir
-# noch. Das speicherst Du unter einem Ordner GUI im Hauptverzeichnis.
-
-# Habe ein wenig den Code aufgeräumt und ein Paar kleinere Extras ergänzt, die später klarer werden ; )
-
-
 class CheckPID(QDialog):
     """Dialog."""
 
@@ -78,9 +65,6 @@ class CheckPID(QDialog):
     # In the next lines, actions are defined when Buttons are pressed
     @QtCore.pyqtSlot()
     def onClickedSaveReturn(self):
-        self.saveFileDialog()
-
-    def close(self):
         self.saveFileDialog()
 
     def saveFileDialog(self):

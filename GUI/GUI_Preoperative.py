@@ -1,10 +1,19 @@
-# Hi David. Ich hab mal versucht Gruppen zu erstellen und das hat schlussendlich sogar funktioniert. Mein einziges Problem ist, dass ich bei manchen Abkürzungen nicht weiß was genau das 
-# eigentlich ist (z.B. H&Y) und daher hab ich sie einfach zu irgendeiner Gruppe hinzugefügt. Gibt es vielleicht irgendwo eine Liste mit den Abkürzungen? Ich würde mir dann da auch durchlesen wollen, was genau
-# mit "Report" oder so gemeint ist.
-# Ich habe Dir per Email auch die beiden Tabellen geschickt, mir ist aber erst nach dem Abschicken aufgefallen, dass die "ID" in der Tabelle nicht die PID, sondern eine
-# zufällig generierte Nummer ist. Soll ich nochmal eine neue Tabelle erstellen, in denen ich das genau zuordnen kann? Auf Grund der knappen Zeit, habe ich die Daten aus
-# Deiner Tablle fürs Erste verwendet. 
-# Ich fange heute an eine eigene Tabelle aufzusetzen.
+# Hi David. Ich hab mal versucht Gruppen zu erstellen und das hat schlussendlich sogar funktioniert. Mein einziges
+# Problem ist, dass ich bei manchen Abkürzungen nicht weiß was genau das eigentlich ist (z.B. H&Y) und daher hab
+# ich sie einfach zu irgendeiner Gruppe hinzugefügt. Gibt es vielleicht irgendwo eine Liste mit den Abkürzungen?
+# Ich würde mir dann da auch durchlesen wollen, was genau mit "Report" oder so gemeint ist.
+
+# Ich habe Dir per Email auch die beiden Tabellen geschickt, mir ist aber erst nach dem Abschicken aufgefallen, dass
+# die "ID" in der Tabelle nicht die PID, sondern eine # zufällig generierte Nummer ist. Soll ich nochmal eine neue
+# Tabelle erstellen, in denen ich das genau zuordnen kann? Auf Grund der knappen Zeit, habe ich die Daten aus
+# Deiner Tablle fürs Erste verwendet. # Ich fange heute an eine eigene Tabelle aufzusetzen.
+
+# OK, ich habe einen Vorschlag. Wir nutzen dafür mal das Wiki und erstellen eine Rubrik Abkürzungen und dort werde ich
+# dann die unterschiedlichen Skalen definieren, einverstanden? Manche Dinge sind eher im Kontext zu sehen und daher nicht
+# ganz einfach zu erklären/verstehen (Report heißt, ob ein Arztbrief vorliegt oder nicht). Neben den Todos aus GUIstart.py
+# würde ich vorschlagen, dass Du versuchst die Tabellen fertig zu machen und am besten mit den Feldern von der Excel Datei,
+# also wenn ein Feld steht ein Feld, wenn ein RadioButton vorhanden ist das, usw.
+
 
 import sys
 from PyQt5 import QtCore
@@ -251,13 +260,13 @@ class PreoperativeDialog(QDialog):
 
         # ====================    Create Content for Buttons at the Bottom      ====================
         layout_bottom = QHBoxLayout()
-        self.button_savereturn = QPushButton('Save settings \nand return')
-        self.button_savereturn.clicked.connect(self.onClickedSaveReturn)
+        self.button_save_return = QPushButton('Save settings \nand return')
+        self.button_save_return.clicked.connect(self.onClickedSaveReturn)
         self.button_close = QPushButton('Save and \nclose')
         self.button_close.clicked.connect(self.close)  
 
         layout_bottom.addStretch(1)
-        layout_bottom.addWidget(self.button_savereturn)
+        layout_bottom.addWidget(self.button_save_return)
         layout_bottom.addWidget(self.button_close)
 
         self.layout.addWidget(self.optionbox1)
