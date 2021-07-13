@@ -4,6 +4,7 @@
 # Ich habe Dir per Email auch die beiden Tabellen geschickt, mir ist aber erst nach dem Abschicken aufgefallen, dass die "ID" in der Tabelle nicht die PID, sondern eine
 # zufällig generierte Nummer ist. Soll ich nochmal eine neue Tabelle erstellen, in denen ich das genau zuordnen kann? Auf Grund der knappen Zeit, habe ich die Daten aus
 # Deiner Tablle fürs Erste verwendet. 
+# Ich fange heute an eine eigene Tabelle aufzusetzen.
 
 import sys
 from PyQt5 import QtCore
