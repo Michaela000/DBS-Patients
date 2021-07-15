@@ -1,6 +1,7 @@
 import csv
 import os
-import GUI_Preoperative
+import sys
+# import GUI_Preoperative
 
 from PyQt5 import QtCore
 from PyQt5.QtWidgets import QApplication, QDialog, QPushButton, QLineEdit, QVBoxLayout, QGroupBox, QHBoxLayout, \
