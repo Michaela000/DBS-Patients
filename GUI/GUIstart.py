@@ -1,7 +1,8 @@
 import csv
 import os
 import sys
-# import GUI_Preoperative
+import GUI_Preoperative
+import GUI_Postoperative
 
 from PyQt5 import QtCore
 from PyQt5.QtWidgets import QApplication, QDialog, QPushButton, QLineEdit, QVBoxLayout, QGroupBox, QHBoxLayout, \
@@ -16,13 +17,6 @@ from dependencies import ROOTDIR
 # Da ich mir bei dem ganzen Thema etwas unsicher bin, habe ich als Probe einfach nur meinen Namen (ist sowieso auf github) und eine Fake-PID (ABCDE) eingegeben.
 # Ich hätte noch eine Frage bezüglich der Informationen die in general stehen sollen: Ich hab jetzt erst einmal alle Spalten von deiner Liste übernommen,
 # aber benötigt man da nochmal die Diagnose, Side Dominance oder DBS/IPG? Und was genau ist mit "Complete" gemeint? Das alle Angaben vorhanden sind?
-
-# Ich habe leider hier das gleiche Problem wie auch mit YAML, dass ich das Package "GUI." ... nicht
-# installieren kann, daher konnte ich den Code leider nicht ausprobieren und war mir dementsprechend bei Todo 2 und 3 sehr unsicher.
-# Fehlermeldung:
-# ERROR: Could not find a version that satisfies the requirement GUI (from versions: none)
-# ERROR: No matching distribution found for GUI
-# auch .helper_functions ist die ganze Zeit rot unterstrichen, obwohl ich das Package korrekt geladen habe.
 
 
 # TODO: 1. GUIcheckPID erweitern, sodass alle Daten von df drin vorkommen,
@@ -225,13 +219,18 @@ class CheckForGeneralData(QDialog):
             self.checkPID.show()
 
         # TODO 2: Ich glaube das ist nicht richtg, aber ich habe auch nicht ganz verstanden warum es self.checkPID heißt. Die Klasse hieß vor meiner Umbenennung "CheckforPID". Müsste es dann nicht
-        # self.checkPID = CheckforPID sein? Bei diesem Teil des Codes war ich mir wirklich sehr unsicher.
+        # self.checkPID = CheckforPID sein? Bei diesem Teil des Codes war ich mir wirklich sehr unsicher. Ich weiß, dass ich das eigentlich mit den csv Files verknüpfen muss, aber ich bin mir nicht mehr
+        # ganz sicher, wie das auf diese Art und Weise funktioniert.
 
         if idx_PID:
             self.GUI_Preoperative = GUI_Preoperative()
             self.GUI_Preoperative.show()
+            self.Preoperative = Preoperative.csv
+            self.Preoperative.show()
             self.GUI_Postoperative = GUI_Postoperative()
             self.GUI_Postoperative.show()
+            self.Postoperative = Postoperative.csv
+            self.Postoperative.show()
 
     # TODO 3: Heute waren die Todo's wirklich schwer. An sich weiß ich, dass ich theoretisch nur den richtigen Pfad angeben muss, aber dann ist das nicht universell auf jedem Rechner zu finden.
     # An sich weiß ich wie es aussehen muss, aber es fällt mir sehr schwer das Ganze in die Tat umzusetzen. Online finde ich leider nur bedingt etwas dazu.
