@@ -1,9 +1,3 @@
-# OK, ich habe einen Vorschlag. Wir nutzen dafür mal das Wiki und erstellen eine Rubrik Abkürzungen und dort werde ich
-# dann die unterschiedlichen Skalen definieren, einverstanden? Manche Dinge sind eher im Kontext zu sehen und daher nicht
-# ganz einfach zu erklären/verstehen (Report heißt, ob ein Arztbrief vorliegt oder nicht). Neben den Todos aus GUIstart.py
-# würde ich vorschlagen, dass Du versuchst die Tabellen fertig zu machen und am besten mit den Feldern von der Excel Datei,
-# also wenn ein Feld steht ein Feld, wenn ein RadioButton vorhanden ist das, usw.
-
 # Hallo David. Vielen Dank für Deine Hilfe heute morgen. So klappt es wesentlich besser und leichter.
 # Die Idee mit dem Wiki-Eintrag finde ich klasse.
 # Ich lade zusätzlich noch den csv File von Preoperative und danach auch von Postoperative hoch, aber da wird sich noch einiges an den

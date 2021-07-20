@@ -14,14 +14,29 @@ from dependencies import ROOTDIR
 
 # Hallo David. Ich habe versucht die Änderungen durchzuführen. Aber habe ich das richtig verstande, das in dieser csv Datei die persönlichen Daten stehen?
 # Also darf ich diese Textdatei nicht auf github hochladen?
-# Da ich mir bei dem ganzen Thema etwas unsicher bin, habe ich als Probe einfach nur meinen Namen (ist sowieso auf github) und eine Fake-PID (ABCDE) eingegeben.
-# Ich hätte noch eine Frage bezüglich der Informationen die in general stehen sollen: Ich hab jetzt erst einmal alle Spalten von deiner Liste übernommen,
-# aber benötigt man da nochmal die Diagnose, Side Dominance oder DBS/IPG? Und was genau ist mit "Complete" gemeint? Das alle Angaben vorhanden sind?
+# Da ich mir bei dem ganzen Thema etwas unsicher bin, habe ich als Probe einfach nur meinen Namen (ist sowieso auf
+# github) und eine Fake-PID (ABCDE) eingegeben.Ich hätte noch eine Frage bezüglich der Informationen die in general
+# stehen sollen: Ich hab jetzt erst einmal alle Spalten von deiner Liste übernommen,
+# aber benötigt man da nochmal die Diagnose, Side Dominance oder DBS/IPG? Und was genau ist mit
+# "Complete" gemeint? Das alle Angaben vorhanden sind?
+
+# Hi! Complete und DBS/IPG ksnndt Du einfach weglassen.
+#
+# Also ein Paar Vorschläge für Änderungen, um die ich Dich bitten würde: 1. sollte GUIcheckPID nur die PID abfragen
+# (also so sein wie GUI_ID.py nur anders heißen) und dann direkt die Datei general laden und diese vergleichen,
+# damit im Falle, dass es etwas findet (also wenn die PID bei ./data/general_data.csv schon besteht) ein weiteres GUI
+# öffnet, in dem alle Daten wiedergegeben werden (also etwas wue GUIstart.py, was aber auch anders heißen sollte).
+# Bei dem jetzigen GUIstart.py stimmen die Schaltflächen dann auch nicht, die sollten zwei Möglichkeiten geben:
+# a) Einverstanden und b) zurück. Wenn man einverstanden klickt hatte ich mir vorgestellt, dass man auf ein "GUImain.py"
+# kommt in dem es drei Knöpfe gibt: i) preoperative, ii) intraoperative und iii) postoperative. Das wiederum öffnet
+# jeweils eine Funktion GUI_xxx welche die vorhandenen Daten lädt (wenn gespeichert unter ./data/xxx) und die
+# Möglichkeit gibt diese zu bearbeiten oder die Eingabe der Daten zulässt. Lass uns doch versuchen in den nächsten
+# WOchen diese Struktur zu schaffen, verknüpfen kann man das immer noch bzw. wenn wir es schnell hinbekommen zeige ich
+# Dir, wie das geht. Kannst Du mir zeigen, an welcher Stelle auf dem Wiki die Abkürungen zu finden sind? Ich denke, es
+# wäre vielleicht sinnvoll hier: https://agbun.miraheze.org/wiki/List_of_available_questionnaires
 
 
-# TODO: 1. GUIcheckPID erweitern, sodass alle Daten von df drin vorkommen,
-# TODO: 2. weitere Verknüfungen erstellen.
-# TODO: 3. Eine Funktion erstellen, die alle csv Dateien aus dem Ordner ./temp löscht beim schließen von GUIstart
+# TODO: 1. Eine Funktion erstellen, die alle csv Dateien aus dem Ordner ./temp löscht beim schließen von GUIstart
 
 
 class CheckForGeneralData(QDialog):
