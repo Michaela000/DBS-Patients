@@ -1,9 +1,9 @@
-# Hallo David. Tut mir Leid, dass du sogar in Deinem Urlaub mir dabei helfen musst.
-# Mein größtes Problem ist tatsächlich im Moment die csv files. Ich kann einige Änderungen dort nicht abspeichern #
-# z.B. wenn eine "0" am Anfang der PID steht dann kann ich das zwar machen in der Excel Tabelle, aber sobald ich diese
-# neu öffne fehlt die "0" wieder. Das gleiche gilt mit meinen Markierungen etc. Deswegen mache ich die Tabelle erst
-# einmal im normalen Excel-Format. Ein weiteres Problem ist, dass er bei mir nicht General.csv öffnen möchte weil der
-# Pfad irgendwie nicht stimmt.
+# Hi :) Also ich erhalte keine Fehlermeldung sondern nur die Antwort "Filename:
+# C:\Users\Anwender\PycharmProjects\DBS_Patients\data\General.csv not found. Please double-check!". Aber eigentlich
+# macht dieser Pfad auch keinen Sinn, weil es keinen Ordner "data" in DBS_Patients gibt. Die Datei liegt bei mir
+# direkt im DBS_Patients Ordner also müsste ich thereotisch nur eine directory nach hinten gehen. Ich weiß aber einfach
+# nicht woher er diesen Pfad nimmt bzw. wo ich diesen verändern kann.
+# Alles andere funktioniert.
 
 # Hi! Versuch die Fehler unten zu lesen, das hilft Dir meistens weiter zu kommen und dann die Debug FUnktion nutzen
 # (oben der grüne Käfer) bis zu der Linie mit dem Fehler. Das Skript ging bei mir auch nicht, weil der Dateiname
@@ -75,7 +75,7 @@ class CheckPID(QDialog):
             return
 
         if self.lineEditPID.text():
-            filename = 'general_data.csv'  # 'General.csv'
+            filename = 'General.csv'
             df = General.import_dataframe(filename)
             PID2lookfor = self.lineEditPID.text().lstrip('0')  # string that is searched for in metadata file
             idx_PID = df.index[df['PID_ORBIS'] == int(PID2lookfor)].to_list()
