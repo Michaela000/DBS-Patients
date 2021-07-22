@@ -1,10 +1,15 @@
 # Hallo David. Tut mir Leid, dass du sogar in Deinem Urlaub mir dabei helfen musst.
 # Mein größtes Problem ist tatsächlich im Moment die csv files. Ich kann einige Änderungen dort nicht abspeichern #
-# z.B. wenn eine "0" am Anfang der PID steht dann kann ich das zwar machen in der Excel Tabelle, aber sobald ich diese neu öffne fehlt die "0" wieder.
-# Das gleiche gilt mit meinen Markierungen etc. Deswegen mache ich die Tabelle erst einmal im normalen Excel-Format.
-# Ein weiteres Problem ist, dass er bei mir nicht General.csv öffnen möchte weil der Pfad irgendwie nicht stimmt.
+# z.B. wenn eine "0" am Anfang der PID steht dann kann ich das zwar machen in der Excel Tabelle, aber sobald ich diese
+# neu öffne fehlt die "0" wieder. Das gleiche gilt mit meinen Markierungen etc. Deswegen mache ich die Tabelle erst
+# einmal im normalen Excel-Format. Ein weiteres Problem ist, dass er bei mir nicht General.csv öffnen möchte weil der
+# Pfad irgendwie nicht stimmt.
 
-"""Dialog-Style application."""
+# Hi! Versuch die Fehler unten zu lesen, das hilft Dir meistens weiter zu kommen und dann die Debug FUnktion nutzen
+# (oben der grüne Käfer) bis zu der Linie mit dem Fehler. Das Skript ging bei mir auch nicht, weil der Dateiname
+# als General.csv bei Zeile 76 definiert war. Habe das mal geändert, jetzt geht es (zumindest bei mir).
+
+# Speichern von Inhalt als csv ist immer so eine Sache, das kann ich verstehen. Ich werde das nochmal durchgehen.
 
 import sys
 from PyQt5 import QtCore
@@ -31,21 +36,18 @@ class CheckPID(QDialog):
         self.settings_optionsbox1 = QVBoxLayout(self.optionbox_guistart)
 
         self.subj_PID = QLabel('PID-ORBIS:\t\t')
-        self.lineEditFilename = QLineEdit()
+        self.lineEditPID = QLineEdit()
 
-        self.lineEditFilename.setFixedWidth(150)
-        self.lineEditFilename.setFixedHeight(50)
+        self.lineEditPID.setFixedWidth(150)
+        self.lineEditPID.setFixedHeight(50)
 
         lay1 = QHBoxLayout()
         lay1.addWidget(self.subj_PID)
-        lay1.addWidget(self.lineEditFilename)
+        lay1.addWidget(self.lineEditPID)
         lay1.addStretch()
 
         self.settings_optionsbox1.addLayout(lay1)
-
         self.content_box.addWidget(self.optionbox_guistart)
-
-        # ====================    Merge boxes      ====================
 
         # ====================    Create Content for Buttons at the Bottom      ====================
         layout_buttons = QHBoxLayout()
@@ -68,14 +70,14 @@ class CheckPID(QDialog):
         """when button is pressed, a series of checks are performed in order to retrieve data/to set the following
         GUI """
 
-        if not self.lineEditFilename.text():
+        if not self.lineEditPID.text():
             Output.msg_box(text='Missing input for the PID, please enter a number', title='Missing input')
             return
 
-        if self.lineEditFilename.text():
-            filename = 'General.csv'
+        if self.lineEditPID.text():
+            filename = 'general_data.csv'  # 'General.csv'
             df = General.import_dataframe(filename)
-            PID2lookfor = self.lineEditFilename.text().lstrip('0')  # string that is searched for in metadata file
+            PID2lookfor = self.lineEditPID.text().lstrip('0')  # string that is searched for in metadata file
             idx_PID = df.index[df['PID_ORBIS'] == int(PID2lookfor)].to_list()
 
         if not idx_PID:
@@ -88,22 +90,6 @@ class CheckPID(QDialog):
             General.write_csv_temp(df, idx_PID)  # writes data to temporary file, so that it may be used later
             self.checkPID = CheckPID()
             self.checkPID.show()
-
-    def saveFileDialog(self):
-        options = QFileDialog.Options()
-        options |= QFileDialog.DontUseNativeDialog
-        fileName, _ = QFileDialog.getSaveFileName(self, "QFileDialog.getSaveFileName()", "test.txt", "All Files(*)",
-                                                  options=options)
-        print(fileName)
-
-    # for opening
-    def open_dialog_box(self):
-        option = QFileDialog.Options()
-        # first parameter is self; second is the Window Title, third title is Default File Name, fourth is FileType,
-        # fifth is options
-        file = QFileDialog.getOpenFileName(self, "Save File Window Title", "default.txt", "All Files (*)",
-                                           options=option)
-        print(file)
 
 
 if __name__ == '__main__':

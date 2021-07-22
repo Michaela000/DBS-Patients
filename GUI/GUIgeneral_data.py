@@ -3,12 +3,20 @@ import sys
 from PyQt5 import QtCore
 from PyQt5.QtWidgets import QApplication, QDialog, QPushButton, QLineEdit, QVBoxLayout, QGroupBox, QHBoxLayout, \
     QWidget, QLabel
+import pandas as pds
+import os
+import numpy as np
 
 from utils.helper_functions import General, Output
 
 # Hallo David, ich hab mal eine neue GUI für die General_Data erstellt. Ich bin mir aber nicht ganz sicher,
 # wie ich den unteren Teil des Codes definieren soll. Ich möchte nichts überprüfen, sondern einen neuen
 # Patienten hinzufügen. Dafür habe ich leider noch nicht den richtigen Code herausgefunden
+
+# Cool! Ich habe ein Paar kleine Änderungen eingefügt. Bei mir ging es nicht, deswegen habe ich den Befehl am Anfang,
+# bei dem sich die Funktion selbst nochmal aufruft weggemacht. Dann habe ich angefangen, die einzelnen
+# self.lineEditFilename umzubenennen. Du musst immer dran denken, dass Du die möglichst eindeutig benennen willst, da
+# Du sonst die Information später nicht extrahieren kannst.
 
 
 class CheckForGeneralData(QDialog):
@@ -20,7 +28,6 @@ class CheckForGeneralData(QDialog):
         """Initialize."""
 
         super().__init__(parent)
-        self.checkforgeneraldata = CheckForGeneralData()
         self.setWindowTitle('Check for existence of subject in database')
         self.setGeometry(400, 100, 500, 300)  # left, right, width, height
         self.move(850, 425)
@@ -28,33 +35,33 @@ class CheckForGeneralData(QDialog):
         self.layout = QVBoxLayout(self)  # entire layout for GUI
         self.content_box = QVBoxLayout(self)  # content of the box
 
-        # ====================    Create Content for First Option box on Top left      ====================
-        self.optionbox_guistart = QGroupBox('Please enter general data')
+        # ====================    Create Content for only option box       ====================
+        self.optionbox_guistart = QGroupBox('Please enter general data for new subject:')
         self.settings_optionsbox1 = QVBoxLayout(self.optionbox_guistart)
 
         self.subj_surname = QLabel('Surname:\t\t')
-        self.lineEditFilename = QLineEdit()
+        self.lineEditSurname = QLineEdit()
 
-        self.lineEditFilename.setFixedWidth(150)
-        self.lineEditFilename.setFixedHeight(50)
+        self.lineEditSurname.setFixedWidth(150)
+        self.lineEditSurname.setFixedHeight(50)
 
         lay1 = QHBoxLayout()
         lay1.addWidget(self.subj_surname)
-        lay1.addWidget(self.lineEditFilename)
+        lay1.addWidget(self.lineEditSurname)
         lay1.addStretch()
 
         self.subj_name = QLabel('Name:\t\t')
-        self.lineEditFilename = QLineEdit()
+        self.lineEditName = QLineEdit()
 
-        self.lineEditFilename.setFixedWidth(150)
-        self.lineEditFilename.setFixedHeight(50)
+        self.lineEditName.setFixedWidth(150)
+        self.lineEditName.setFixedHeight(50)
 
         lay2 = QHBoxLayout()
         lay2.addWidget(self.subj_name)
-        lay2.addWidget(self.lineEditFilename)
+        lay2.addWidget(self.lineEditName)
         lay2.addStretch()
 
-        self.subj_name = QLabel('Name Suffix:\t\t')
+        self.subj_name = QLabel('Name Suffix:\t\t\t')
         self.lineEditFilename = QLineEdit()
 
         self.lineEditFilename.setFixedWidth(150)
@@ -98,7 +105,7 @@ class CheckForGeneralData(QDialog):
         lay6.addWidget(self.lineEditFilename)
         lay6.addStretch()
 
-        self.subj_ID = QLabel('ID:\t\t')
+        self.subj_ID = QLabel('ID:\t\t\t')
         self.lineEditFilename = QLineEdit()
 
         self.lineEditFilename.setFixedWidth(150)
@@ -109,7 +116,7 @@ class CheckForGeneralData(QDialog):
         lay7.addWidget(self.lineEditFilename)
         lay7.addStretch()
 
-        self.subj_gender = QLabel('Gender:\t\t')
+        self.subj_gender = QLabel('Gender:\t\t\t')
         self.lineEditFilename = QLineEdit()
 
         self.lineEditFilename.setFixedWidth(150)
@@ -157,7 +164,7 @@ class CheckForGeneralData(QDialog):
         # ====================    Create Content for Buttons at the Bottom      ====================
         layout_buttons = QHBoxLayout()
         self.button_addgeneraldata = QPushButton('Add general data \ninformation')
-        self.button_addgeneraldata.clicked.connect(self.onClickedaddgeneraldata)
+        # self.button_addgeneraldata.clicked.connect(self.onClickedaddgeneraldata)
         self.button_close = QPushButton('Close GUI')
         self.button_close.clicked.connect(self.close)
 
@@ -168,6 +175,18 @@ class CheckForGeneralData(QDialog):
         # ====================    Add boxes and buttons to self.entire_layout      ====================
         self.layout.addLayout(self.content_box)
         self.layout.addLayout(layout_buttons)
+        # self.fill_forms() # Sorry, ist an der falschen Stelle eingefügt. Ändere ich noch.
+
+    def fill_forms(self):
+        """in this function all text fields are filled with content (iff available) """
+        df = General.import_dataframe(os.path.join(os.path.join(os.getcwd(), 'data', 'general_data.csv')))
+        try:
+            idx = pds.read_csv(os.path.join(os.getcwd(), 'temp', 'current_subj.csv')).iloc[0].idx
+        except FileNotFoundError:
+            idx = np.nan
+
+        self.lineEditSurname.setText(df.iloc[idx].Surname)
+        self.lineEditName.setText(df.iloc[idx].Name)
 
     # In the next lines, actions are defined when Buttons are pressed
     @QtCore.pyqtSlot()
