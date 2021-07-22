@@ -9,9 +9,6 @@ import numpy as np
 
 from utils.helper_functions import General, Output
 
-# Hallo David, ich hab mal eine neue GUI für die General_Data erstellt. Ich bin mir aber nicht ganz sicher,
-# wie ich den unteren Teil des Codes definieren soll. Ich möchte nichts überprüfen, sondern einen neuen
-# Patienten hinzufügen. Dafür habe ich leider noch nicht den richtigen Code herausgefunden
 
 # Cool! Ich habe ein Paar kleine Änderungen eingefügt. Bei mir ging es nicht, deswegen habe ich den Befehl am Anfang,
 # bei dem sich die Funktion selbst nochmal aufruft weggemacht. Dann habe ich angefangen, die einzelnen
@@ -61,92 +58,92 @@ class CheckForGeneralData(QDialog):
         lay2.addWidget(self.lineEditName)
         lay2.addStretch()
 
-        self.subj_name = QLabel('Name Suffix:\t\t\t')
-        self.lineEditFilename = QLineEdit()
+        self.subj_name_suffix = QLabel('Name Suffix:\t\t\t')
+        self.lineEditNameSuffix = QLineEdit()
 
-        self.lineEditFilename.setFixedWidth(150)
-        self.lineEditFilename.setFixedHeight(50)
+        self.lineEditNameSuffix.setFixedWidth(150)
+        self.lineEditNameSuffix.setFixedHeight(50)
 
         lay3 = QHBoxLayout()
-        lay3.addWidget(self.subj_name)
-        lay3.addWidget(self.lineEditFilename)
+        lay3.addWidget(self.subj_name_suffix)
+        lay3.addWidget(self.lineEditNameSuffix)
         lay3.addStretch()
 
         self.subj_birthdate = QLabel('Birthdate:\t\t')
-        self.lineEditFilename = QLineEdit()
+        self.lineEditBirthdate = QLineEdit()
 
-        self.lineEditFilename.setFixedWidth(150)
-        self.lineEditFilename.setFixedHeight(50)
+        self.lineEditBirthdate.setFixedWidth(150)
+        self.lineEditBirthdate.setFixedHeight(50)
 
         lay4 = QHBoxLayout()
         lay4.addWidget(self.subj_birthdate)
-        lay4.addWidget(self.lineEditFilename)
+        lay4.addWidget(self.lineEditBirthdate)
         lay4.addStretch()
 
-        self.subj_birthdate = QLabel('Address:\t\t')
-        self.lineEditFilename = QLineEdit()
+        self.subj_address = QLabel('Address:\t\t')
+        self.lineEditAddress = QLineEdit()
 
-        self.lineEditFilename.setFixedWidth(150)
-        self.lineEditFilename.setFixedHeight(50)
+        self.lineEditAddress.setFixedWidth(150)
+        self.lineEditAddress.setFixedHeight(50)
 
         lay5 = QHBoxLayout()
-        lay5.addWidget(self.subj_birthdate)
-        lay5.addWidget(self.lineEditFilename)
+        lay5.addWidget(self.subj_address)
+        lay5.addWidget(self.lineEditAddress)
         lay5.addStretch()
 
         self.subj_PID = QLabel('PID-ORBIS:\t\t')
-        self.lineEditFilename = QLineEdit()
+        self.lineEditPID = QLineEdit()
 
-        self.lineEditFilename.setFixedWidth(150)
-        self.lineEditFilename.setFixedHeight(50)
+        self.lineEditPID.setFixedWidth(150)
+        self.lineEditPID.setFixedHeight(50)
 
         lay6 = QHBoxLayout()
         lay6.addWidget(self.subj_PID)
-        lay6.addWidget(self.lineEditFilename)
+        lay6.addWidget(self.lineEditPID)
         lay6.addStretch()
 
         self.subj_ID = QLabel('ID:\t\t\t')
-        self.lineEditFilename = QLineEdit()
+        self.lineEditID = QLineEdit()
 
-        self.lineEditFilename.setFixedWidth(150)
-        self.lineEditFilename.setFixedHeight(50)
+        self.lineEditID.setFixedWidth(150)
+        self.lineEditID.setFixedHeight(50)
 
         lay7 = QHBoxLayout()
         lay7.addWidget(self.subj_ID)
-        lay7.addWidget(self.lineEditFilename)
+        lay7.addWidget(self.lineEditID)
         lay7.addStretch()
 
         self.subj_gender = QLabel('Gender:\t\t\t')
-        self.lineEditFilename = QLineEdit()
+        self.lineEditGender = QLineEdit()
 
-        self.lineEditFilename.setFixedWidth(150)
-        self.lineEditFilename.setFixedHeight(50)
+        self.lineEditGender.setFixedWidth(150)
+        self.lineEditGender.setFixedHeight(50)
 
         lay8 = QHBoxLayout()
         lay8.addWidget(self.subj_gender)
-        lay8.addWidget(self.lineEditFilename)
+        lay8.addWidget(self.lineEditGender)
         lay8.addStretch()
 
         self.subj_diagnosis = QLabel('Diagnosis:\t\t')
-        self.lineEditFilename = QLineEdit()
+        self.lineEditDiagnosis = QLineEdit()
 
-        self.lineEditFilename.setFixedWidth(150)
-        self.lineEditFilename.setFixedHeight(50)
+        self.lineEditDiagnosis.setFixedWidth(150)
+        self.lineEditDiagnosis.setFixedHeight(50)
 
         lay9 = QHBoxLayout()
         lay9.addWidget(self.subj_diagnosis)
-        lay9.addWidget(self.lineEditFilename)
+        lay9.addWidget(self.lineEditDiagnosis)
         lay9.addStretch()
 
-        self.subj_side = QLabel('Side Dominance:\t\t')
-        self.lineEditFilename = QLineEdit()
+        self.subj_side_dominance = QLabel('Side Dominance:\t\t')
+        self.lineEditSideDominance = QLineEdit()
 
-        self.lineEditFilename.setFixedWidth(150)
-        self.lineEditFilename.setFixedHeight(50)
+        self.lineEditSideDominance.setFixedWidth(150)
+        self.lineEditSideDominance.setFixedHeight(50)
 
         lay10 = QHBoxLayout()
-        lay10.addWidget(self.subj_side)
-        lay10.addWidget(self.lineEditFilename)
+        lay10.addWidget(self.subj_side_dominance)
+        lay10.addWidget(self.lineEditSideDominance)
         lay10.addStretch()
 
         self.settings_optionsbox1.addLayout(lay1)
