@@ -10,6 +10,13 @@ from PyQt5.QtWidgets import QApplication, QDialog, QPushButton, QVBoxLayout, QHB
 # Es tut mir wirklich Leid, dass du dich sogar in deinem Urlaub, um mich kümmern musst. Ich hoffe, dass du trotzdem eine schöne
 # Urlaubszeit hast.
 
+# Ich glaube auch, dass die Abkürzungen in dem Verzeichnis sinnvoll wären. Die meisten Abkürzungen habe ich auch herausgefunden,
+# aber Begriffe wie "nch" oder so sind mir noch etwas schleierhaft.
+# Das größte Problem habe ich aber tatsächlich mit den Medikamenten, da ich häufig gar nicht weiß zu welcher "Kategorie" die einzelnen 
+# Medikamente gehören. z.B. Ramipril, Amitriptylin etc.
+# Aber das kann ich bestimmt auch in der Klinik nachfragen. Marina hat mir auch angeboten, dass ich jeder Zeit zu ihr gehen kann bei Fragen. 
+
+
 # Hi! Complete und DBS/IPG ksnndt Du einfach weglassen.
 #
 # Also ein Paar Vorschläge für Änderungen, um die ich Dich bitten würde: 1. sollte GUIcheckPID nur die PID abfragen
