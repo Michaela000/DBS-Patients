@@ -5,6 +5,10 @@ from PyQt5 import QtCore
 from PyQt5.QtWidgets import QApplication, QDialog, QPushButton, QVBoxLayout, QHBoxLayout, \
     QWidget
 
+# Hallo David. Ich habe versucht deine Ratschläge umzusetzen. Mir fehlt allerdings noch der hintere Teil ab "Die Möglichkeit gibt
+# diese zu bearbeiten (...)". Ich habe zu jeder veränderten GUI einen kleinen Text geschrieben.
+# Es tut mir wirklich Leid, dass du dich sogar in deinem Urlaub, um mich kümmern musst. Ich hoffe, dass du trotzdem eine schöne
+# Urlaubszeit hast.
 
 # Hi! Complete und DBS/IPG ksnndt Du einfach weglassen.
 #

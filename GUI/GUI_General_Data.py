@@ -6,6 +6,10 @@ from PyQt5.QtWidgets import QApplication, QDialog, QPushButton, QLineEdit, QVBox
 
 from utils.helper_functions import General, Output
 
+# Hallo David, ich hab mal eine neue GUI für die General_Data erstellt. Ich bin mir aber nicht ganz sicher,
+# wie ich den unteren Teil des Codes definieren soll. Ich möchte nichts überprüfen, sondern einen neuen
+# Patienten hinzufügen. Dafür habe ich leider noch nicht den richtigen Code herausgefunden
+
 
 class CheckForGeneralData(QDialog):
     """Very first GUI only providing a means to enter a PID (according to the ORBIS system at the

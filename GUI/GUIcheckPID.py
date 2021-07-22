@@ -1,23 +1,16 @@
 # Hallo David. Tut mir Leid, dass du sogar in Deinem Urlaub mir dabei helfen musst.
 # Mein größtes Problem ist tatsächlich im Moment die csv files. Ich kann einige Änderungen dort nicht abspeichern #
- #z.B. wenn eine "0" am Anfang der PID steht dann kann ich das zwar machen in der Excel Tabelle, aber sobald ich diese neu öffne fehlt die "0" wieder.
- # Das gleiche gilt mit meinen Markierungen etc. Deswegen mache ich die Tabelle erst einmal im normalen Excel-Format.
-# Ein weiteres PRoblem ist, dass er bei mir nicht General.csv öffnen möchte weil der Pfad irgendwie nicht stimmt.
+# z.B. wenn eine "0" am Anfang der PID steht dann kann ich das zwar machen in der Excel Tabelle, aber sobald ich diese neu öffne fehlt die "0" wieder.
+# Das gleiche gilt mit meinen Markierungen etc. Deswegen mache ich die Tabelle erst einmal im normalen Excel-Format.
+# Ein weiteres Problem ist, dass er bei mir nicht General.csv öffnen möchte weil der Pfad irgendwie nicht stimmt.
 
 """Dialog-Style application."""
 
-import csv
-import os
 import sys
-import GUI_Preoperative
-import GUI_Postoperative
-
 from PyQt5 import QtCore
 from PyQt5.QtWidgets import QApplication, QDialog, QPushButton, QLineEdit, QVBoxLayout, QGroupBox, QHBoxLayout, \
     QWidget, QLabel, QFileDialog
-
 from utils.helper_functions import General, Output
-from dependencies import ROOTDIR
 
 
 class CheckPID(QDialog):
@@ -84,7 +77,6 @@ class CheckPID(QDialog):
             df = General.import_dataframe(filename)
             PID2lookfor = self.lineEditFilename.text().lstrip('0')  # string that is searched for in metadata file
             idx_PID = df.index[df['PID_ORBIS'] == int(PID2lookfor)].to_list()
-            open G
 
         if not idx_PID:
             Output.msg_box(text='No corresponding subject found, please create new entry', title='Missing PID')
@@ -96,7 +88,6 @@ class CheckPID(QDialog):
             General.write_csv_temp(df, idx_PID)  # writes data to temporary file, so that it may be used later
             self.checkPID = CheckPID()
             self.checkPID.show()
-
 
     def saveFileDialog(self):
         options = QFileDialog.Options()

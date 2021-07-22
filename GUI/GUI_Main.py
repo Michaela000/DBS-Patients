@@ -7,7 +7,11 @@ from PyQt5 import QtCore
 from PyQt5.QtWidgets import QApplication, QDialog, QPushButton, QVBoxLayout, QHBoxLayout, \
     QWidget
 
-
+# Hallo David.
+# Ich habe versucht mal GUI_Main zu erstellen.
+# Dazu habe ich aber noch zwei kleine Fragen.
+# 1. Er öffnet mir nicht die unterschiedlichen GUI's nach Knopfdruck also scheint mir noch irgendetwas essentielles zu fehlen
+# 2. Gibt es eine Möglichkeit, die Knöpfe irgendwie in die Mitte zu verschieben?
 
 class ChooseGUI(QDialog):
     """Very first GUI only providing a means to enter a PID (according to the ORBIS system at the
