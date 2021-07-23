@@ -5,17 +5,29 @@
 # nicht woher er diesen Pfad nimmt bzw. wo ich diesen verändern kann.
 # Alles andere funktioniert.
 
-# Hi! Versuch die Fehler unten zu lesen, das hilft Dir meistens weiter zu kommen und dann die Debug FUnktion nutzen
+# Hi! Versuch die Fehler unten zu lesen, das hilft Dir meistens weiter zu kommen und dann die Debug Funktion nutzen
 # (oben der grüne Käfer) bis zu der Linie mit dem Fehler. Das Skript ging bei mir auch nicht, weil der Dateiname
 # als General.csv bei Zeile 76 definiert war. Habe das mal geändert, jetzt geht es (zumindest bei mir).
+# Jetzt sollte es aber gehen und auch das tun, was wir gerne hätten. Das heißt , wenn wir die gleiche Struktur der
+# Daten haben. Erstelle bitte einen Ordner ./data in dem VErzeichnis DBS_patients. Das hat zwei Vorteile: i)
+# haben wir den gleichen AUfbau und ii) ist dieser Ordner per Definition Teil von dem, was er ignoriert beim HOchladen
+# (siehe .gitignore). Dann werden auch keine Daten versehentlich hochgeladen.
+# Bevor wir uns GUImain widmen, bitte noch dasTODO weiter unten beachten und das zuerst machen.
+# Außerdem noch zwei allgemeine Bitten: 1. Mach Dich schon einmal dran, die Startseite von GitHub (also die Readme)
+# Datei zu verändern. Das Repository und Deine Arbeit daran wird am Ende auch Teil der Arbeit werden und dazu gehört auch
+# die Form. 2. Kannst Du bitte eine allgemeine Anleitung erstellen, wie man ein Projekt bei GitHub startet und das ins
+# Wiki setzen?
 
-# Speichern von Inhalt als csv ist immer so eine Sache, das kann ich verstehen. Ich werde das nochmal durchgehen.
+#  Den Rest bekommen wir auch noch hin ; )
+
+
 
 import sys
 from PyQt5 import QtCore
 from PyQt5.QtWidgets import QApplication, QDialog, QPushButton, QLineEdit, QVBoxLayout, QGroupBox, QHBoxLayout, \
     QWidget, QLabel, QFileDialog
 from utils.helper_functions import General, Output
+from GUI.GUIgeneral_data import CheckForGeneralData
 
 
 class CheckPID(QDialog):
@@ -24,6 +36,8 @@ class CheckPID(QDialog):
     def __init__(self, parent=None):
         """Initializer."""
         super().__init__(parent)
+        self.EnterNewDataPID = CheckForGeneralData()
+
         self.setWindowTitle('Check for existence of subject in database')
         self.setGeometry(400, 100, 500, 300)  # left, right, width, height
         self.move(850, 425)
@@ -75,22 +89,24 @@ class CheckPID(QDialog):
             return
 
         if self.lineEditPID.text():
-            filename = 'General.csv'
+            filename = 'general_data.csv'  # 'General.csv'
             df = General.import_dataframe(filename)
             PID2lookfor = self.lineEditPID.text().lstrip('0')  # string that is searched for in metadata file
             idx_PID = df.index[df['PID_ORBIS'] == int(PID2lookfor)].to_list()
 
         if not idx_PID:
             Output.msg_box(text='No corresponding subject found, please create new entry', title='Missing PID')
+            self.EnterNewDataPID.show()
+            self.hide()
         elif len(idx_PID) > 1:
             Output.msg_box(text='Too many entries, please double check file: {}'.format(filename),
                            title='Too many PID entries')
             return
         else:
             General.write_csv_temp(df, idx_PID)  # writes data to temporary file, so that it may be used later
-            self.checkPID = CheckPID()
-            self.checkPID.show()
-
+            # TODO: here a GUI is required which shows some of the main data similar to GUIgeneral_data.py and enables
+            #  to continue to GUImain.py
+            self.close()
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

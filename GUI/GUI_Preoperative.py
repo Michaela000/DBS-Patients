@@ -1,10 +1,3 @@
-# Hallo David. Vielen Dank für Deine Hilfe heute morgen. So klappt es wesentlich besser und leichter.
-# Die Idee mit dem Wiki-Eintrag finde ich klasse.
-# Ich lade zusätzlich noch den csv File von Preoperative und danach auch von Postoperative hoch, aber da wird sich noch einiges an den
-# Gruppen ändern, sobald ich weiß, was manche Abkürzungen eigentlich bedeuten. Aber es müssten alle Punkte sein.
-# Das Einzige was ich immer gelöscht habe, war eine Spalte mit dem Namen "curr_no", weil nie etwas in dieser Spalte stand. Ist die wichtig?
-
-
 import sys
 from PyQt5 import QtCore
 

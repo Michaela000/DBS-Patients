@@ -17,7 +17,7 @@ class General:
     def generate_code(size_array):
         """generates a code consisting of a random combination of letters, numbers and special characters; ';' and ','
         are omitted to avoid confusion in 'csv-files' """
-        re_expression = 'r[a-zA-Z0-9_!#%$§]{}'.format('{%s}' % str(size_array))
+        re_expression = '[a-zA-Z0-9_!#%$§]{}'.format('{%s}' % str(size_array))
 
         return rstr.xeger(re_expression)
 
@@ -34,17 +34,16 @@ class General:
         return df
 
     @staticmethod
-    def write_csv_temp(df, idx, filename='temp_file.csv'):
-        """"""
+    def write_csv_temp(df, idx, default_filename='current_subj.csv'):
+        """this function is intended to write a file in which the metadata of the subject being processed is saved"""
 
         header = ['code', 'idx']
         data = [int(df["PID_ORBIS"][idx[0]]), idx[0]]
 
-        with open(os.path.join(ROOTDIR, 'temp', 'current_subj.csv'), 'w', encoding='UTF8') as f:
+        with open(os.path.join(ROOTDIR, 'temp', default_filename), 'w', encoding='UTF8') as f:
             writer = csv.writer(f)
             writer.writerow(header)
             writer.writerow(data)
-
 
 
 class Output:
