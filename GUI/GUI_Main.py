@@ -14,9 +14,8 @@ from PyQt5.QtWidgets import QApplication, QDialog, QPushButton, QVBoxLayout, QHB
 # 2. Gibt es eine Möglichkeit, die Knöpfe irgendwie in die Mitte zu verschieben?
 
 class ChooseGUI(QDialog):
-    """Very first GUI only providing a means to enter a PID (according to the ORBIS system at the
-    Department of Neurology at the University Hospital of Gießen and Marburg. Several options are possible
-    after entering a PID: 1. if existent -> GuiMain, 2. if inexistent enter data in general table"""
+    """Describes GUIMain. This GUI is responsible to open further GUI'S:
+    1. Preoperative 2. Intraoperative 3. Postoperative"""
 
     def __init__(self, parent=None):
         """Initialize."""

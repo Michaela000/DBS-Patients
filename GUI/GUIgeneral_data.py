@@ -9,17 +9,15 @@ from PyQt5.QtWidgets import QApplication, QDialog, QPushButton, QLineEdit, QVBox
 
 from utils.helper_functions import General, Output
 
-# OK, das ist jetzt umbenannt und speichert die eingefügten Daten in die general_data.csv Datei. Ich glaube die Höhe
-# (xxx.setFixedHeight(50)) könnte man auch weglassen, es macht den Code nur unnötig lang. AUßerdem bitte die Erklärung
-# unter Class anpassen, das stimmt bisher nicht.
-
 textfield_width = 450
 
+# Hallo David ich habe alles so verändert wie du es geschrieben hast. Ich war mir nur unten bei dem Code nicht sicher,
+# zu welcher anderen GUI dieser Abschnitt passen könnte, daher habe ich ihn fürs Erste noch stehen lassen.
 
 class CheckForGeneralData(QDialog):
-    """Very first GUI only providing a means to enter a PID (according to the ORBIS system at the
-    Department of Neurology at the University Hospital of Gießen and Marburg. Several options are possible
-    after entering a PID: 1. if existent -> GuiMain, 2. if inexistent enter data in general table"""
+    """GUI which provides a mean to enter all the general data of a patient (Name, Surname, etc.).
+    Several options are possible after entering all the details:
+    1. add the data, 2. close the GUI"""
 
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -71,7 +69,6 @@ class CheckForGeneralData(QDialog):
         self.subj_birthdate = QLabel('Birthdate:\t\t')
         self.lineEditBirthdate = CustomLineEdit()
         self.lineEditBirthdate.setFixedWidth(textfield_width)
-        self.lineEditBirthdate.setFixedHeight(50)
         self.lineEditBirthdate.clicked.connect(self.open_calendar)
 
         lay4 = QHBoxLayout()
@@ -229,32 +226,6 @@ class CheckForGeneralData(QDialog):
         df.to_csv(filename_to_use, index=False, sep=';')
         self.close()
         return
-
-    @QtCore.pyqtSlot()  # TODO: not needed here, remove when transferred to function needing this
-    def onClickedCheckPID(self):
-        """when button is pressed, a series of checks are performed in order to retrieve data/to set the following
-        GUI """
-
-        if not self.lineEditBirthdate.text():
-            Output.msg_box(text='Missing input for the PID, please enter a number', title='Missing input')
-            return
-
-        filename = 'General.csv'
-        df = General.import_dataframe(filename)
-        PID2lookfor = self.lineEditBirthdate.text().lstrip('0')  # string that is searched for in metadata file
-        idx_General_data = df.index[
-            df['Surname', 'Name', 'Name Suffix', 'Birthdate', 'Address', 'PID_ORBIS', 'ID', 'Gender',
-               'Diagnosis', 'Side Dominance'] == int(PID2lookfor)].to_list()
-
-        if not idx_General_data:
-            Output.msg_box(text='Please create a new patient', title='Missing Patient')
-        elif len(idx_General_data) > 1:
-            Output.msg_box(text='Too many entries, please double check file: {}'.format(filename),
-                           title='Too many general information entries')
-            return
-        else:
-            General.write_csv_temp(df, idx_General_data)  # writes data to temporary file, so that it may be used later
-            self.checkforgeneraldata.show()
 
 
 class CustomLineEdit(QLineEdit):

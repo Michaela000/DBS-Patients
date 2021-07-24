@@ -1,31 +1,21 @@
-# Hi :) Also ich erhalte keine Fehlermeldung sondern nur die Antwort "Filename:
-# C:\Users\Anwender\PycharmProjects\DBS_Patients\data\General.csv not found. Please double-check!". Aber eigentlich
-# macht dieser Pfad auch keinen Sinn, weil es keinen Ordner "data" in DBS_Patients gibt. Die Datei liegt bei mir
-# direkt im DBS_Patients Ordner also müsste ich thereotisch nur eine directory nach hinten gehen. Ich weiß aber einfach
-# nicht woher er diesen Pfad nimmt bzw. wo ich diesen verändern kann.
-# Alles andere funktioniert.
+# Hallo David. Ich hab versucht alles umzusetzen. Ich werde mich die nächsten Tage auch um die Readme und die Wiki Einträge kümmern.
+# Ich bin mir aber nicht genau sicher, ob ich das Todo komplett richtig verstanden habe. Ich habe jetzt eine weitere GUI mit den
+# wichtigsten Details aus general_data erstellt und sie nur etwas umbenannt. Ich weiß allerdings nicht wie ich diese Datei löschen soll,
+# beim Schließen der GUI.
 
-# Hi! Versuch die Fehler unten zu lesen, das hilft Dir meistens weiter zu kommen und dann die Debug Funktion nutzen
-# (oben der grüne Käfer) bis zu der Linie mit dem Fehler. Das Skript ging bei mir auch nicht, weil der Dateiname
-# als General.csv bei Zeile 76 definiert war. Habe das mal geändert, jetzt geht es (zumindest bei mir).
-# Jetzt sollte es aber gehen und auch das tun, was wir gerne hätten. Das heißt , wenn wir die gleiche Struktur der
-# Daten haben. Erstelle bitte einen Ordner ./data in dem VErzeichnis DBS_patients. Das hat zwei Vorteile: i)
-# haben wir den gleichen AUfbau und ii) ist dieser Ordner per Definition Teil von dem, was er ignoriert beim HOchladen
-# (siehe .gitignore). Dann werden auch keine Daten versehentlich hochgeladen.
+
 # Bevor wir uns GUImain widmen, bitte noch dasTODO weiter unten beachten und das zuerst machen.
 # Außerdem noch zwei allgemeine Bitten: 1. Mach Dich schon einmal dran, die Startseite von GitHub (also die Readme)
 # Datei zu verändern. Das Repository und Deine Arbeit daran wird am Ende auch Teil der Arbeit werden und dazu gehört auch
 # die Form. 2. Kannst Du bitte eine allgemeine Anleitung erstellen, wie man ein Projekt bei GitHub startet und das ins
 # Wiki setzen?
 
-#  Den Rest bekommen wir auch noch hin ; )
-
-
 
 import sys
+import GUI_Temp
 from PyQt5 import QtCore
 from PyQt5.QtWidgets import QApplication, QDialog, QPushButton, QLineEdit, QVBoxLayout, QGroupBox, QHBoxLayout, \
-    QWidget, QLabel, QFileDialog
+    QWidget, QLabel
 from utils.helper_functions import General, Output
 from GUI.GUIgeneral_data import CheckForGeneralData
 
@@ -103,10 +93,14 @@ class CheckPID(QDialog):
                            title='Too many PID entries')
             return
         else:
-            General.write_csv_temp(df, idx_PID)  # writes data to temporary file, so that it may be used later
+            # writes data to temporary file, so that it may be used later
+            """when button is pressed, data is added to temporary file """
             # TODO: here a GUI is required which shows some of the main data similar to GUIgeneral_data.py and enables
             #  to continue to GUImain.py
-            self.close()
+
+            General.write_csv_temp(df, idx_PID)
+            open(GUI_Temp)
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

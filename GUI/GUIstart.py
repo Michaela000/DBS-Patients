@@ -5,36 +5,6 @@ from PyQt5 import QtCore
 from PyQt5.QtWidgets import QApplication, QDialog, QPushButton, QVBoxLayout, QHBoxLayout, \
     QWidget
 
-# Hallo David. Ich habe versucht deine Ratschläge umzusetzen. Mir fehlt allerdings noch der hintere Teil ab "Die Möglichkeit gibt
-# diese zu bearbeiten (...)". Ich habe zu jeder veränderten GUI einen kleinen Text geschrieben.
-# Es tut mir wirklich Leid, dass du dich sogar in deinem Urlaub, um mich kümmern musst. Ich hoffe, dass du trotzdem eine schöne
-# Urlaubszeit hast.
-
-# Ich glaube auch, dass die Abkürzungen in dem Verzeichnis sinnvoll wären. Die meisten Abkürzungen habe ich auch herausgefunden,
-# aber Begriffe wie "nch" oder so sind mir noch etwas schleierhaft.
-# Das größte Problem habe ich aber tatsächlich mit den Medikamenten, da ich häufig gar nicht weiß zu welcher "Kategorie" die einzelnen 
-# Medikamente gehören. z.B. Ramipril, Amitriptylin etc.
-# Aber das kann ich bestimmt auch in der Klinik nachfragen. Marina hat mir auch angeboten, dass ich jeder Zeit zu ihr gehen kann bei Fragen. 
-
-
-# Hi! Complete und DBS/IPG ksnndt Du einfach weglassen.
-#
-# Also ein Paar Vorschläge für Änderungen, um die ich Dich bitten würde: 1. sollte GUIcheckPID nur die PID abfragen
-# (also so sein wie GUI_ID.py nur anders heißen) und dann direkt die Datei general laden und diese vergleichen,
-# damit im Falle, dass es etwas findet (also wenn die PID bei ./data/general_data.csv schon besteht) ein weiteres GUI
-# öffnet, in dem alle Daten wiedergegeben werden (also etwas wue GUIstart.py, was aber auch anders heißen sollte).
-# Bei dem jetzigen GUIstart.py stimmen die Schaltflächen dann auch nicht, die sollten zwei Möglichkeiten geben:
-# a) Einverstanden und b) zurück. Wenn man einverstanden klickt hatte ich mir vorgestellt, dass man auf ein "GUImain.py"
-# kommt in dem es drei Knöpfe gibt: i) preoperative, ii) intraoperative und iii) postoperative. Das wiederum öffnet
-# jeweils eine Funktion GUI_xxx welche die vorhandenen Daten lädt (wenn gespeichert unter ./data/xxx) und die
-# Möglichkeit gibt diese zu bearbeiten oder die Eingabe der Daten zulässt. Lass uns doch versuchen in den nächsten
-# WOchen diese Struktur zu schaffen, verknüpfen kann man das immer noch bzw. wenn wir es schnell hinbekommen zeige ich
-# Dir, wie das geht. Kannst Du mir zeigen, an welcher Stelle auf dem Wiki die Abkürungen zu finden sind? Ich denke, es
-# wäre vielleicht sinnvoll hier: https://agbun.miraheze.org/wiki/List_of_available_questionnaires
-
-
-# TODO: 1. Eine Funktion erstellen, die alle csv Dateien aus dem Ordner ./temp löscht beim schließen von GUIstart
-
 
 class CheckForGUIMain(QDialog):
     """Very first GUI only providing a means to enter a PID (according to the ORBIS system at the
