@@ -1,2 +1,3 @@
-# DBS-Patients
-List of DBS Patients
+# DBS-Patients Repository
+
+## Idea
