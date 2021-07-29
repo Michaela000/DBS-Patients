@@ -6,6 +6,12 @@ from PyQt5.QtWidgets import QApplication, QDialog, QPushButton, QVBoxLayout, QHB
     QWidget
 
 
+# Hallo David. Meine Tabelle zum Preoperative Teil ist fast fertig (außer Fragen etc.) aber ich wollte Bescheid sagen, 
+# dass nur 6 von den 38 Patienten bei Dir in der Liste zu finden sind. Für mich war es daher sehr schwer alles richtig 
+# einzutragen, was zu noch mehr Fragen geführt hat. Ich versuche mich die nächsten Tage nochmal mit den Medikamenten 
+# auseinander zu setzen, um diese korrekt einzutragen. 
+
+
 class CheckForGUIMain(QDialog):
     """Very first GUI only providing a means to enter a PID (according to the ORBIS system at the
     Department of Neurology at the University Hospital of Gießen and Marburg. Several options are possible
