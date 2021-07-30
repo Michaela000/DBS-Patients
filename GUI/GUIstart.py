@@ -7,9 +7,14 @@ from PyQt5.QtWidgets import QApplication, QDialog, QPushButton, QVBoxLayout, QHB
 
 
 # Hallo David. Meine Tabelle zum Preoperative Teil ist fast fertig (außer Fragen etc.) aber ich wollte Bescheid sagen, 
-# dass nur 6 von den 38 Patienten bei Dir in der Liste zu finden sind. Für mich war es daher sehr schwer alles richtig 
+# dass nur 6 von den 36 Patienten bei Dir in der Liste zu finden sind. Für mich war es daher sehr schwer alles richtig 
 # einzutragen, was zu noch mehr Fragen geführt hat. Ich versuche mich die nächsten Tage nochmal mit den Medikamenten 
 # auseinander zu setzen, um diese korrekt einzutragen. 
+# Ich habe noch ein paar allgemeine Fragen:
+    # Wenn bei den Medikamenten "Levodopa 100/25mg" steht, muss ich dann mit 100 oder 125mg rechnen? 
+    # Wenn vorne im Brief einfach nur H&Y Stadium II steht, bezieht sich das auf das OFF oder das ON? Das gleiche steht
+    # manchmal auch bei UPDRS ("UPDRS Teil III x Punkte")
+    # Bei einigen Patienten steht einfach nur UPDRS OFF/On: xx/xx. Bezieht sich das auf UPDRS III oder II?
 
 
 class CheckForGUIMain(QDialog):
