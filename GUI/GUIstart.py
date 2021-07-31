@@ -15,7 +15,12 @@ from PyQt5.QtWidgets import QApplication, QDialog, QPushButton, QVBoxLayout, QHB
     # Wenn vorne im Brief einfach nur H&Y Stadium II steht, bezieht sich das auf das OFF oder das ON? Das gleiche steht
     # manchmal auch bei UPDRS ("UPDRS Teil III x Punkte")
     # Bei einigen Patienten steht einfach nur UPDRS OFF/On: xx/xx. Bezieht sich das auf UPDRS III oder II?
-
+# Und ich habe noch eine wichtige Frage bezüglich des Wiki-Eintrags. Soll ich den Text so formulieren, dass man sich
+# angesprochen fühlt z.B. "If you want to add another collaborator you need to press (...)" oder als eine Stichpunktliste:
+# z.B. Add another collaborator
+#      - Press (...)
+#      - Then (...)
+# Oder ganz anders? 
 
 class CheckForGUIMain(QDialog):
     """Very first GUI only providing a means to enter a PID (according to the ORBIS system at the
