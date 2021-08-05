@@ -14,6 +14,7 @@ textfield_width = 450
 # Hallo David ich habe alles so verändert wie du es geschrieben hast. Ich war mir nur unten bei dem Code nicht sicher,
 # zu welcher anderen GUI dieser Abschnitt passen könnte, daher habe ich ihn fürs Erste noch stehen lassen.
 
+
 class CheckForGeneralData(QDialog):
     """GUI which provides a mean to enter all the general data of a patient (Name, Surname, etc.).
     Several options are possible after entering all the details:

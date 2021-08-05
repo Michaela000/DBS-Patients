@@ -250,7 +250,7 @@ class PreoperativeDialog(QDialog):
         self.button_save_return = QPushButton('Save settings \nand return')
         self.button_save_return.clicked.connect(self.onClickedSaveReturn)
         self.button_close = QPushButton('Save and \nclose')
-        self.button_close.clicked.connect(self.close)  
+        self.button_close.clicked.connect(self.close_and_return)
 
         layout_bottom.addStretch(1)
         layout_bottom.addWidget(self.button_save_return)
@@ -264,8 +264,11 @@ class PreoperativeDialog(QDialog):
     def onClickedSaveReturn(self):
         self.saveFileDialog()
 
-    def close(self):
-        self.saveFileDialog()
+    def close_and_return(self):
+        self.close()
+        self.parent().show()
+        # self.hide()
+        # self.saveFileDialog()
 
     def saveFileDialog(self):
         options = QFileDialog.Options()
