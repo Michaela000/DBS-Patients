@@ -7,13 +7,14 @@ from PyQt5.QtWidgets import QApplication, QDialog, QPushButton, QVBoxLayout, QHB
 
 
 # Hallo David. 
-# Ich hoffe dein Urlaub war gut und entspannend :)
+# Ich hoffe Dein Urlaub war schön und entspannend :)
 # Meine Tabelle zum Preoperative Teil ist fertig (außer Fragen etc.) aber ich wollte Bescheid sagen, 
 # dass nur 6 von den 36 Patienten bei Dir in der Liste zu finden sind. Für mich war es daher sehr schwer alles richtig 
 # einzutragen, was zu noch mehr Fragen geführt hat.
-# Ich arbeite gerade an der Postoperative Tabelle, daher hab ich mich noch nicht mit den Screenshots aus deiner Email
+# Ich arbeite gerade an der Postoperative Tabelle, daher hab ich mich noch nicht mit den Screenshots aus Deiner Email
 # beschäftigt.
 # Wäre es möglich einen festen Termin für nächste Woche festzulegen? Dann könnten wir alles nochmal besprechen oder so. 
+
 # Ich habe noch ein paar allgemeine Fragen:
     # Wenn bei den Medikamenten "Levodopa 100/25mg" steht, muss ich dann mit 100 oder 125mg rechnen? 
     # Wenn vorne im Brief einfach nur H&Y Stadium II steht, bezieht sich das auf das OFF oder das ON? Das gleiche steht
