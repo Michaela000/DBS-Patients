@@ -9,7 +9,7 @@ from PyQt5.QtWidgets import QApplication, QDialog, QPushButton, QLineEdit, QVBox
 
 from utils.helper_functions import General, Output
 
-textfield_width = 450
+
 
 # Hallo David ich habe alles so verändert wie du es geschrieben hast. Ich war mir nur unten bei dem Code nicht sicher,
 # zu welcher anderen GUI dieser Abschnitt passen könnte, daher habe ich ihn fürs Erste noch stehen lassen.
@@ -26,6 +26,7 @@ class CheckForGeneralData(QDialog):
         self.setWindowTitle('Enter data for the unknown subject')
         self.setGeometry(400, 100, 1000, 400)  # left, right, width, height
         self.move(850, 425)
+        textfield_width = 450
 
         self.layout = QVBoxLayout(self)  # entire layout for GUI
         self.content_box = QVBoxLayout(self)  # content of the box

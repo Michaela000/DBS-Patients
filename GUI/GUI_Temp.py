@@ -13,7 +13,7 @@ class TemporaryFile(QDialog):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.calendarWindow = QWidget()
-        self.setWindowTitle('Enter data for the unknown subject')
+        self.setWindowTitle('Please enter all data for the new subject:')
         self.setGeometry(400, 100, 1000, 400)  # left, right, width, height
         self.move(850, 425)
 
@@ -68,6 +68,16 @@ class TemporaryFile(QDialog):
         lay4.addWidget(self.lineEditBirthdate)
         lay4.addStretch()
 
+        self.subj_address = QLabel('Address:\t\t')
+        self.lineEditaddress = CustomLineEdit()
+        self.lineEditaddress.setFixedWidth(textfield_width)
+        self.lineEditaddress.setFixedHeight(50)
+
+        lay5 = QHBoxLayout()
+        lay5.addWidget(self.subj_address)
+        lay5.addWidget(self.lineEditaddress)
+        lay5.addStretch()
+
         self.subj_PID = QLabel('PID-ORBIS:\t\t')
         self.lineEditPID = QLineEdit()
 
@@ -96,6 +106,17 @@ class TemporaryFile(QDialog):
         self.lineEditGender.addItems(['female', 'male', 'diverse'])
         self.lineEditGender.setFixedWidth(textfield_width)
         self.lineEditGender.setFixedHeight(50)
+
+        lay8 = QHBoxLayout()
+        lay8.addWidget(self.subj_gender)
+        lay8.addWidget(self.lineEditGender)
+        lay8.addStretch()
+
+        self.subj_diagnosis = QLabel('Diagnosis:\t\t\t')
+        self.lineEditdiagnosis = QComboBox()
+        self.lineEditdiagnosis.addItems(['hypokinetic-rigid parkinson-syndrome (PD1)', 'tremordominant parkinson-syndrome (PD2)', 'mixed-type parkinson-syndrome (PD3)', 'dystonia (DT)', 'essential tremor (ET)', 'Other'])
+        self.lineEditdiognosis.setFixedWidth(textfield_width)
+        self.lineEditdiagnosis.setFixedHeight(50)
 
         lay8 = QHBoxLayout()
         lay8.addWidget(self.subj_gender)
