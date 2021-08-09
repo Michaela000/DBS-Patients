@@ -10,10 +10,12 @@ from PyQt5.QtWidgets import QApplication, QDialog, QPushButton, QVBoxLayout, QHB
 # Ich hoffe Dein Urlaub war schön und entspannend :)
 # Meine Tabelle zum Preoperative Teil ist fertig (außer Fragen etc.) aber ich wollte Bescheid sagen, 
 # dass nur 6 von den 36 Patienten bei Dir in der Liste zu finden sind. Für mich war es daher sehr schwer alles richtig 
-# einzutragen, was zu noch mehr Fragen geführt hat.
+# einzutragen, was zu noch mehr Fragen und Lücken geführt hat.
 # Ich arbeite gerade an der Postoperative Tabelle, daher hab ich mich noch nicht mit den Screenshots aus Deiner Email
-# beschäftigt.
-# Wäre es möglich einen festen Termin für nächste Woche festzulegen? Dann könnten wir alles nochmal besprechen oder so. 
+# beschäftigt. Update: Die Tabelle ist heute morgen bis auf Fragen etc. auch fertig geworden (kein einziger Patient hat leider 
+# mit deiner Liste überein gestimmt).
+# Wäre es möglich einen festen Termin für die Woche festzulegen (ich kann nur am Donnerstag zwischen 9 und 12 Uhr nicht)?
+# Dann könnten wir alles nochmal genauer besprechen und auch den weiteren Verlauf besser planen. 
 
 # Ich habe noch ein paar allgemeine Fragen:
     # Wenn bei den Medikamenten "Levodopa 100/25mg" steht, muss ich dann mit 100 oder 125mg rechnen? 
