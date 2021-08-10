@@ -5,7 +5,6 @@ from PyQt5 import QtCore
 from PyQt5.QtWidgets import QApplication, QDialog, QPushButton, QVBoxLayout, QHBoxLayout, \
     QWidget
 
-
 # Hallo David.
 
 # Ich habe gerade mit Marina telefoniert. Scheinbar muss ich gar nichts vorbereiten, sondern einfach nur im Oktober vorbei kommen und mein Praktikum starten.
