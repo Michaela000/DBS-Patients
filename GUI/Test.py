@@ -11,7 +11,8 @@ from PyQt5 import QtCore
 from PyQt5.QtWidgets import QApplication, QDialog, QPushButton, QVBoxLayout, QGroupBox, \
     QHBoxLayout, QFileDialog, QWidget, QRadioButton, QGridLayout, QLineEdit, QLabel, QComboBox
 
-from GUI.GUI_Temp import textfield_width
+
+textfield_width = 450
 
 
 class MedicationDialog(QDialog):
@@ -48,7 +49,6 @@ class MedicationDialog(QDialog):
         self.subj_gender = QLabel('Gender:\t\t\t')
         self.lineEditGender = QComboBox()
         self.lineEditGender.addItems(['female', 'male', 'diverse'])
-        self.lineEditGender.setFixedWidth(textfield_width)
         self.lineEditGender.setFixedHeight(50)
         lay3 = QHBoxLayout()
         lay3.addWidget(self.subj_gender)

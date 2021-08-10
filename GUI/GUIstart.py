@@ -6,19 +6,13 @@ from PyQt5.QtWidgets import QApplication, QDialog, QPushButton, QVBoxLayout, QHB
     QWidget
 
 
-# Hallo David. 
-# Ich hoffe Dein Urlaub war schön und entspannend :)
-# Meine Tabelle zum Preoperative Teil ist fertig (außer Fragen etc.) aber ich wollte Bescheid sagen, 
-# dass nur 6 von den 36 Patienten bei Dir in der Liste zu finden sind. Für mich war es daher sehr schwer alles richtig 
-# einzutragen, was zu noch mehr Fragen und Lücken geführt hat.
-# Ich arbeite gerade an der Postoperative Tabelle, daher hab ich mich noch nicht mit den Screenshots aus Deiner Email
-# beschäftigt. Update: Die Tabelle ist heute morgen bis auf Fragen etc. auch fertig geworden (kein einziger Patient hat leider 
-# mit deiner Liste überein gestimmt).
-# Wäre es möglich einen festen Termin für die Woche festzulegen (ich kann nur am Donnerstag zwischen 9 und 12 Uhr nicht)?
-# Dann könnten wir alles nochmal genauer besprechen und auch den weiteren Verlauf besser planen. 
+# Hallo David.
+
+# Ich habe gerade mit Marina telefoniert. Scheinbar muss ich gar nichts vorbereiten, sondern einfach nur im Oktober vorbei kommen und mein Praktikum starten.
+# Alles weitere zum Thema Masterarbeit wird dann erst in einem halben Jahr geregelt.
+# Wenn es für dich passt, würde ich vorschlagen, dass ich einfach regulär zum Semesterstart anfangen könnte? Die Vorlesungszeiten sind zwischen dem 18.10.2021 und dem 18.02.2022.
 
 # Ich habe noch ein paar allgemeine Fragen:
-    # Wenn bei den Medikamenten "Levodopa 100/25mg" steht, muss ich dann mit 100 oder 125mg rechnen? 
     # Wenn vorne im Brief einfach nur H&Y Stadium II steht, bezieht sich das auf das OFF oder das ON? Das gleiche steht
         # manchmal auch bei UPDRS ("UPDRS Teil III x Punkte")
     # Bei einigen Patienten steht einfach nur UPDRS OFF/On: xx/xx. Bezieht sich das auf UPDRS III oder II?
