@@ -1,5 +1,4 @@
 # Hallo David
-
 # Ich hatte große Probleme Textfelder mit QGroupBox zu kombinieren. Ich hab eigentlich den ganzen Nachmittag versucht
 # QGroupBox mit QLineEdit zu verknüpfen und zusätzlich das grid Layout zu behalten, aber es hat irgendwie nicht geklappt.
 # Hab mal provisorisch die Datei "Test.py" erstellt, in der ich das ganze mit dem bisher verwendeten "QHBoxLayout" verknüpft habe.
