@@ -5,17 +5,28 @@
 # Fehlermeldung, dass er optionbox 1-7 nicht findet. Habe versucht das Debug-Tool zu benutzen, aber ich bin mir nicht so
 # sicher, ob ich das so genau bisher verstanden habe.
 
+## ==> ich denke es gab zwei Probleme bei dem Skript: 1. hattes Du optionbox(x) noch nicht definiert, aber schon
+# aufgerufen, was sich einfach lösen ließ, indem ich alles nach unten bewegt habe (um Zeile 405f.). Das zweite Problem
+# ist dass Du alles in eine QBox packst. self.settings_list = QVBoxLayout(self.optionbox1) und dann fügst Du alles
+# andere hier hinzu, sodass es sehr dircht gepackt wird. Versuch doch mal etliche Boxen zu erstellen, erst einmal mit
+# einem item. Den Rest kannst Du ja später nach und nach hinzufügen. Eine Sache, die ich Dir auch empfehlen kann, wenn
+# Du Hilfe brauchst ist stackoverflow.com Da kannst Du Dich einfach anmelden und Fragen stellen (nachdem DU gesucht hast),
+# da findest Du immer jemanden, der Dir hilft (kannst natürlich auch mich fragen, aber probier das trotzdem mal, gerade
+# für die Zukunft).
+
 # Sobald Preoperative.py steht werde ich das gleiche für Postoperative und Intraoperative machen.
 # Bei Preoperative bin ich mir bei einigen Begriffen immer noch nicht sicher: Outpat_Contact; nch (habe ich diese zu der
 # richtigen Gruppe geordnet?
 # und sind fpcit_spect, icVRCS und inexVRCS Tests? Hab sie derzeit in diese Kategorie einsortiert.
+##==> outpat_contact ist wann der Patient in der Sprechstunde war (Datum), fpcit_spect ist ein DatScan (Checkbox)
+# und die anderen beiden erinnere ich nicht mehr.
+
 
 import sys
 from PyQt5 import QtCore
 
 from PyQt5.QtWidgets import QApplication, QDialog, QPushButton, QVBoxLayout, QGroupBox, \
     QHBoxLayout, QFileDialog, QWidget, QRadioButton, QGridLayout, QLineEdit, QLabel, QComboBox
-
 
 textfield_width = 450
 
@@ -34,21 +45,8 @@ class PreoperativeDialog(QDialog):
 
         self.layout = QVBoxLayout(self)
 
-
-        grid = QGridLayout(self)
-        grid.addWidget(self.optionbox1(), 0, 0)
-        grid.addWidget(self.optionbox2(), 0, 1)
-        grid.addWidget(self.optionbox3(), 0, 2)
-        grid.addWidget(self.optionbox4(), 1, 0)
-        grid.addWidget(self.optionbox5(), 1, 1)
-        grid.addWidget(self.optionbox6(), 1, 2)
-        grid.addWidget(self.optionbox7(), 2, 0)
-        self.setLayout(grid)
-
-
         self.optionbox1 = QGroupBox('General data')
         self.settings_list = QVBoxLayout(self.optionbox1)
-
 
         # ====================    Create Content for First Option box on Top left      ====================
         self.subj_PID = QLabel('PID:\t\t')
@@ -416,6 +414,16 @@ class PreoperativeDialog(QDialog):
         self.layout.addWidget(self.optionbox6)
         self.layout.addWidget(self.optionbox7)
         self.layout.addLayout(layout_bottom)
+
+        grid = QGridLayout(self)
+        grid.addWidget(self.optionbox1, 0, 0)
+        grid.addWidget(self.optionbox2, 0, 1)
+        grid.addWidget(self.optionbox3, 0, 2)
+        grid.addWidget(self.optionbox4, 1, 0)
+        grid.addWidget(self.optionbox5, 1, 1)
+        grid.addWidget(self.optionbox6, 1, 2)
+        grid.addWidget(self.optionbox7, 2, 0)
+        self.setLayout(grid)
 
 
         # In the next lines, actions are defined when Buttons are pressed
