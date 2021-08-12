@@ -1,37 +1,33 @@
 import sys
-import GUI_Main
 
 from PyQt5 import QtCore
 from PyQt5.QtWidgets import QApplication, QDialog, QPushButton, QVBoxLayout, QHBoxLayout, \
     QWidget
+from GUI.GUI_Main import ChooseGUI
 
 # Hallo David.
 
-# Ich habe gerade mit Marina telefoniert. Scheinbar muss ich gar nichts vorbereiten, sondern einfach nur im Oktober vorbei kommen und mein Praktikum starten.
-# Alles weitere zum Thema Masterarbeit wird dann erst in einem halben Jahr geregelt.
-# Wenn es für dich passt, würde ich vorschlagen, dass ich einfach regulär zum Semesterstart anfangen könnte? Die Vorlesungszeiten sind zwischen dem 18.10.2021 und dem 18.02.2022.
+# Stimmt, die Verbindung mit GUIMain war noch falsch. Aber obwohl ich layout_buttons.addStretch(1) eingegeben habe, sind die beiden
+# Button nicht mittig.
 
-# Ich habe noch ein paar allgemeine Fragen:
-    # Wenn vorne im Brief einfach nur H&Y Stadium II steht, bezieht sich das auf das OFF oder das ON? Das gleiche steht
-        # manchmal auch bei UPDRS ("UPDRS Teil III x Punkte")
-    ## ==> Wahrscheinlich auf die Werte im ON
-    # Bei einigen Patienten steht einfach nur UPDRS OFF/On: xx/xx. Bezieht sich das auf UPDRS III oder II?
-    ## ==> UPDRS III
-    # Ist EQ-VAS das gleiche wie EQ5D?
-    ## ==> Ja
-    # Wenn ich bei postoperative mehrere Programme auf dem Brief habe, welches Programm soll ich in die Tabelle eintragen, 
-        # wenn keine Beschreibung vorhanden ist, welche hauptsächlich verwendet wird? Soll ich einfach irgendein Programm wählen
-        # oder gibt es da eine bestimmte Regel?
-    ## ==> Die Idee bei postoperative ist dass man einen Eintrag hat pro Zeitpunkt an dem der Mensch da war. Also soll
-    ## die EIngabe durch ein Dropdown Menu erfolgen.
+# Vielen Dank für die ganzen hilfreichen Antworten. Ich versuche alles in der Tabelle bzw. im Wiki Eintrag umzusetzen.
 
-# Und ich habe noch eine wichtige Frage bezüglich des Wiki-Eintrags. Soll ich den Text so formulieren, dass man sich
-    # angesprochen fühlt z.B. "If you want to add another collaborator you need to press (...)" oder als eine Stichpunktliste:
-    # z.B. Add another collaborator
-    #      - Press (...)
-    #      - Then (...)
-    # Oder ganz anders?
-    ## ==> Das überlasse ich gerne Dir!
+# Leider sammeln sich immer mehr Fragen bezüglich der Tabelle.
+    # 1. Stimmt es, dass sowohl akinetic-rigid, hypokinetic-rigid and bradykinetic-rigid in die gleiche Diagnose "hypokinetic-rigid
+    #    parkinson-syndorome (PD2) fallen? Ich war mir da sehr unsicher und hab es deshalb noch nicht eingetragen.
+    # 2. Bei vielen Levodopa Medikamenten steht "100/25mg". Da weiß ich jetzt, dass ich mit 100mg rechnen muss. Aber andere
+    #    haben trotzdem einfach "Madopar 125T" oder "Madopar 125mg" in der Tabelle stehen. Dabei bin ich jetzt verwirrt, ob ich mit 100 oder 125mg rechnen soll.
+    # 3. Ich wollte auch nochmal sagen, dass manche Briefe nicht so gut kopiert wurden, wodurch oftmals ein paar Zeilen fehlen.
+    # 4. Werden alle Arten von Dystonie in der Tabelle einfach nur zu "Dystonia (DT)" zusammengefasst? Hatte bei einem Patienten
+    #    "Segmentale Dystonie mit Torticollis spasmodicus" und bei einem anderen "generalized dystonia" und da wollte ich nochmal
+    #    kurz nachfragen, damit ich nichts falsch mache
+    # 5. Am Anfang hieß es, dass ich "IPG" weglassen soll im General.py, aber du hattest es bei der letzten Aufgabe dazu geschrieben.
+    #    Ist das jetzt doch wichtig und wenn ja, für was steht IPG?
+    # 6. Bin mir bei dem Unterschied zwischen "Report" und "Report Preop" nicht sicher. Wenn ich keinen Report für Preoperative hätte, dann
+    #    könnte ich theoretisch auch nicht die Tabelle machen? Also diese beiden Punkte waren bei mir immer ein großes Fragezeichen.
+
+# Tut mir Leid, dass es doch so viel geworden ist.
+
 
 class CheckForGUIMain(QDialog):
     """Very first GUI only providing a means to enter a PID (according to the ORBIS system at the
@@ -41,6 +37,7 @@ class CheckForGUIMain(QDialog):
     def __init__(self, parent=None):
         """Initialize."""
 
+        self.GuiMain = ChooseGUI()
         super().__init__(parent)
         self.setWindowTitle('Choose GUI')
         self.setGeometry(400, 100, 500, 300)  # left, right, width, height
@@ -69,8 +66,8 @@ class CheckForGUIMain(QDialog):
     def onClicked_open_GUI_main(self):
         """when button is pressed, a series of checks are performed in order to retrieve data/to set the following
         GUI """
-
-        open(GUI_Main) # TODO: Funktioniert das so? Ich dachte, ich hätte das bei Dir umgeschrieben, sodass man es oben lädt und hier öffnet, oder?
+        self.hide()
+        self.GuiMain.show()
 
 
 if __name__ == '__main__':
