@@ -14,17 +14,24 @@ from PyQt5.QtWidgets import QApplication, QDialog, QPushButton, QVBoxLayout, QHB
 # Ich habe noch ein paar allgemeine Fragen:
     # Wenn vorne im Brief einfach nur H&Y Stadium II steht, bezieht sich das auf das OFF oder das ON? Das gleiche steht
         # manchmal auch bei UPDRS ("UPDRS Teil III x Punkte")
+    ## ==> Wahrscheinlich auf die Werte im ON
     # Bei einigen Patienten steht einfach nur UPDRS OFF/On: xx/xx. Bezieht sich das auf UPDRS III oder II?
+    ## ==> UPDRS III
     # Ist EQ-VAS das gleiche wie EQ5D?
+    ## ==> Ja
     # Wenn ich bei postoperative mehrere Programme auf dem Brief habe, welches Programm soll ich in die Tabelle eintragen, 
         # wenn keine Beschreibung vorhanden ist, welche hauptsächlich verwendet wird? Soll ich einfach irgendein Programm wählen
         # oder gibt es da eine bestimmte Regel?
+    ## ==> Die Idee bei postoperative ist dass man einen Eintrag hat pro Zeitpunkt an dem der Mensch da war. Also soll
+    ## die EIngabe durch ein Dropdown Menu erfolgen.
+
 # Und ich habe noch eine wichtige Frage bezüglich des Wiki-Eintrags. Soll ich den Text so formulieren, dass man sich
     # angesprochen fühlt z.B. "If you want to add another collaborator you need to press (...)" oder als eine Stichpunktliste:
     # z.B. Add another collaborator
     #      - Press (...)
     #      - Then (...)
-    # Oder ganz anders? 
+    # Oder ganz anders?
+    ## ==> Das überlasse ich gerne Dir!
 
 class CheckForGUIMain(QDialog):
     """Very first GUI only providing a means to enter a PID (according to the ORBIS system at the
@@ -63,7 +70,7 @@ class CheckForGUIMain(QDialog):
         """when button is pressed, a series of checks are performed in order to retrieve data/to set the following
         GUI """
 
-        open(GUI_Main)
+        open(GUI_Main) # TODO: Funktioniert das so? Ich dachte, ich hätte das bei Dir umgeschrieben, sodass man es oben lädt und hier öffnet, oder?
 
 
 if __name__ == '__main__':

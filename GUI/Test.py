@@ -1,9 +1,9 @@
 # Hallo David
-# Ich habe mit dieser Test Datei versucht GUI_Preoperative so zu schreiben, dass man Textfelder hat zum Eintragen der Daten.
-# Ich habe keinen einfacheren Weg gefunden die Daten mit "grid Layout" anzuordnen. Gibt es da irgendeinen Trick sodass man
-# QGroupBox und QLineEdit miteinander verknüpfen kann?
-
-
+# Ich habe mit dieser Test Datei versucht GUI_Preoperative so zu schreiben, dass man Textfelder hat zum Eintragen der
+# Daten. Ich habe keinen einfacheren Weg gefunden die Daten mit "grid Layout" anzuordnen. Gibt es da irgendeinen Trick,
+# sodass man QGroupBox und QLineEdit miteinander verknüpfen kann?
+# Der Trick ist dass Du \t (Tab) nutzt, da Du hierdurch immer den gleichen Abstand hast und dann das manuell machst.
+# Das ist die pragmatische Lösung, denn der Rest ist sehr aufwändig. Ich habe es mal hier angepasst.
 
 import sys
 from PyQt5 import QtCore
@@ -32,21 +32,21 @@ class MedicationDialog(QDialog):
 
 
         # ====================    Create Content for First Option box on Top left      ====================
-        self.subj_PID = QLabel('PID:\t')
+        self.subj_PID = QLabel('PID:\t\t')
         self.lineEditPID = QLineEdit()
         lay1 = QHBoxLayout()
         lay1.addWidget(self.subj_PID)
         lay1.addWidget(self.lineEditPID)
         lay1.addStretch()
 
-        self.subj_ID = QLabel('ID:\t')
+        self.subj_ID = QLabel('ID:\t\t')
         self.lineEditID = QLineEdit()
         lay2 = QHBoxLayout()
         lay2.addWidget(self.subj_ID)
         lay2.addWidget(self.lineEditID)
         lay2.addStretch()
 
-        self.subj_gender = QLabel('Gender:\t\t\t')
+        self.subj_gender = QLabel('Gender:\t\t')
         self.lineEditGender = QComboBox()
         self.lineEditGender.addItems(['female', 'male', 'diverse'])
         self.lineEditGender.setFixedHeight(50)
@@ -55,7 +55,7 @@ class MedicationDialog(QDialog):
         lay3.addWidget(self.lineEditGender)
         lay3.addStretch()
 
-        self.subj_diagnosis = QLabel('Diagnosis:\t\t')
+        self.subj_diagnosis = QLabel('Diagnosis:\t')
         self.lineEditDiagnosis = QComboBox()
         self.lineEditDiagnosis.addItems(['Hypokinetic-rigid parkinson-syndrome (PD1)',
                                          'Tremordominant parkinson-syndrome(PD2)',
@@ -103,7 +103,7 @@ class MedicationDialog(QDialog):
         lay7.addWidget(self.lineEditDismissal)
         lay7.addStretch()
 
-        self.subj_Report = QLabel('Report:\t')
+        self.subj_Report = QLabel('Report:\t\t')
         self.lineEditReport = QLineEdit()
         lay8 = QHBoxLayout()
         lay8.addWidget(self.subj_Report)

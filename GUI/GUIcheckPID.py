@@ -1,3 +1,7 @@
+#2. Kannst Du bitte eine allgemeine Anleitung erstellen, wie man ein Projekt bei GitHub startet und das ins
+# Wiki setzen?
+
+
 import sys
 from PyQt5 import QtCore
 from PyQt5.QtWidgets import QApplication, QDialog, QPushButton, QLineEdit, QVBoxLayout, QGroupBox, QHBoxLayout, \
