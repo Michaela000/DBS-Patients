@@ -21,6 +21,10 @@
 ##==> outpat_contact ist wann der Patient in der Sprechstunde war (Datum), fpcit_spect ist ein DatScan (Checkbox)
 # und die anderen beiden erinnere ich nicht mehr.
 
+##==> Ich denke, wir sind schon ziemich weit. Sobald der Inhalt für die drei GUIs (pre-, intra- und postoperative)
+# steht, sind es wirklich nur noch kleine Details. Sag Bescheid, wenn Du das hast, dann zeige ich Dir, wie das geht.
+# Oder Du schaust Dir das an, was ich bei GUImain reingeschrieben habe, das sollte ähnlich aufzubauen sein!
+
 
 import sys
 from PyQt5 import QtCore
