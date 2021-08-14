@@ -1,11 +1,15 @@
+import os
 import sys
-from GUI. GUI_Preoperative import PreoperativeDialog
-from GUI. GUI_Intraoperative import IntraoperativeDialog
-from GUI. GUI_Postoperative import PostoperativeDialog
 
+import pandas as pds
 from PyQt5 import QtCore
-from PyQt5.QtWidgets import QApplication, QDialog, QPushButton, QVBoxLayout, QHBoxLayout, \
-    QWidget
+from PyQt5.QtWidgets import QApplication, QDialog, QPushButton, QVBoxLayout, \
+    QWidget, QButtonGroup
+
+from GUI.GUI_Intraoperative import IntraoperativeDialog
+from GUI.GUI_Postoperative import PostoperativeDialog
+from GUI.GUI_Preoperative import PreoperativeDialog
+from dependencies import ROOTDIR
 
 
 class ChooseGUI(QDialog):
@@ -17,57 +21,69 @@ class ChooseGUI(QDialog):
 
         super().__init__(parent)
 
-        # Initialize the GUIs that may be used
-        self.GUIPreoperative = PreoperativeDialog(self)
-        self.GUIIntraoperative = IntraoperativeDialog(self)
-        self.GUIPostoperative = PostoperativeDialog(self)
-
         # General settings for 'own' GUI
-        self.setWindowTitle('Choose GUI')
+        try:
+            subj_details = pds.read_csv(os.path.join(ROOTDIR, 'temp', 'current_subj.csv'))
+        except FileNotFoundError:
+            print('Data not found! Please make sure that a file named "current_subj.csv" exists in the "temp" folder')
+            return
+
+        self.layout = QVBoxLayout()  # layout for the central widget
+        widget = QWidget(self)  # central widget
+        widget.setLayout(self.layout)
+
+        self.setWindowTitle('Choose GUI for subj with PID: {}'.format(str(int(subj_details.code))))
         self.setGeometry(400, 100, 500, 300)  # left, right, width, height
         self.move(850, 425)
 
-        self.layout = QVBoxLayout(self)  # entire layout for GUI
-        self.content_box = QVBoxLayout(self)  # content of the box
-
-        # ====================    Create Content for Buttons at the Bottom      ====================
-        layout_buttons = QHBoxLayout()
+        # ====================    Create Content for Buttons of GUImain      ====================
         self.button_openGUI_Preoperative = QPushButton('Open GUI \nPreoperative')
-        self.button_openGUI_Preoperative.clicked.connect(self.onClicked_run_preoperative)
-        self.button_openGUI_Intraoperative = QPushButton('Open GUI \nIntraoperative')
-        self.button_openGUI_Intraoperative.clicked.connect(self.onClicked_openGUI_Intraoperative)
-        self.button_openGUI_Postoperative = QPushButton('Open GUI \nPostoperative')
-        self.button_openGUI_Postoperative.clicked.connect(self.onClicked_openGUI_Postoperative)
+        self.button_openGUI_Preoperative.setText("Preoperative")
+        self.button_openGUI_Preoperative.setCheckable(True)
+
+        self.button_openGUI_Intraoperative = QPushButton('Intraoperative')
+        self.button_openGUI_Intraoperative.setText("Intraoperative")
+        self.button_openGUI_Intraoperative.setCheckable(True)
+
+        self.button_openGUI_Postoperative = QPushButton('Postoperative')
+        self.button_openGUI_Postoperative.setText("Postoperative")
+        self.button_openGUI_Postoperative.setCheckable(True)
+
         self.button_close = QPushButton('Close GUI')
         self.button_close.clicked.connect(self.close)
 
-        layout_buttons.addStretch(1)
-        layout_buttons.addWidget(self.button_openGUI_Preoperative)
-        layout_buttons.addWidget(self.button_openGUI_Intraoperative)
-        layout_buttons.addWidget(self.button_openGUI_Postoperative)
-        layout_buttons.addWidget(self.button_close)
-        layout_buttons.addStretch(1)
-
         # ====================    Add boxes and buttons to self.entire_layout      ====================
-        self.layout.addLayout(self.content_box)
-        self.layout.addLayout(layout_buttons)
+        btn_grp = QButtonGroup(widget)
+        btn_grp.setExclusive(True)
+        btn_grp.addButton(self.button_openGUI_Preoperative)
+        btn_grp.addButton(self.button_openGUI_Intraoperative)
+        btn_grp.addButton(self.button_openGUI_Postoperative)
+        btn_grp.buttonClicked.connect(self.on_click)
 
-    # In the next lines, actions are defined when Buttons are pressed
+        self.layout.addStretch(1)
+        self.layout.addWidget(self.button_openGUI_Preoperative)
+        self.layout.addWidget(self.button_openGUI_Intraoperative)
+        self.layout.addWidget(self.button_openGUI_Postoperative)
+        self.layout.addWidget(self.button_close)
+        self.layout.addStretch(1)
+
+    # ====================    In the next lines, actions are defined when Buttons are pressed      ====================
     @QtCore.pyqtSlot()
-    def onClicked_run_preoperative(self):
-        """Opens the GUI for the preoperative data """
-        self.GUIPreoperative.show()
-        self.hide()
+    def on_click(self):
+        if self.button_openGUI_Preoperative.isChecked():
+            dialog = PreoperativeDialog(parent=self)
+        elif self.button_openGUI_Intraoperative.isChecked():
+            dialog = IntraoperativeDialog(parent=self)
+        else:
+            dialog = PostoperativeDialog(parent=self)
 
-    def onClicked_openGUI_Intraoperative(self):
-        print('adapt according to onClicked_run_preoperative')
-        self.GUIIntraoperative.show()
         self.hide()
+        if dialog.exec():
+            pass
+        self.show()
 
-    def onClicked_openGUI_Postoperative(self):
-        print('adapt according to onClicked_run_preoperative')
-        self.GUIPostoperative.show()
-        self.hide()
+    def close_all(self):
+        self.close()
 
 
 if __name__ == '__main__':

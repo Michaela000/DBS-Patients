@@ -430,7 +430,10 @@ class PreoperativeDialog(QDialog):
 
     @QtCore.pyqtSlot()
     def onClickedSaveReturn(self):
-        self.saveFileDialog()
+        print('Done!')
+        self.hide()
+
+        #self.saveFileDialog()
 
     def saveFileDialog(self):
         options = QFileDialog.Options()
