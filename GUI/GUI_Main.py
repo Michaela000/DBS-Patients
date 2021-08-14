@@ -17,19 +17,18 @@ class ChooseGUI(QDialog):
     1. Preoperative 2. Intraoperative 3. Postoperative"""
 
     def __init__(self, parent=None):
-        """Initialize."""
+        """Initialize GUImain, a window in which all other "sub-GUIs" may be called from."""
 
         super().__init__(parent)
-
-        # General settings for 'own' GUI
         try:
-            subj_details = pds.read_csv(os.path.join(ROOTDIR, 'temp', 'current_subj.csv'))
+            subj_details = pds.read_csv(os.path.join(ROOTDIR, 'temp', 'current_subj.csv'))  # Read currently used subj.
         except FileNotFoundError:
             print('Data not found! Please make sure that a file named "current_subj.csv" exists in the "temp" folder')
             return
 
+        # ====================    Create General Layout      ====================
         self.layout = QVBoxLayout()  # layout for the central widget
-        widget = QWidget(self)  # central widget
+        widget = QWidget(self)
         widget.setLayout(self.layout)
 
         self.setWindowTitle('Choose GUI for subj with PID: {}'.format(str(int(subj_details.code))))
@@ -52,7 +51,7 @@ class ChooseGUI(QDialog):
         self.button_close = QPushButton('Close GUI')
         self.button_close.clicked.connect(self.close)
 
-        # ====================    Add boxes and buttons to self.entire_layout      ====================
+        # ====================    Add ButtonGroup and buttons to self.layout      ====================
         btn_grp = QButtonGroup(widget)
         btn_grp.setExclusive(True)
         btn_grp.addButton(self.button_openGUI_Preoperative)
@@ -70,7 +69,7 @@ class ChooseGUI(QDialog):
     # ====================    In the next lines, actions are defined when Buttons are pressed      ====================
     @QtCore.pyqtSlot()
     def on_click(self):
-        if self.button_openGUI_Preoperative.isChecked():
+        if self.button_openGUI_Preoperative.isChecked():  # selects three different options available
             dialog = PreoperativeDialog(parent=self)
         elif self.button_openGUI_Intraoperative.isChecked():
             dialog = IntraoperativeDialog(parent=self)
@@ -83,6 +82,7 @@ class ChooseGUI(QDialog):
         self.show()
 
     def close_all(self):
+        """closes GUImain when work is done!"""
         self.close()
 
 
