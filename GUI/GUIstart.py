@@ -1,9 +1,25 @@
+# Hallo David.
+# Ich habe mich die letzten zwei Tage nochmal ausführlich mit den Tabellen von Pre und Postoperative beschäftigt
+# (bei Intraoperative habe ich leider keine Patienten)
+# Insgesamt sind es viele kleine Unstimmigkeiten, die ich mit Dir besprechen müsste z.B. Unterschiede zu Deiner Tabelle oder
+# allgemeine Fragen (z.B. Du wolltest mir die Liste mit Programmen vom IPG zeigen)
+# Ich glaube allerdings schon, dass das Ganze etwas Zeit in Anspruch nehmen wird und deswegen wollte ich es schon einmal angesprochen haben.
+# Könnten wir dafür vielleicht noch einmal einen Termin vereinbaren? Ich denke das sollte sowohl telefnonischt als auch persönlich gut machbar sein.
+# Ich würde mich da nach Dir richten. Zeitlich bin ich sehr offen, auch wenn es sehr früh oder spät wäre.
+
+# Ein paar allgemeine Fragen hätte ich aber noch:
+# Wenn bei Levodopa LT bzw RT steht, gehört das dann zu "Levodopa/Carbidopa" oder zu "Levodopa/Carbidopa CR"?
+# Wenn da steht "Nacom 200mg" sind das dann wirklich 200 oder aus irgendeinem Grund auch nur 100mg?
+# Es gibt auch so kryptische Medikamente wo steht: "Stalevo 50/12,5/200mg" oder "Levocomp ret. 200mg/50mg"
+
+
 import sys
 
 from PyQt5 import QtCore
 from PyQt5.QtWidgets import QApplication, QDialog, QPushButton, QVBoxLayout, QHBoxLayout, \
     QWidget
 from GUI.GUI_Main import ChooseGUI
+
 
 class CheckForGUIMain(QDialog):
     """Very first GUI only providing a means to enter a PID (according to the ORBIS system at the
