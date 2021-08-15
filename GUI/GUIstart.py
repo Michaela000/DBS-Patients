@@ -4,7 +4,7 @@
 # Insgesamt sind es viele kleine Unstimmigkeiten, die ich mit Dir besprechen müsste z.B. Unterschiede zu Deiner Tabelle oder
 # allgemeine Fragen (z.B. Du wolltest mir die Liste mit Programmen vom IPG zeigen)
 # Ich glaube allerdings schon, dass das Ganze etwas Zeit in Anspruch nehmen wird und deswegen wollte ich es schon einmal angesprochen haben.
-# Könnten wir dafür vielleicht noch einmal einen Termin vereinbaren? Ich denke das sollte sowohl telefnonischt als auch persönlich gut machbar sein.
+# Könnten wir dafür vielleicht noch einmal einen Termin vereinbaren? Ich denke das sollte sowohl telefonisch als auch persönlich gut machbar sein.
 # Ich würde mich da nach Dir richten. Zeitlich bin ich sehr offen, auch wenn es sehr früh oder spät wäre.
 
 # Ein paar allgemeine Fragen hätte ich aber noch:
