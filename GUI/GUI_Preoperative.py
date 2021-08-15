@@ -1,10 +1,3 @@
-# Hallo David
-# Super danke für die Hilfe. Der Schritt hat schon einmal geklappt aber ich schaffe es immer noch nicht
-# das Ganze mit dem grid.layout zu verknüpfen. Wenn ich es so lassen würde, dann könnte man nicht alle Punkte auf dem
-# Bildschirm sehen. Ich fand es vorher eigentlich sehr schön mit dem QGridLayout. Dabei erhalte ich allerdings die
-# Fehlermeldung, dass er optionbox 1-7 nicht findet. Habe versucht das Debug-Tool zu benutzen, aber ich bin mir nicht so
-# sicher, ob ich das so genau bisher verstanden habe.
-
 ## ==> ich denke es gab zwei Probleme bei dem Skript: 1. hattes Du optionbox(x) noch nicht definiert, aber schon
 # aufgerufen, was sich einfach lösen ließ, indem ich alles nach unten bewegt habe (um Zeile 405f.). Das zweite Problem
 # ist dass Du alles in eine QBox packst. self.settings_list = QVBoxLayout(self.optionbox1) und dann fügst Du alles
@@ -14,16 +7,12 @@
 # da findest Du immer jemanden, der Dir hilft (kannst natürlich auch mich fragen, aber probier das trotzdem mal, gerade
 # für die Zukunft).
 
-# Sobald Preoperative.py steht werde ich das gleiche für Postoperative und Intraoperative machen.
-# Bei Preoperative bin ich mir bei einigen Begriffen immer noch nicht sicher: Outpat_Contact; nch (habe ich diese zu der
-# richtigen Gruppe geordnet?
-# und sind fpcit_spect, icVRCS und inexVRCS Tests? Hab sie derzeit in diese Kategorie einsortiert.
-##==> outpat_contact ist wann der Patient in der Sprechstunde war (Datum), fpcit_spect ist ein DatScan (Checkbox)
-# und die anderen beiden erinnere ich nicht mehr.
+# Hallo David, ich habe versucht in der Test2.py Datei das umzusetzen. Aber ich bin mir nicht sicher, ob ich den Auftrag
+# komplett verstanden habe. Wenn ich für jede optionbox nur eine Information speichere, dann müsste ich theoretisch auch keine
+# einzelnen Gruppen erstellen oder? Ich fand es eigentlich sehr gut, die Informationen in einzelnen Gruppen zu speichern.
+# Habe das Ganze mal beispielsweise mit dem Inhalt aus optionbox 1 und 2 gemacht in Test2.py ausprobiert.
+# Ich habe die letzten zwei Tage nochmal intensiv mit den Tabellen gearbeitet, daher bin ich nicht ganz so weit mit dem Code gekommen.
 
-##==> Ich denke, wir sind schon ziemich weit. Sobald der Inhalt für die drei GUIs (pre-, intra- und postoperative)
-# steht, sind es wirklich nur noch kleine Details. Sag Bescheid, wenn Du das hast, dann zeige ich Dir, wie das geht.
-# Oder Du schaust Dir das an, was ich bei GUImain reingeschrieben habe, das sollte ähnlich aufzubauen sein!
 
 
 import sys
