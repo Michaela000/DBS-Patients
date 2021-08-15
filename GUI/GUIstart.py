@@ -5,37 +5,6 @@ from PyQt5.QtWidgets import QApplication, QDialog, QPushButton, QVBoxLayout, QHB
     QWidget
 from GUI.GUI_Main import ChooseGUI
 
-# Hallo David.
-
-# Stimmt, die Verbindung mit GUIMain war noch falsch. Aber obwohl ich layout_buttons.addStretch(1) eingegeben habe, sind die beiden
-# Button nicht mittig.
-
-# Vielen Dank für die ganzen hilfreichen Antworten. Ich versuche alles in der Tabelle bzw. im Wiki Eintrag umzusetzen.
-
-# Leider sammeln sich immer mehr Fragen bezüglich der Tabelle.
-    # 1. Stimmt es, dass sowohl akinetic-rigid, hypokinetic-rigid and bradykinetic-rigid in die gleiche Diagnose "hypokinetic-rigid
-    #    parkinson-syndorome (PD2) fallen? Ich war mir da sehr unsicher und hab es deshalb noch nicht eingetragen.
-    ## ==> ja genau
-    # 2. Bei vielen Levodopa Medikamenten steht "100/25mg". Da weiß ich jetzt, dass ich mit 100mg rechnen muss. Aber andere
-    #    haben trotzdem einfach "Madopar 125T" oder "Madopar 125mg" in der Tabelle stehen. Dabei bin ich jetzt
-    #    verwirrt, ob ich mit 100 oder 125mg rechnen soll.
-    #== Das ist jeweils 100/25 aber ist tatsächlich sehr verwirrend
-    # 3. Ich wollte auch nochmal sagen, dass manche Briefe nicht so gut kopiert wurden, wodurch oftmals ein paar Zeilen fehlen.
-    # 4. Werden alle Arten von Dystonie in der Tabelle einfach nur zu "Dystonia (DT)" zusammengefasst? Hatte bei einem Patienten
-    #    "Segmentale Dystonie mit Torticollis spasmodicus" und bei einem anderen "generalized dystonia" und da wollte ich nochmal
-    #    kurz nachfragen, damit ich nichts falsch mache
-    #==> ne, das ist alles Dystonie
-    # 5. Am Anfang hieß es, dass ich "IPG" weglassen soll im General.py, aber du hattest es bei der letzten Aufgabe dazu geschrieben.
-    #    Ist das jetzt doch wichtig und wenn ja, für was steht IPG?
-    ##==> Das ist der Impulsgenerator und ich glaube ich wollte nur damit ausdrücken, dass die Seriennummer aufgeschrieben wird
-    # 6. Bin mir bei dem Unterschied zwischen "Report" und "Report Preop" nicht sicher. Wenn ich keinen Report für Preoperative hätte, dann
-    #    könnte ich theoretisch auch nicht die Tabelle machen? Also diese beiden Punkte waren bei mir immer ein großes Fragezeichen.
-    ##==> Ich glaube es ging mir eher um die neurochirurgischen Briefe, also bei intraoperative
-
-# Tut mir Leid, dass es doch so viel geworden ist.
-##==> Alles gut!
-
-
 class CheckForGUIMain(QDialog):
     """Very first GUI only providing a means to enter a PID (according to the ORBIS system at the
     Department of Neurology at the University Hospital of Gießen and Marburg. Several options are possible
