@@ -367,6 +367,7 @@ class PreoperativeDialog(QDialog):
 
         self.subj_Notes = QLabel('Notes:\t\t')
         self.lineEditNotes = QLineEdit()
+        self.lineEditNotes.setFixedWidth(300)
         lay36 = QHBoxLayout()
         lay36.addWidget(self.subj_Notes)
         lay36.addWidget(self.lineEditNotes)
