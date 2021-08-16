@@ -1,21 +1,16 @@
 # Hallo David.
 
-##==> Was hältst Du davon, dass wir uns einfach auf die GUIs konzentrieren. Dann ist Deine Arbeit das Programmieren der
-# Abläufe (plus natürlich das was Du schon hast). Wäre das für Dich ok? Die IPG LIste habe ich Dir eben geschickt!
-
-### -> Tut mir leid, dass ich die Email heute morgen verpasst habe.
-###    Können wir aber gerne so machen. Ich würde mich dann heute trotzdem noch um den IPG und um die Berechnung von LEDD kümmern und diese eintragen.
-###    Danach wäre ich aber dann "fertig" mit den Tabellen (bis auf die Fragen). Natürlich arbeite ich parallel dazu auch noch weiter am Code. 
-
-
-# Ein paar allgemeine Fragen hätte ich aber noch:
 # 1. Wenn bei Levodopa LT bzw RT steht, gehört das dann zu "Levodopa/Carbidopa" oder zu "Levodopa/Carbidopa CR"?
 ##==> Glaube das ist ein Tippfehler, RT gibt es nicht
-# 2. Wenn da steht "Nacom 200mg" sind das dann wirklich 200 oder aus irgendeinem Grund auch nur 100mg?
-##==> Nacom sind tatsächlich 200mg Levodopa
+### --> und wozu gehört dann LT?
+
 # 3. Es gibt auch so kryptische Medikamente wo steht: "Stalevo 50/12,5/200mg" oder "Levocomp ret. 200mg/50mg": wie muss ich die berechnen?
-##==> STalevo ist ein KOmbi Präparat, das aus LEvodopa, Carbidopa (nicht wichtig) und Entacapon besteht.
+##==> Stalevo ist ein Kombi Präparat, das aus Levodopa, Carbidopa (nicht wichtig) und Entacapon besteht.
 #==> Kannst Du bitte nochmal die Bilder bei 'temp' hochladen, dass ich mal schauen kann, wie das aussieht? Ich finde das nicht mehrt
+    ### --> welche Bilder? Die Tabellen habe ich noch nicht hochgeladen, da sie nicht im csv Format sind. Oder meinst du etwas anderes?
+    #       Soll ich dann noch einen Ordner auf GitHub mit dem Namen "temp" erstellen? Also ich habe einen Ordner temp auf meinem PC, aber
+    #       dazu hast du keinen direkten Zugriff oder?
+    #       Die Angaben von Stalevo etc. steht in den Briefen (da ist bisher einfach eine markierte Lücke in der Tabelle).
 
 
 import sys
