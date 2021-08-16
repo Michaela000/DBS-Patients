@@ -1,19 +1,6 @@
-## ==> ich denke es gab zwei Probleme bei dem Skript: 1. hattes Du optionbox(x) noch nicht definiert, aber schon
-# aufgerufen, was sich einfach lösen ließ, indem ich alles nach unten bewegt habe (um Zeile 405f.). Das zweite Problem
-# ist dass Du alles in eine QBox packst. self.settings_list = QVBoxLayout(self.optionbox1) und dann fügst Du alles
-# andere hier hinzu, sodass es sehr dircht gepackt wird. Versuch doch mal etliche Boxen zu erstellen, erst einmal mit
-# einem item. Den Rest kannst Du ja später nach und nach hinzufügen. Eine Sache, die ich Dir auch empfehlen kann, wenn
-# Du Hilfe brauchst ist stackoverflow.com Da kannst Du Dich einfach anmelden und Fragen stellen (nachdem DU gesucht hast),
-# da findest Du immer jemanden, der Dir hilft (kannst natürlich auch mich fragen, aber probier das trotzdem mal, gerade
-# für die Zukunft).
-
-# Hallo David, ich habe versucht in der Test2.py Datei das umzusetzen. Aber ich bin mir nicht sicher, ob ich den Auftrag
-# komplett verstanden habe. Wenn ich für jede optionbox nur eine Information speichere, dann müsste ich theoretisch auch keine
-# einzelnen Gruppen erstellen oder? Ich fand es eigentlich sehr gut, die Informationen in einzelnen Gruppen zu speichern.
-# Habe das Ganze mal beispielsweise mit dem Inhalt aus optionbox 1 und 2 gemacht in Test2.py ausprobiert.
-# Ich habe die letzten zwei Tage nochmal intensiv mit den Tabellen gearbeitet, daher bin ich nicht ganz so weit mit dem Code gekommen.
-
-
+# Hallo David.
+# Das hat viel besser geklappt. So gefällt es mir eigentlich schon ziemlich gut. Es sind aber immernoch genauso viele Gruppen aber vielleicht könnte man nochmal
+# überlegen "Notes" oder "LEDD" irgendwo anders einzusortieren. Aber es klappt auf jeden Fall, das hat mich sehr gefreut.
 
 import sys
 from PyQt5 import QtCore
@@ -31,17 +18,18 @@ class PreoperativeDialog(QDialog):
         """Initializer."""
         super().__init__(parent)
 
-
         self.setWindowTitle('Preoperative Information')
         self.setGeometry(200, 100, 280, 170)
         self.move(850, 200)
 
-        self.layout = QVBoxLayout(self)
+        layout = QGridLayout(self)
+        self.setLayout(layout)
 
+        # Create one optionbox for the time being left
         self.optionbox1 = QGroupBox('General data')
-        self.settings_list = QVBoxLayout(self.optionbox1)
+        self.optionbox1Content = QVBoxLayout(self.optionbox1)
+        layout.addWidget(self.optionbox1, 0, 0)
 
-        # ====================    Create Content for First Option box on Top left      ====================
         self.subj_PID = QLabel('PID:\t\t')
         self.lineEditPID = QLineEdit()
         lay1 = QHBoxLayout()
@@ -59,7 +47,7 @@ class PreoperativeDialog(QDialog):
         self.subj_gender = QLabel('Gender:\t\t')
         self.lineEditGender = QComboBox()
         self.lineEditGender.addItems(['female', 'male', 'diverse'])
-        self.lineEditGender.setFixedHeight(50)
+        self.lineEditGender.setFixedHeight(20)
         lay3 = QHBoxLayout()
         lay3.addWidget(self.subj_gender)
         lay3.addWidget(self.lineEditGender)
@@ -74,8 +62,7 @@ class PreoperativeDialog(QDialog):
                                          'Essential tremor (ET)',
                                          'Other'])
 
-        self.lineEditDiagnosis.setFixedWidth(textfield_width)
-        self.lineEditDiagnosis.setFixedHeight(50)
+        self.lineEditDiagnosis.setFixedHeight(20)
         lay4 = QHBoxLayout()
         lay4.addWidget(self.subj_diagnosis)
         lay4.addWidget(self.lineEditDiagnosis)
@@ -88,17 +75,18 @@ class PreoperativeDialog(QDialog):
         lay5.addWidget(self.lineEditfirstDiagnosed)
         lay5.addStretch()
 
-        self.settings_list.addLayout(lay1)
-        self.settings_list.addLayout(lay2)
-        self.settings_list.addLayout(lay3)
-        self.settings_list.addLayout(lay4)
-        self.settings_list.addLayout(lay5)
+        self.optionbox1Content.addLayout(lay1)
+        self.optionbox1Content.addLayout(lay2)
+        self.optionbox1Content.addLayout(lay3)
+        self.optionbox1Content.addLayout(lay4)
+        self.optionbox1Content.addLayout(lay5)
+        self.optionbox1.setLayout(self.optionbox1Content)
 
-
+        # Create one optionbox for the time being right
         self.optionbox2 = QGroupBox('Reports')
-        self.settings_list = QVBoxLayout(self.optionbox2)
+        self.optionbox2Content = QVBoxLayout(self.optionbox2)
+        layout.addWidget(self.optionbox2, 0, 1)
 
-        # ====================    Create Content for Second Option box on Top Right     ====================
         self.subj_Admission = QLabel('Admission:\t')
         self.lineEditAdmission = QLineEdit()
         lay6 = QHBoxLayout()
@@ -106,7 +94,7 @@ class PreoperativeDialog(QDialog):
         lay6.addWidget(self.lineEditAdmission)
         lay6.addStretch()
 
-        self.subj_Dismissal = QLabel('Dismissal:\t')
+        self.subj_Dismissal = QLabel('Dismissal:\t\t')
         self.lineEditDismissal = QLineEdit()
         lay7 = QHBoxLayout()
         lay7.addWidget(self.subj_Dismissal)
@@ -127,15 +115,18 @@ class PreoperativeDialog(QDialog):
         lay9.addWidget(self.lineEditReportPreop)
         lay9.addStretch()
 
-        self.settings_list.addLayout(lay6)
-        self.settings_list.addLayout(lay7)
-        self.settings_list.addLayout(lay8)
-        self.settings_list.addLayout(lay9)
+        self.optionbox2Content.addLayout(lay6)
+        self.optionbox2Content.addLayout(lay7)
+        self.optionbox2Content.addLayout(lay8)
+        self.optionbox2Content.addLayout(lay9)
+        self.optionbox2.setLayout(self.optionbox2Content)
+
+        # optionbox3
 
         self.optionbox3 = QGroupBox('Files/Scans')
-        self.settings_list = QVBoxLayout(self.optionbox3)
+        self.optionbox3Content = QVBoxLayout(self.optionbox3)
+        layout.addWidget(self.optionbox3, 0, 2)
 
-        # ====================    Create Content for Third Option box on Top Right     ====================
         self.subj_Video = QLabel('Video:\t')
         self.lineEditVideo = QLineEdit()
         lay10 = QHBoxLayout()
@@ -143,28 +134,30 @@ class PreoperativeDialog(QDialog):
         lay10.addWidget(self.lineEditVideo)
         lay10.addStretch()
 
-        self.subj_VideoFile = QLabel('Video File:\t')
+        self.subj_VideoFile = QLabel('Video File:')
         self.lineEditVideoFile = QLineEdit()
         lay11 = QHBoxLayout()
         lay11.addWidget(self.subj_VideoFile)
         lay11.addWidget(self.lineEditVideoFile)
         lay11.addStretch()
 
-        self.subj_MRT = QLabel('MRT:\t\t')
+        self.subj_MRT = QLabel('MRT:\t')
         self.lineEditMRT = QLineEdit()
         lay12 = QHBoxLayout()
         lay12.addWidget(self.subj_MRT)
         lay12.addWidget(self.lineEditMRT)
         lay12.addStretch()
 
-        self.settings_list.addLayout(lay10)
-        self.settings_list.addLayout(lay11)
-        self.settings_list.addLayout(lay12)
+        self.optionbox3Content.addLayout(lay10)
+        self.optionbox3Content.addLayout(lay11)
+        self.optionbox3Content.addLayout(lay12)
+        self.optionbox3.setLayout(self.optionbox3Content)
 
+        #optionbox 4
         self.optionbox4 = QGroupBox('DBS Decision')
-        self.settings_list = QVBoxLayout(self.optionbox4)
+        self.optionbox4Content = QVBoxLayout(self.optionbox4)
+        layout.addWidget(self.optionbox4, 1, 0)
 
-        # ====================    Create Content for Fourth Option box on Top Right     ====================
         self.subj_OutpatContact = QLabel('Outpat Contact:\t')
         self.lineEditOutpatContact = QLineEdit()
         lay13 = QHBoxLayout()
@@ -172,7 +165,7 @@ class PreoperativeDialog(QDialog):
         lay13.addWidget(self.lineEditOutpatContact)
         lay13.addStretch()
 
-        self.subj_nch = QLabel('nch:\t')
+        self.subj_nch = QLabel('nch:\t\t')
         self.lineEditnch = QLineEdit()
         lay14 = QHBoxLayout()
         lay14.addWidget(self.subj_nch)
@@ -200,46 +193,34 @@ class PreoperativeDialog(QDialog):
         lay17.addWidget(self.lineEditDBSConference)
         lay17.addStretch()
 
-        self.subj_DecisionDBS = QLabel('Decision DBS:\t\t')
+        self.subj_DecisionDBS = QLabel('Decision DBS:\t')
         self.lineEditDecisionDBS = QLineEdit()
         lay18 = QHBoxLayout()
         lay18.addWidget(self.subj_DecisionDBS)
         lay18.addWidget(self.lineEditDecisionDBS)
         lay18.addStretch()
 
-        self.settings_list.addLayout(lay13)
-        self.settings_list.addLayout(lay14)
-        self.settings_list.addLayout(lay15)
-        self.settings_list.addLayout(lay16)
-        self.settings_list.addLayout(lay17)
-        self.settings_list.addLayout(lay18)
+        self.optionbox4Content.addLayout(lay13)
+        self.optionbox4Content.addLayout(lay14)
+        self.optionbox4Content.addLayout(lay15)
+        self.optionbox4Content.addLayout(lay16)
+        self.optionbox4Content.addLayout(lay17)
+        self.optionbox4Content.addLayout(lay18)
+        self.optionbox4.setLayout(self.optionbox4Content)
 
-
-        self.optionbox5 = QGroupBox('LEDD')
-        self.settings_list = QVBoxLayout(self.optionbox5)
-
-        # ====================    Create Content for Fifth Option box on Top Right     ====================
-        self.subj_LEDD = QLabel('LEDD:\t')
-        self.lineEditLEDD = QLineEdit()
-        lay19 = QHBoxLayout()
-        lay19.addWidget(self.subj_LEDD)
-        lay19.addWidget(self.lineEditLEDD)
-        lay19.addStretch()
-
-        self.settings_list.addLayout(lay19)
-
+        # optionbox 6
         self.optionbox6 = QGroupBox('Tests')
-        self.settings_list = QVBoxLayout(self.optionbox6)
+        self.optionbox6Content = QVBoxLayout(self.optionbox6)
+        layout.addWidget(self.optionbox6, 1, 1)
 
-        # ====================    Create Content for Sixth Option box on Top Right     ====================
-        self.subj_BDI2 = QLabel('BDI2:\t')
+        self.subj_BDI2 = QLabel('BDI2:\t\t')
         self.lineEditBDI2 = QLineEdit()
         lay20 = QHBoxLayout()
         lay20.addWidget(self.subj_BDI2)
         lay20.addWidget(self.lineEditBDI2)
         lay20.addStretch()
 
-        self.subj_DemTect = QLabel('DemTect:\t')
+        self.subj_DemTect = QLabel('DemTect:\t\t')
         self.lineEditDemTect = QLineEdit()
         lay21 = QHBoxLayout()
         lay21.addWidget(self.subj_DemTect)
@@ -260,7 +241,7 @@ class PreoperativeDialog(QDialog):
         lay23.addWidget(self.lineEditfpcit_spect)
         lay23.addStretch()
 
-        self.subj_HRUQ = QLabel('HRUQ:\t')
+        self.subj_HRUQ = QLabel('HRUQ:\t\t')
         self.lineEditHRUQ = QLineEdit()
         lay24 = QHBoxLayout()
         lay24.addWidget(self.subj_HRUQ)
@@ -275,152 +256,126 @@ class PreoperativeDialog(QDialog):
         lay25.addStretch()
 
         self.subj_HYOff = QLabel('H&Y Off:\t\t')
-        self.lineEditHYOff= QLineEdit()
+        self.lineEditHYOff = QLineEdit()
         lay26 = QHBoxLayout()
         lay26.addWidget(self.subj_HYOff)
         lay26.addWidget(self.lineEditHYOff)
         lay26.addStretch()
 
-        self.subj_icVRCS = QLabel('icVRCS:\t')
-        self.lineEditicVRCS = QLineEdit()
-        lay27 = QHBoxLayout()
-        lay27.addWidget(self.subj_icVRCS)
-        lay27.addWidget(self.lineEditicVRCS)
-        lay27.addStretch()
-
-        self.subj_inexVRCS = QLabel('inexVRCS:\t')
-        self.lineEditinexVRCS = QLineEdit()
-        lay28 = QHBoxLayout()
-        lay28.addWidget(self.subj_inexVRCS)
-        lay28.addWidget(self.lineEditinexVRCS)
-        lay28.addStretch()
-
         self.subj_MMST = QLabel('MMST:\t\t')
         self.lineEditMMST = QLineEdit()
-        lay29 = QHBoxLayout()
-        lay29.addWidget(self.subj_MMST)
-        lay29.addWidget(self.lineEditMMST)
-        lay29.addStretch()
+        lay27 = QHBoxLayout()
+        lay27.addWidget(self.subj_MMST)
+        lay27.addWidget(self.lineEditMMST)
+        lay27.addStretch()
 
-        self.subj_MoCa = QLabel('MoCa:\t')
+        self.subj_MoCa = QLabel('MoCa:\t\t')
         self.lineEditMoCa = QLineEdit()
-        lay30 = QHBoxLayout()
-        lay30.addWidget(self.subj_MoCa)
-        lay30.addWidget(self.lineEditMoCa)
-        lay30.addStretch()
+        lay28 = QHBoxLayout()
+        lay28.addWidget(self.subj_MoCa)
+        lay28.addWidget(self.lineEditMoCa)
+        lay28.addStretch()
 
-        self.subj_NMSQ = QLabel('NMSQ:\t')
+        self.subj_NMSQ = QLabel('NMSQ:\t\t')
         self.lineEditNMSQ = QLineEdit()
-        lay31 = QHBoxLayout()
-        lay31.addWidget(self.subj_NMSQ)
-        lay31.addWidget(self.lineEditNMSQ)
-        lay31.addStretch()
+        lay29 = QHBoxLayout()
+        lay29.addWidget(self.subj_NMSQ)
+        lay29.addWidget(self.lineEditNMSQ)
+        lay29.addStretch()
 
         self.subj_PDQ8 = QLabel('PDQ8:\t\t')
         self.lineEditPDQ8 = QLineEdit()
-        lay32 = QHBoxLayout()
-        lay32.addWidget(self.subj_PDQ8)
-        lay32.addWidget(self.lineEditPDQ8)
-        lay32.addStretch()
+        lay30 = QHBoxLayout()
+        lay30.addWidget(self.subj_PDQ8)
+        lay30.addWidget(self.lineEditPDQ8)
+        lay30.addStretch()
 
-        self.subj_PDQ39 = QLabel('PDQ39:\t')
+        self.subj_PDQ39 = QLabel('PDQ39:\t\t')
         self.lineEditPDQ39 = QLineEdit()
-        lay33 = QHBoxLayout()
-        lay33.addWidget(self.subj_PDQ39)
-        lay33.addWidget(self.lineEditPDQ39)
-        lay33.addStretch()
+        lay31 = QHBoxLayout()
+        lay31.addWidget(self.subj_PDQ39)
+        lay31.addWidget(self.lineEditPDQ39)
+        lay31.addStretch()
 
         self.subj_SE = QLabel('S&E:\t\t')
         self.lineEditSE = QLineEdit()
-        lay34 = QHBoxLayout()
-        lay34.addWidget(self.subj_SE)
-        lay34.addWidget(self.lineEditSE)
-        lay34.addStretch()
+        lay32 = QHBoxLayout()
+        lay32.addWidget(self.subj_SE)
+        lay32.addWidget(self.lineEditSE)
+        lay32.addStretch()
 
         self.subj_UPDRSII = QLabel('UPDRS II:\t')
         self.lineEditUPDRSII = QLineEdit()
-        lay35 = QHBoxLayout()
-        lay35.addWidget(self.subj_UPDRSII)
-        lay35.addWidget(self.lineEditUPDRSII)
-        lay35.addStretch()
+        lay33 = QHBoxLayout()
+        lay33.addWidget(self.subj_UPDRSII)
+        lay33.addWidget(self.lineEditUPDRSII)
+        lay33.addStretch()
 
         self.subj_UPDRSIIIOn = QLabel('UPDRS III On:\t')
         self.lineEditUPDRSIIIOn = QLineEdit()
+        lay34 = QHBoxLayout()
+        lay34.addWidget(self.subj_UPDRSIIIOn)
+        lay34.addWidget(self.lineEditUPDRSIIIOn)
+        lay34.addStretch()
+
+        self.subj_UPDRSIIIOff = QLabel('UPDRS III Off:\t')
+        self.lineEditUPDRSIIIOff = QLineEdit()
+        lay35 = QHBoxLayout()
+        lay35.addWidget(self.subj_UPDRSIIIOff)
+        lay35.addWidget(self.lineEditUPDRSIIIOff)
+        lay35.addStretch()
+
+
+        self.optionbox6Content.addLayout(lay20)
+        self.optionbox6Content.addLayout(lay21)
+        self.optionbox6Content.addLayout(lay22)
+        self.optionbox6Content.addLayout(lay23)
+        self.optionbox6Content.addLayout(lay24)
+        self.optionbox6Content.addLayout(lay25)
+        self.optionbox6Content.addLayout(lay26)
+        self.optionbox6Content.addLayout(lay27)
+        self.optionbox6Content.addLayout(lay28)
+        self.optionbox6Content.addLayout(lay29)
+        self.optionbox6Content.addLayout(lay30)
+        self.optionbox6Content.addLayout(lay31)
+        self.optionbox6Content.addLayout(lay32)
+        self.optionbox6Content.addLayout(lay33)
+        self.optionbox6Content.addLayout(lay34)
+        self.optionbox6Content.addLayout(lay35)
+        self.optionbox6.setLayout(self.optionbox6Content)
+
+        # optionbox 5
+        self.optionbox5 = QGroupBox('LEDD')
+        self.optionbox5Content = QVBoxLayout(self.optionbox5)
+        layout.addWidget(self.optionbox5, 3, 0)
+
+        self.subj_LEDD = QLabel('LEDD:\t\t')
+        self.lineEditLEDD = QLineEdit()
+        lay19 = QHBoxLayout()
+        lay19.addWidget(self.subj_LEDD)
+        lay19.addWidget(self.lineEditLEDD)
+        lay19.addStretch()
+
+        self.optionbox5Content.addLayout(lay19)
+        self.optionbox5.setLayout(self.optionbox5Content)
+
+        # optionbox 7
+        self.optionbox7 = QGroupBox('Notes')
+        self.optionbox7Content = QVBoxLayout(self.optionbox7)
+        layout.addWidget(self.optionbox7, 3, 1)
+
+        self.subj_Notes = QLabel('Notes:\t\t')
+        self.lineEditNotes = QLineEdit()
         lay36 = QHBoxLayout()
-        lay36.addWidget(self.subj_UPDRSIIIOn)
-        lay36.addWidget(self.lineEditUPDRSIIIOn)
+        lay36.addWidget(self.subj_Notes)
+        lay36.addWidget(self.lineEditNotes)
         lay36.addStretch()
 
-        self.subj_UPDRSIIIOff = QLabel('UPDRS III Off:\t\t')
-        self.lineEditUPDRSIIIOff = QLineEdit()
-        lay37 = QHBoxLayout()
-        lay37.addWidget(self.subj_UPDRSIIIOff)
-        lay37.addWidget(self.lineEditUPDRSIIIOff)
-        lay37.addStretch()
-
-        self.settings_list.addLayout(lay20)
-        self.settings_list.addLayout(lay21)
-        self.settings_list.addLayout(lay22)
-        self.settings_list.addLayout(lay23)
-        self.settings_list.addLayout(lay24)
-        self.settings_list.addLayout(lay25)
-        self.settings_list.addLayout(lay26)
-        self.settings_list.addLayout(lay27)
-        self.settings_list.addLayout(lay28)
-        self.settings_list.addLayout(lay29)
-        self.settings_list.addLayout(lay30)
-        self.settings_list.addLayout(lay31)
-        self.settings_list.addLayout(lay32)
-        self.settings_list.addLayout(lay33)
-        self.settings_list.addLayout(lay34)
-        self.settings_list.addLayout(lay35)
-        self.settings_list.addLayout(lay36)
-        self.settings_list.addLayout(lay37)
+        self.optionbox7Content.addLayout(lay36)
+        self.optionbox7.setLayout(self.optionbox7Content)
 
 
-        self.optionbox7 = QGroupBox('Notes')
-        self.settings_list = QVBoxLayout(self.optionbox7)
-
-        # ====================    Create Content for Seventh Option box on Top Right     ====================
-        self.subj_Notes = QLabel('Notes:\t')
-        self.lineEditNotes = QLineEdit()
-        lay38 = QHBoxLayout()
-        lay38.addWidget(self.subj_Notes)
-        lay38.addWidget(self.lineEditNotes)
-        lay38.addStretch()
-
-        self.settings_list.addLayout(lay38)
-
-        # ====================    Create Content for Buttons at the Bottom      ====================
-        layout_bottom = QHBoxLayout()
-        self.button_save_return = QPushButton('Save settings \nand return')
-        self.button_save_return.clicked.connect(self.onClickedSaveReturn)
-
-        layout_bottom.addStretch(1)
-        layout_bottom.addWidget(self.button_save_return)
-
-        self.layout.addWidget(self.optionbox1)
-        self.layout.addWidget(self.optionbox2)
-        self.layout.addWidget(self.optionbox3)
-        self.layout.addWidget(self.optionbox4)
-        self.layout.addWidget(self.optionbox5)
-        self.layout.addWidget(self.optionbox6)
-        self.layout.addWidget(self.optionbox7)
-        self.layout.addLayout(layout_bottom)
-
-        grid = QGridLayout(self)
-        grid.addWidget(self.optionbox1, 0, 0)
-        grid.addWidget(self.optionbox2, 0, 1)
-        grid.addWidget(self.optionbox3, 0, 2)
-        grid.addWidget(self.optionbox4, 1, 0)
-        grid.addWidget(self.optionbox5, 1, 1)
-        grid.addWidget(self.optionbox6, 1, 2)
-        grid.addWidget(self.optionbox7, 2, 0)
-        self.setLayout(grid)
-
-
-        # In the next lines, actions are defined when Buttons are pressed
-
+    # In the next lines, actions are defined when Buttons are pressed
     @QtCore.pyqtSlot()
     def onClickedSaveReturn(self):
         print('Done!')
