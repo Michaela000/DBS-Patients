@@ -1,4 +1,5 @@
 # Hallo David.
+
 # Ich habe mich die letzten zwei Tage nochmal ausführlich mit den Tabellen von Pre und Postoperative beschäftigt
 # (bei Intraoperative habe ich leider keine Patienten)
 # Insgesamt sind es viele kleine Unstimmigkeiten, die ich mit Dir besprechen müsste z.B. Unterschiede zu Deiner Tabelle oder
@@ -6,6 +7,9 @@
 # Ich glaube allerdings schon, dass das Ganze etwas Zeit in Anspruch nehmen wird und deswegen wollte ich es schon einmal angesprochen haben.
 # Könnten wir dafür vielleicht noch einmal einen Termin vereinbaren? Ich denke das sollte sowohl telefonisch als auch persönlich gut machbar sein.
 # Ich würde mich da nach Dir richten. Zeitlich bin ich sehr offen, auch wenn es sehr früh oder spät wäre.
+##==> Was hältst Du davon, dass wir uns einfach auf die GUIs konzentrieren. Dann ist Deine Arbeit das Programmieren der
+# Abläufe (plus natürlich das was Du schon hast). Wäre das für Dich ok? Die IPG LIste habe ich Dir eben geschickt!
+
 
 # Ein paar allgemeine Fragen hätte ich aber noch:
 # Wenn bei Levodopa LT bzw RT steht, gehört das dann zu "Levodopa/Carbidopa" oder zu "Levodopa/Carbidopa CR"?
@@ -16,7 +20,10 @@
     # z.B. 900 Levodopa; 100 Levodopa CR; 2.62 Pramipexole; 100 Safinamid und 50 Opicapone
     # meine Rechnung wäre: 900*1 + 100*0.75 + 2.62*100 + 100*1 + 50*0.33 = 1353.5
     # Bei dir steht allerdings ein viel höheres Ergebnis von 1759.55
-    # ich habe die Zahlen zum multiplizieren alle aus der Tabelle 
+    # ich habe die Zahlen zum multiplizieren alle aus der Tabelle
+##==> Das ist ein Fehler in meiner Rechnung. Ich hatte da einen Faktor von 1,3 für die THS mit drin, warum auch immer.
+# Deine Werte stimmen. Sorry!
+
 
 
 import sys
