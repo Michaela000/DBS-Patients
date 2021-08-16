@@ -2,6 +2,7 @@
 # Das hat viel besser geklappt. So gefällt es mir eigentlich schon ziemlich gut. Es sind aber immernoch genauso viele Gruppen aber vielleicht könnte man nochmal
 # überlegen "Notes" oder "LEDD" irgendwo anders einzusortieren. Aber es klappt auf jeden Fall, das hat mich sehr gefreut.
 
+
 import sys
 from PyQt5 import QtCore
 
