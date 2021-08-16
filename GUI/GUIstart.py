@@ -10,8 +10,12 @@
 
 # Ein paar allgemeine Fragen hätte ich aber noch:
 # 1. Wenn bei Levodopa LT bzw RT steht, gehört das dann zu "Levodopa/Carbidopa" oder zu "Levodopa/Carbidopa CR"?
+##==> Glaube das ist ein Tippfehler, RT gibt es nicht
 # 2. Wenn da steht "Nacom 200mg" sind das dann wirklich 200 oder aus irgendeinem Grund auch nur 100mg?
+##==> Nacom sind tatsächlich 200mg Levodopa
 # 3. Es gibt auch so kryptische Medikamente wo steht: "Stalevo 50/12,5/200mg" oder "Levocomp ret. 200mg/50mg": wie muss ich die berechnen?
+##==> STalevo ist ein KOmbi Präparat, das aus LEvodopa, Carbidopa (nicht wichtig) und Entacapon besteht.
+#==> Kannst Du bitte nochmal die Bilder bei 'temp' hochladen, dass ich mal schauen kann, wie das aussieht? Ich finde das nicht mehrt
 
 
 import sys
