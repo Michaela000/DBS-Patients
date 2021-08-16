@@ -3,6 +3,7 @@
 # 1. Wenn bei Levodopa LT bzw RT steht, gehört das dann zu "Levodopa/Carbidopa" oder zu "Levodopa/Carbidopa CR"?
 ##==> Glaube das ist ein Tippfehler, RT gibt es nicht
 ### --> und wozu gehört dann LT?
+#### -> Das ist nur die Formuluierung (lösliche Tablette), die besonder schnell aufgenommen wird
 
 # 3. Es gibt auch so kryptische Medikamente wo steht: "Stalevo 50/12,5/200mg" oder "Levocomp ret. 200mg/50mg": wie muss ich die berechnen?
 ##==> Stalevo ist ein Kombi Präparat, das aus Levodopa, Carbidopa (nicht wichtig) und Entacapon besteht.
