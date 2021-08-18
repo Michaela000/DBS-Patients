@@ -1,19 +1,3 @@
-# Hallo David.
-
-# 1. Wenn bei Levodopa LT bzw RT steht, gehört das dann zu "Levodopa/Carbidopa" oder zu "Levodopa/Carbidopa CR"?
-##==> Glaube das ist ein Tippfehler, RT gibt es nicht
-### --> und wozu gehört dann LT?
-#### -> Das ist nur die Formuluierung (lösliche Tablette), die besonder schnell aufgenommen wird
-
-# 3. Es gibt auch so kryptische Medikamente wo steht: "Stalevo 50/12,5/200mg" oder "Levocomp ret. 200mg/50mg": wie muss ich die berechnen?
-##==> Stalevo ist ein Kombi Präparat, das aus Levodopa, Carbidopa (nicht wichtig) und Entacapon besteht.
-#==> Kannst Du bitte nochmal die Bilder bei 'temp' hochladen, dass ich mal schauen kann, wie das aussieht? Ich finde das nicht mehrt
-    ### --> welche Bilder? Die Tabellen habe ich noch nicht hochgeladen, da sie nicht im csv Format sind. Oder meinst du etwas anderes?
-    #       Soll ich dann noch einen Ordner auf GitHub mit dem Namen "temp" erstellen? Also ich habe einen Ordner temp auf meinem PC, aber
-    #       dazu hast du keinen direkten Zugriff oder?
-    #       Die Angaben von Stalevo etc. steht in den Briefen (da ist bisher einfach eine markierte Lücke in der Tabelle).
-
-
 import sys
 
 from PyQt5 import QtCore

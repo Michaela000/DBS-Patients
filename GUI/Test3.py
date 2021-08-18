@@ -1,8 +1,4 @@
-# Hi Michaela, ich habe mal schnell eine (grobe Fassung) von dem geschrieben, wie ich es in etwas beim letzten Mal hatte.
-# Du wirst sehen, da fehlt noch einiges und es stimmt vom Layout noch nicht ganz, aber so in etwas würde ich mir das
-# vorstellen. Es ist etwas umständlich zu verstehen anfangs, aber wenn man erst einmal verstanden hat, wie es geht ist
-# es nicht so schwer. Schau' doch einfach mal rein und versuche das doch vielleicht zu vervollständigen, wenn Du magst.
-# Ich kümmere mich um die Verknüpfungen und das Auslesen/Schreiben aus den/in die Tabellen später.
+# Hallo David. Alle Updates habe ich in GUI_Intraoperative hochgeladen.
 
 import sys
 from PyQt5.Qt import *
