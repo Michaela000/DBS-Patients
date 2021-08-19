@@ -7,13 +7,13 @@ import sys
 from PyQt5 import QtCore
 
 from PyQt5.QtWidgets import QApplication, QDialog, QPushButton, QVBoxLayout, QGroupBox, \
-    QHBoxLayout, QFileDialog, QWidget, QRadioButton, QGridLayout, QLineEdit, QLabel, QComboBox
+    QHBoxLayout, QFileDialog, QWidget, QGridLayout, QLineEdit, QLabel, QComboBox
 
 textfield_width = 450
 
 
 class PreoperativeDialog(QDialog):
-    """Dialog to introduce the medication at a specific date. All unrelated """
+    """Dialog to introduce all important information of preoperative patients."""
 
     def __init__(self, parent=None):
         """Initializer."""
@@ -391,6 +391,9 @@ class PreoperativeDialog(QDialog):
         fileName, _ = QFileDialog.getSaveFileName(self, "QFileDialog.getSaveFileName()", "test.txt", "All Files(*)",
                                                   options=options)
         print(fileName)
+
+    def close(self):
+        self.saveFileDialog()
 
     # for opening
     def open_dialog_box(self):

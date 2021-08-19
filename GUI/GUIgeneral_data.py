@@ -1,18 +1,11 @@
 import os
 import sys
 
-import numpy as np
-import pandas as pds
 from PyQt5 import QtCore
 from PyQt5.QtWidgets import QApplication, QDialog, QPushButton, QLineEdit, QVBoxLayout, QGroupBox, QHBoxLayout, \
     QWidget, QLabel, QComboBox, QCalendarWidget
 
-from utils.helper_functions import General, Output
-
-
-
-# Hallo David ich habe alles so verändert wie du es geschrieben hast. Ich war mir nur unten bei dem Code nicht sicher,
-# zu welcher anderen GUI dieser Abschnitt passen könnte, daher habe ich ihn fürs Erste noch stehen lassen.
+from utils.helper_functions import General
 
 
 class CheckForGeneralData(QDialog):
@@ -35,7 +28,7 @@ class CheckForGeneralData(QDialog):
         self.optionbox_guistart = QGroupBox('General data for new subject:')
         self.settings_optionsbox1 = QVBoxLayout(self.optionbox_guistart)
 
-        self.subj_surname = QLabel('Surname:\t\t')
+        self.subj_surname = QLabel('Surname:\t\t\t')
         self.lineEditSurname = QLineEdit()
 
         self.lineEditSurname.setFixedWidth(textfield_width)
@@ -195,17 +188,6 @@ class CheckForGeneralData(QDialog):
 
     def showDate(self, date):
         self.lineEditBirthdate.setText(str(date.toPyDate()))
-
-    def fill_forms(self):  # TODO: not needed here, remove when transferred to function needing this
-        """in this function all text fields are filled with content (iff available) """
-        df = General.import_dataframe(os.path.join(os.path.join(os.getcwd(), 'data', 'general_data.csv')))
-        try:
-            idx = pds.read_csv(os.path.join(os.getcwd(), 'temp', 'current_subj.csv')).iloc[0].idx
-        except FileNotFoundError:
-            idx = np.nan
-
-        self.lineEditSurname.setText(df.iloc[idx].Surname)
-        self.lineEditName.setText(df.iloc[idx].Name)
 
     # In the next lines, actions are defined when Buttons are pressed
     @QtCore.pyqtSlot()
