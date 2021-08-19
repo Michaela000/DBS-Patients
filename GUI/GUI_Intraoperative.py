@@ -23,14 +23,14 @@ class IntraoperativeDialog(QDialog):
         self.setGeometry(200, 100, 280, 170)
         self.move(850, 200)
 
-        layout = QGridLayout(self)
+        layout_general = QGridLayout(self)
         widget = QWidget(self)
-        self.setLayout(layout)
+        self.setLayout(layout_general)
 
         # Optionbox upper left corner
         self.optionbox1 = QGroupBox('Admissions')
         self.optionbox1Content = QVBoxLayout(self.optionbox1)
-        layout.addWidget(self.optionbox1, 0, 0)
+        layout_general.addWidget(self.optionbox1, 0, 0)
 
         self.admission_NCh = QLabel('Admission Neurosurgery (dd/mm/yyyy):\t')
         self.lineEditAdmNCh = QLineEdit()
@@ -70,7 +70,7 @@ class IntraoperativeDialog(QDialog):
         # Optionbox upper right corner
         self.optionbox2 = QGroupBox('Surgery')
         self.optionbox2Content = QVBoxLayout(self.optionbox2)
-        layout.addWidget(self.optionbox2, 0, 1)
+        layout_general.addWidget(self.optionbox2, 0, 1)
 
         self.surgeryDate = QLabel('Surgery Date (dd/mm/yyyy):\t\t')
         self.lineEditAdmNCh = QLineEdit()
@@ -99,7 +99,7 @@ class IntraoperativeDialog(QDialog):
         # Optionbox middle left
         self.optionbox3 = QGroupBox('Intraoperative')
         self.optionbox3Content = QVBoxLayout(self.optionbox3)
-        layout.addWidget(self.optionbox3, 1, 0)
+        layout_general.addWidget(self.optionbox3, 1, 0)
 
         self.ReportNeurCheck = QCheckBox()
         self.ReportNeur = QLabel('Report Neurology')
@@ -159,7 +159,7 @@ class IntraoperativeDialog(QDialog):
         # Optionbox middle right
         self.optionbox4 = QGroupBox('System')
         self.optionbox4Content = QVBoxLayout(self.optionbox4)
-        layout.addWidget(self.optionbox4, 1, 1)
+        layout_general.addWidget(self.optionbox4, 1, 1)
 
         self.LeadImplanted = QLabel('Lead:\t\t\t')
         self.LeadImplantedList = QListWidget()
@@ -194,7 +194,7 @@ class IntraoperativeDialog(QDialog):
         # Optionbox lower middle left
         self.optionbox5 = QGroupBox('Coordinates DBS leads')
         self.optionbox5Content = QHBoxLayout(self.optionbox5)
-        layout.addWidget(self.optionbox5, 2, 0)
+        layout_general.addWidget(self.optionbox5, 2, 0)
 
         self.grid_coordinates_left = QGridLayout()
         for i in range(0, 8):
@@ -211,8 +211,8 @@ class IntraoperativeDialog(QDialog):
 
         #optionbox lower middle right
         self.optionbox6 = QGroupBox('Activation')
-        self.optionbox6Content = QHBoxLayout(self.optionbox6)
-        layout.addWidget(self.optionbox6, 2, 1)
+        self.optionbox6Content = QVBoxLayout(self.optionbox6)
+        layout_general.addWidget(self.optionbox6, 2, 1)
 
         self.PostopCTScanCheck = QCheckBox()
         self.PostopCTScan = QLabel('Postoperative CT Scan')
@@ -226,20 +226,28 @@ class IntraoperativeDialog(QDialog):
         box6line1 = QHBoxLayout()
         box6line1.addWidget(self.PostopCTScanCheck)
         box6line1.addWidget(self.PostopCTScan)
-        box6line1.addWidget(self.ImplVERCISE_DBSCheck)
-        box6line1.addWidget(self.ImplVERCISE_DBS)
-        box6line1.addWidget(self.ActiveVERCISE_DBSCheck)
-        box6line1.addWidget(self.ActiveVERCISE_DBS)
-        box6line1.addWidget(self.InclusionQualiPaCheck)
-        box6line1.addWidget(self.InclusionQualiPa)
-        box6line1.addStretch()
+
+        box6line2 = QHBoxLayout()
+        box6line2.addWidget(self.ImplVERCISE_DBSCheck)
+        box6line2.addWidget(self.ImplVERCISE_DBS)
+
+        box6line3 = QHBoxLayout()
+        box6line3.addWidget(self.ActiveVERCISE_DBSCheck)
+        box6line3.addWidget(self.ActiveVERCISE_DBS)
+
+        box6line4 = QHBoxLayout()
+        box6line4.addWidget(self.InclusionQualiPaCheck)
+        box6line4.addWidget(self.InclusionQualiPa)
 
         self.optionbox6Content.addLayout(box6line1)
+        self.optionbox6Content.addLayout(box6line2)
+        self.optionbox6Content.addLayout(box6line3)
+        self.optionbox6Content.addLayout(box6line4)
 
         #optionbox 3th row left
         self.optionbox7 = QGroupBox('DBS settings after dismissal')
         self.optionbox7Content = QHBoxLayout(self.optionbox7)
-        layout.addWidget(self.optionbox7, 3, 0)
+        layout_general.addWidget(self.optionbox7, 3, 0)
 
         self.DBS_settings_left = QGridLayout()
         for i in range(0, 1):
@@ -257,7 +265,7 @@ class IntraoperativeDialog(QDialog):
         #optionbox 3th row right
         self.optionbox8 = QGroupBox('Amplitude, Pulse and Frequency')
         self.optionbox8Content = QHBoxLayout(self.optionbox8)
-        layout.addWidget(self.optionbox8, 3, 1)
+        layout_general.addWidget(self.optionbox8, 3, 1)
 
         self.Amplitude = QLabel('Amplitude [in mA]:\t')
         self.lineEditAmplitude = QLineEdit()
@@ -286,15 +294,19 @@ class IntraoperativeDialog(QDialog):
         self.button_save = QPushButton('Save')
         self.button_save.clicked.connect(self.onClickedSaveReturn)
 
-        btn_grp = QButtonGroup(widget)
-        btn_grp.setExclusive(True)
-        btn_grp.addButton(self.button_openGUI_Medication)
-        btn_grp.buttonClicked.connect(self.on_click)
 
-        self.layout.addStretch(1)
-        self.layout.addWidget(self.button_openGUI_Medication)
-        self.layout.addWidget(self.button_close)
-        self.layout.addStretch(1)
+        hlay_bottom = QHBoxLayout()
+        hlay_bottom.addStretch(2)
+        hlay_bottom.addWidget(self.button_openGUI_Medication)
+        hlay_bottom.addWidget(self.button_save)
+        hlay_bottom.addStretch(1)
+
+        layout_general.addLayout(hlay_bottom, 4, 0, 1,3)
+
+        #layout_general.addStretch(1)
+        #layout_general.addWidget(self.button_openGUI_Medication)
+        #layout_general.addWidget(self.button_close)
+        #layout_general.addStretch(1)
 
 
 
