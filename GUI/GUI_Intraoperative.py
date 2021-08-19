@@ -1,15 +1,12 @@
-# Hallo David. Ich versuche seit Stunden irgendwie die zweite Tabelle zu formulieren. Nur mit QGridLayout habe ich
-# online keine Möglichkeit gefunden, die Spalten und Zeilen zu benennen. Aber mit QTableWidget habe ich keine Möglichkeit
-# ein leeres Textfeld mit QLineEdit einzufügen und ich kann addLayout nicht mehr verwenden. Ich stehe echt auf den Schlauch was ich als nächstes tun soll.
-# Tut mir Leid, dass ich im Moment nicht so schnell voran komme.
+# Hallo David. Ich habe mal angefangen alles andere einzufügen.
+# Ich werde heute Abend noch weiter daran arbeiten, aber ich wollte schon einmal einen Teil hochladen.
+# Gerade habe ich noch Probleme damit die Tabelle aufzuteilen und die Knöpfe zu erstellen.
 
 import sys
-
-import pandas as pd
 from PyQt5.Qt import *
-from PyQt5 import QtCore, QtWidgets
-from PyQt5.QtWidgets import QApplication, QDialog, QPushButton, QVBoxLayout, QGroupBox, \
-    QHBoxLayout, QFileDialog, QWidget, QRadioButton, QGridLayout, QTableWidget, QTableWidgetItem, QLineEdit, QLabel, QComboBox, QListWidget, QCheckBox, QButtonGroup
+from PyQt5 import QtCore
+from PyQt5.QtWidgets import QApplication, QDialog, QPushButton, QVBoxLayout, QGroupBox,  QSpacerItem, QSizePolicy, QFrame, \
+    QHBoxLayout, QFileDialog, QWidget, QRadioButton, QGridLayout, QLineEdit, QLabel, QComboBox, QListWidget, QCheckBox, QButtonGroup
 from GUI.GUI_Medication import MedicationDialog
 
 textfield_width = 450
@@ -200,16 +197,30 @@ class IntraoperativeDialog(QDialog):
 
         self.grid_coordinates_left = QGridLayout()
         for i in range(0, 8):
-            for j in range(0, 3):
-                self.grid_coordinates_left.addWidget(QLineEdit(), i, j)
+            for j in range(0, 4):
+                if j == 0:
+                    self.grid_coordinates_left.addWidget(QLabel(str(i)), i, j)
+                else:
+                    self.grid_coordinates_left.addWidget(QLineEdit(), i, j)
 
         self.grid_coordinates_right = QGridLayout()
         for i in range(0, 8):
-            for j in range(0, 3):
-                self.grid_coordinates_right.addWidget(QLineEdit(), i, j)
+            for j in range(0, 4):
+                if j != 3:
+                    # self.grid_coordinates_right.addItem(QSpacerItem(5, 1, QSizePolicy.Expanding, QSizePolicy.Expanding), i, j, 1, 1)
+                    hspacer = QSpacerItem(QSizePolicy.Expanding, QSizePolicy.Minimum)
+                    self.grid_coordinates_right.addItem(hspacer, 0, i, -1, 1)
+                    self.grid_coordinates_right.addWidget(QLineEdit(), i, j)
 
+                else:
+                    self.grid_coordinates_right.addWidget(QLabel(str(i)), i, j)
+
+        self.optionbox5Content.addStretch()
         self.optionbox5Content.addLayout(self.grid_coordinates_left)
+        self.optionbox5Content.addStretch()
         self.optionbox5Content.addLayout(self.grid_coordinates_right)
+        self.optionbox5Content.addLayout(self.grid_coordinates_right)
+        self.optionbox5Content.addStretch()
 
         #optionbox lower middle right
         self.optionbox6 = QGroupBox('Activation')
@@ -248,35 +259,21 @@ class IntraoperativeDialog(QDialog):
 
         #optionbox 3th row left
         self.optionbox7 = QGroupBox('DBS settings after dismissal')
-        self.optionbox7Content = QHBoxLayout(self.optionbox7)
+        self.optionbox7Content = QVBoxLayout(self.optionbox7)
         layout_general.addWidget(self.optionbox7, 3, 0)
 
-        self.DBS_settings_left = QGridLayout() and QTableWidget(self)
-        self.DBS_settings_left.setColumnCount(8)
-        self.DBS_settings_left.setRowCount(2)
-        self.DBS_settings_left.setMinimumWidth(500)
-        self.DBS_settings_left.setMinimumHeight(500)
-        self.DBS_settings_left.setVerticalHeaderLabels(["Left Hemisphere", "Right Hemisphere"])
-        self.DBS_settings_left.resizeColumnsToContents()
-        self.DBS_settings_left.resizeRowsToContents()
-        self.DBS_settings_left.show()
+        self.DBS_settings_left = QGridLayout()
+        for i in range(0, 1):
+            for j in range(0, 8):
+                self.DBS_settings_left.addWidget(QLineEdit(), i, j)
 
-        self.optionbox7.addLayout(self.DBS_settings_left)
+        self.DBS_settings_right = QGridLayout()
+        for i in range(0, 1):
+            for j in range(0, 8):
+                self.DBS_settings_right.addWidget(QLineEdit(), i, j)
 
-
-        #self.DBS_settings_left = QGridLayout()
-        #for i in range(0, 1):
-        #    for j in range(0, 8):
-        #        self.DBS_settings_left.addWidget(QLineEdit(), i, j)
-
-
-        #self.DBS_settings_right = QGridLayout()
-        #for i in range(0, 1):
-        #    for j in range(0, 8):
-        #        self.DBS_settings_right.addWidget(QLineEdit(), i, j)
-
-        #self.optionbox7Content.addLayout(self.DBS_settings_left)
-        #self.optionbox7Content.addLayout(self.DBS_settings_right)
+        self.optionbox7Content.addLayout(self.DBS_settings_left)
+        self.optionbox7Content.addLayout(self.DBS_settings_right)
 
         #optionbox 3th row right
         self.optionbox8 = QGroupBox('Amplitude, Pulse and Frequency')
@@ -320,12 +317,9 @@ class IntraoperativeDialog(QDialog):
         layout_general.addLayout(hlay_bottom, 4, 0, 1,3)
 
 
+
     # In the next lines, actions are defined when Buttons are pressed
     @QtCore.pyqtSlot()
-    def on_click_table(self):
-        print("\n")
-        for currentQTableWidgetItem in self.tableWidget.selectedItems():
-            print(currentQTableWidgetItem.row(), currentQTableWidgetItem.column(), currentQTableWidgetItem.text())
 
     def on_click(self):
         if self.button_openGUI_Medication.isChecked():  # selects three different options available
