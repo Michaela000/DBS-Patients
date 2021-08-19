@@ -11,7 +11,6 @@ from GUI.GUI_Medication import MedicationDialog
 
 textfield_width = 450
 
-
 class IntraoperativeDialog(QDialog):
     """Dialog to introduce the medication at a specific date. All unrelated """
 
