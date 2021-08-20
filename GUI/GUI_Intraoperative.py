@@ -1,16 +1,15 @@
 # Hallo David. Vielen Dank für die Hilfe. Jetzt hat eigentlich alles geklappt.
 
 import sys
-from PyQt5.Qt import *
 from PyQt5 import QtCore
-from PyQt5.QtWidgets import QApplication, QDialog, QPushButton, QVBoxLayout, QGroupBox,  QSpacerItem, QSizePolicy, QFrame, \
-    QHBoxLayout, QFileDialog, QWidget, QRadioButton, QGridLayout, QLineEdit, QLabel, QComboBox, QListWidget, QCheckBox, QButtonGroup
+from PyQt5.QtWidgets import QApplication, QDialog, QPushButton, QVBoxLayout, QGroupBox,  QSpacerItem, QSizePolicy, \
+    QHBoxLayout, QFileDialog, QWidget, QGridLayout, QLineEdit, QLabel, QListWidget, QCheckBox
 from GUI.GUI_Medication import MedicationDialog
 
 textfield_width = 450
 
 class IntraoperativeDialog(QDialog):
-    """Dialog to introduce the medication at a specific date. All unrelated """
+    """Dialog to introduce all important information of intraoperative patients. """
 
     def __init__(self, parent=None):
         """Initializer."""
@@ -240,18 +239,22 @@ class IntraoperativeDialog(QDialog):
         box6line1 = QHBoxLayout()
         box6line1.addWidget(self.PostopCTScanCheck)
         box6line1.addWidget(self.PostopCTScan)
+        box6line1.addStretch()
 
         box6line2 = QHBoxLayout()
         box6line2.addWidget(self.ImplVERCISE_DBSCheck)
         box6line2.addWidget(self.ImplVERCISE_DBS)
+        box6line2.addStretch()
 
         box6line3 = QHBoxLayout()
         box6line3.addWidget(self.ActiveVERCISE_DBSCheck)
         box6line3.addWidget(self.ActiveVERCISE_DBS)
+        box6line3.addStretch()
 
         box6line4 = QHBoxLayout()
         box6line4.addWidget(self.InclusionQualiPaCheck)
         box6line4.addWidget(self.InclusionQualiPa)
+        box6line4.addStretch()
 
         self.optionbox6Content.addLayout(box6line1)
         self.optionbox6Content.addLayout(box6line2)
