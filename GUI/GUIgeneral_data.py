@@ -18,14 +18,14 @@ class CheckForGeneralData(QDialog):
         self.calendarWindow = QWidget()
         self.setWindowTitle('Enter data for the unknown subject')
         self.setGeometry(400, 100, 1000, 400)  # left, right, width, height
-        self.move(850, 425)
+        self.move(550, 200)
         textfield_width = 450
 
         self.layout = QVBoxLayout(self)  # entire layout for GUI
         self.content_box = QVBoxLayout(self)  # content of the box
 
         # ====================    Create Content for only option box       ====================
-        self.optionbox_guistart = QGroupBox('General data for new subject:')
+        self.optionbox_guistart = QGroupBox('Please enter all data for the new subject:')
         self.settings_optionsbox1 = QVBoxLayout(self.optionbox_guistart)
 
         self.subj_surname = QLabel('Surname:\t\t\t')
@@ -64,6 +64,7 @@ class CheckForGeneralData(QDialog):
         self.subj_birthdate = QLabel('Birthdate:\t\t')
         self.lineEditBirthdate = CustomLineEdit()
         self.lineEditBirthdate.setFixedWidth(textfield_width)
+        self.lineEditBirthdate.setFixedHeight(50)
         self.lineEditBirthdate.clicked.connect(self.open_calendar)
 
         lay4 = QHBoxLayout()
@@ -71,7 +72,7 @@ class CheckForGeneralData(QDialog):
         lay4.addWidget(self.lineEditBirthdate)
         lay4.addStretch()
 
-        self.subj_PID = QLabel('PID-ORBIS:\t\t')
+        self.subj_PID = QLabel('PID (without zeros):\t')
         self.lineEditPID = QLineEdit()
 
         self.lineEditPID.setFixedWidth(textfield_width)

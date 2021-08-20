@@ -1,13 +1,10 @@
-# Hallo David.
-# Das hat viel besser geklappt. So gefällt es mir eigentlich schon ziemlich gut. Es sind aber immernoch genauso viele Gruppen aber vielleicht könnte man nochmal
-# überlegen "Notes" oder "LEDD" irgendwo anders einzusortieren. Aber es klappt auf jeden Fall, das hat mich sehr gefreut.
-
-
 import sys
 from PyQt5 import QtCore
 
-from PyQt5.QtWidgets import QApplication, QDialog, QPushButton, QVBoxLayout, QGroupBox, \
-    QHBoxLayout, QFileDialog, QWidget, QGridLayout, QLineEdit, QLabel, QComboBox
+from PyQt5.QtWidgets import QApplication, QDialog, QVBoxLayout, QGroupBox, \
+    QHBoxLayout, QFileDialog, QWidget, QGridLayout, QLineEdit, QLabel, QComboBox, QPushButton
+
+from GUI.GUI_Medication import MedicationDialog
 
 textfield_width = 450
 
@@ -21,7 +18,7 @@ class PreoperativeDialog(QDialog):
 
         self.setWindowTitle('Preoperative Information')
         self.setGeometry(200, 100, 280, 170)
-        self.move(850, 200)
+        self.move(550, 125)
 
         layout = QGridLayout(self)
         self.setLayout(layout)
@@ -376,9 +373,35 @@ class PreoperativeDialog(QDialog):
         self.optionbox7Content.addLayout(lay36)
         self.optionbox7.setLayout(self.optionbox7Content)
 
+        # buttons
+
+        self.button_openGUI_Medication = QPushButton('Open GUI \nMedication')
+        self.button_openGUI_Medication.setText("Medication")
+        self.button_openGUI_Medication.setCheckable(True)
+
+        self.button_save = QPushButton('Save')
+        self.button_save.clicked.connect(self.onClickedSaveReturn)
+
+        hlay_bottom = QHBoxLayout()
+        hlay_bottom.addStretch(2)
+        hlay_bottom.addWidget(self.button_openGUI_Medication)
+        hlay_bottom.addWidget(self.button_save)
+        hlay_bottom.addStretch(1)
+
+        layout.addLayout(hlay_bottom, 4, 0, 1, 3)
+
 
     # In the next lines, actions are defined when Buttons are pressed
     @QtCore.pyqtSlot()
+
+    def on_click(self):
+        if self.button_openGUI_Medication.isChecked():  # selects three different options available
+            dialog = MedicationDialog(parent=self)
+        self.hide()
+        if dialog.exec():
+            pass
+        self.show()
+
     def onClickedSaveReturn(self):
         print('Done!')
         self.hide()
@@ -392,9 +415,6 @@ class PreoperativeDialog(QDialog):
                                                   options=options)
         print(fileName)
 
-    def close(self):
-        self.saveFileDialog()
-
     # for opening
     def open_dialog_box(self):
         option = QFileDialog.Options()
@@ -403,7 +423,6 @@ class PreoperativeDialog(QDialog):
         file = QFileDialog.getOpenFileName(self, "Save File Window Title", "default.txt", "All Files (*)",
                                            options=option)
         print(file)
-
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

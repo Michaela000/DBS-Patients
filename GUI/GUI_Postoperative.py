@@ -191,7 +191,7 @@ class PostoperativeDialog(QDialog):
 
         self.UPDRSON = QLabel('UPDRS On:\t')
         self.lineEditUPDRSON = QLineEdit()
-        self.UPDRSII = QLabel('UPDRS II:\t')
+        self.UPDRSII = QLabel('UPDRS II:\t\t')
         self.lineEditUPDRSII = QLineEdit()
         self.HRUQ = QLabel('HRUQ:\t')
         self.lineEditHRUQ = QLineEdit()
@@ -284,64 +284,71 @@ class PostoperativeDialog(QDialog):
         self.optionbox4Content.addLayout(box4line5)
         self.optionbox4.setLayout(self.optionbox4Content)
 
+
         # optionbox 5 row 3 left
 
-        self.optionbox5 = QGroupBox('DBS settings after dismissal/after contact')
-        self.optionbox5Content = QHBoxLayout(self.optionbox5)
+        self.optionbox5 = QGroupBox('DBS settings after dismissal')
+        self.optionbox5Content = QVBoxLayout(self.optionbox5)
         layout.addWidget(self.optionbox5, 3, 0)
+
         self.DBS_settings_left = QGridLayout()
+        self.DBS_settings_leftCheck = QLabel ('Left Hemisphere')
         for i in range(0, 1):
             for j in range(0, 8):
                 self.DBS_settings_left.addWidget(QLineEdit(), i, j)
 
         self.DBS_settings_right = QGridLayout()
+        self.DBS_settings_rightCheck = QLabel ('Right Hemisphere')
         for i in range(0, 1):
             for j in range(0, 8):
                 self.DBS_settings_right.addWidget(QLineEdit(), i, j)
 
+        self.optionbox5Content.addWidget(self.DBS_settings_leftCheck)
         self.optionbox5Content.addLayout(self.DBS_settings_left)
+        self.optionbox5Content.addWidget(self.DBS_settings_rightCheck)
         self.optionbox5Content.addLayout(self.DBS_settings_right)
 
         #optionbox 6: 3rd row right
 
         self.optionbox6 = QGroupBox('Amplitude, Pulse and Frequency')
-        self.optionbox6Content = QHBoxLayout(self.optionbox6)
+        self.optionbox6Content = QVBoxLayout(self.optionbox6)
         layout.addWidget(self.optionbox6, 3, 1)
 
-        self.Amplitude = QLabel('Amplitude [in mA]:\t')
-        self.lineEditAmplitude = QLineEdit()
-        self.Pulse = QLabel('Pulse width [in µs]:\t')
-        self.lineEditPulse = QLineEdit()
-        self.Frequency = QLabel('Frequency [in Hz]:\t')
-        self.lineEditFrequency = QLineEdit()
+        self.AmplitudeLeft = QLabel('Amplitude Left [in mA]:')
+        self.lineEditAmplitudeLeft = QLineEdit()
+        self.PulseLeft = QLabel('Pulse Width Left [in µs]:')
+        self.lineEditPulseLeft = QLineEdit()
+        self.FrequencyLeft = QLabel('Frequency Left [in Hz]:')
+        self.lineEditFrequencyLeft = QLineEdit()
 
         box6line1 = QHBoxLayout()
-        box6line1.addWidget(self.Amplitude)
-        box6line1.addWidget(self.lineEditAmplitude)
-        box6line1.addWidget(self.Pulse)
-        box6line1.addWidget(self.lineEditPulse)
-        box6line1.addWidget(self.Frequency)
-        box6line1.addWidget(self.lineEditFrequency)
+        box6line1.addWidget(self.AmplitudeLeft)
+        box6line1.addWidget(self.lineEditAmplitudeLeft)
+        box6line1.addWidget(self.PulseLeft)
+        box6line1.addWidget(self.lineEditPulseLeft)
+        box6line1.addWidget(self.FrequencyLeft)
+        box6line1.addWidget(self.lineEditFrequencyLeft)
         box6line1.addStretch()
 
+        self.AmplitudeRight = QLabel('Amplitude Right [in mA]:')
+        self.lineEditAmplitudeRight = QLineEdit()
+        self.PulseRight = QLabel('Pulse Width Right [in µs]:')
+        self.lineEditPulseRight = QLineEdit()
+        self.FrequencyRight = QLabel('Frequency Right [in Hz]:')
+        self.lineEditFrequencyRight = QLineEdit()
+
+        box6line2 = QHBoxLayout()
+        box6line2.addWidget(self.AmplitudeRight)
+        box6line2.addWidget(self.lineEditAmplitudeRight)
+        box6line2.addWidget(self.PulseRight)
+        box6line2.addWidget(self.lineEditPulseRight)
+        box6line2.addWidget(self.FrequencyRight)
+        box6line2.addWidget(self.lineEditFrequencyRight)
+        box6line2.addStretch()
+
         self.optionbox6Content.addLayout(box6line1)
-
-        # buttons
-
-        self.button_openGUI_Medication = QPushButton('Open GUI \nMedication')
-        self.button_openGUI_Medication.setText("Medication")
-        self.button_openGUI_Medication.setCheckable(True)
-
-        self.button_save = QPushButton('Save')
-        self.button_save.clicked.connect(self.onClickedSaveReturn)
-
-        hlay_bottom = QHBoxLayout()
-        hlay_bottom.addStretch(2)
-        hlay_bottom.addWidget(self.button_openGUI_Medication)
-        hlay_bottom.addWidget(self.button_save)
-        hlay_bottom.addStretch(1)
-
-        layout.addLayout(hlay_bottom, 4, 0, 1, 3)
+        self.optionbox6Content.addLayout(box6line2)
+        self.optionbox6.setLayout(self.optionbox6Content)
 
     # In the next lines, actions are defined when Buttons are pressed
     @QtCore.pyqtSlot()

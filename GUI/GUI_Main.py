@@ -13,7 +13,7 @@ from dependencies import ROOTDIR
 
 
 class ChooseGUI(QDialog):
-    """Describes GUIMain. This GUI is responsible to open further GUI'S:
+    """This GUI is responsible to open further GUI'S:
     1. Preoperative 2. Intraoperative 3. Postoperative"""
 
     def __init__(self, parent=None):
@@ -33,7 +33,7 @@ class ChooseGUI(QDialog):
 
         self.setWindowTitle('Choose GUI for subj with PID: {}'.format(str(int(subj_details.code))))
         self.setGeometry(400, 100, 500, 300)  # left, right, width, height
-        self.move(850, 425)
+        self.move(750, 375)
 
         # ====================    Create Content for Buttons of GUImain      ====================
         self.button_openGUI_Preoperative = QPushButton('Open GUI \nPreoperative')
