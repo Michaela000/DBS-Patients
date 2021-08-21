@@ -11,6 +11,10 @@
 #    "Right Hemisphere" und "Left Hemisphere" über die Tabelle zu bekommen und ich finde es sehr schwierig alle "Tests" in Postoperative
 #    auf eine Höhe zu bekommen.
 
+##==> Schau mal, wie das bisher aussieht (habe nur GUI_Intraoperative.py geschaut). Das hast Du sehr gut gemacht.
+# Klar, das muss noch mit Callbacks, usw. gefüllt werden, usw. Aber lass uns mal diese WOche sprechen und schauen, was
+# Du noch machst und was ich, ok?
+
 import sys
 
 from PyQt5 import QtCore
@@ -81,15 +85,15 @@ class IntraoperativeDialog(QDialog):
         self.optionbox2Content = QVBoxLayout(self.optionbox2)
         layout_general.addWidget(self.optionbox2, 0, 1)
 
-        self.surgeryDate = QLabel('Surgery Date \n(dd/mm/yyyy):\t\t')
+        self.surgeryDate = QLabel('Surgery Date \n(dd/mm/yyyy):\t')
         self.lineEditSurgery = QLineEdit()
 
         box2line1 = QHBoxLayout()
         box2line1.addWidget(self.surgeryDate)
         box2line1.addWidget(self.lineEditSurgery)
-        box2line1.addStretch()
+        #box2line1.addStretch()
 
-        self.target = QLabel('Target:\t\t\t')
+        self.target = QLabel('Target:\t\t')
         self.targetList = QListWidget()
         self.target.setAlignment(QtCore.Qt.AlignTop)
         self.targetList.show()
@@ -100,7 +104,6 @@ class IntraoperativeDialog(QDialog):
         box2line2 = QHBoxLayout()
         box2line2.addWidget(self.target)
         box2line2.addWidget(self.targetList)
-        box2line2.addStretch()
 
         self.optionbox2Content.addLayout(box2line1)
         self.optionbox2Content.addStretch()
@@ -117,6 +120,8 @@ class IntraoperativeDialog(QDialog):
         self.ReportNeur.setAlignment(QtCore.Qt.AlignLeft)
         self.AwakePatientCheck = QCheckBox()
         self.AwakePatient = QLabel('Awake Patient')
+        self.AwakePatient.setAlignment(QtCore.Qt.AlignLeft)
+
 
         box3line1 = QHBoxLayout()
         box3line1.addWidget(self.ReportNeurCheck)
@@ -127,10 +132,11 @@ class IntraoperativeDialog(QDialog):
         box3line1.addStretch()
 
         self.ReportNeurSurgCheck = QCheckBox()
-        self.ReportNeurSurg = QLabel('Report Neurosurgery')
+        self.ReportNeurSurg = QLabel('Report Neurosurgery\t')
         self.ReportNeurSurg.setAlignment(QtCore.Qt.AlignLeft)
         self.ProtocolNeurCheck = QCheckBox()
         self.ProtocolNeur = QLabel('Protocol Neurology')
+        self.ProtocolNeur.setAlignment(QtCore.Qt.AlignLeft)
 
         box3line2 = QHBoxLayout()
         box3line2.addWidget(self.ReportNeurSurgCheck)
@@ -177,7 +183,7 @@ class IntraoperativeDialog(QDialog):
         self.optionbox4Content = QVBoxLayout(self.optionbox4)
         layout_general.addWidget(self.optionbox4, 1, 1)
 
-        self.LeadImplanted = QLabel('Lead:\t\t\t')
+        self.LeadImplanted = QLabel('Lead:\t\t')
         self.LeadImplantedList = QListWidget()
         self.LeadImplanted.setAlignment(QtCore.Qt.AlignTop)
         self.LeadImplantedList.show()
@@ -189,9 +195,8 @@ class IntraoperativeDialog(QDialog):
         box4line1 = QHBoxLayout()
         box4line1.addWidget(self.LeadImplanted)
         box4line1.addWidget(self.LeadImplantedList)
-        box4line1.addStretch()
 
-        self.IPGImplanted = QLabel('IPG:\t\t\t')
+        self.IPGImplanted = QLabel('IPG:\t\t')
         self.IPGImplanted.setAlignment(QtCore.Qt.AlignTop)
         self.IPGImplantedList = QListWidget()
         self.IPGImplantedList.show()
@@ -203,7 +208,6 @@ class IntraoperativeDialog(QDialog):
         box4line2 = QHBoxLayout()
         box4line2.addWidget(self.IPGImplanted)
         box4line2.addWidget(self.IPGImplantedList)
-        box4line2.addStretch()
 
         self.optionbox4Content.addLayout(box4line1)
         self.optionbox4Content.addLayout(box4line2)
@@ -215,7 +219,7 @@ class IntraoperativeDialog(QDialog):
         layout_general.addWidget(self.optionbox5, 2, 0)
 
         self.grid_coordinates_left = QGridLayout()
-        self.grid_coordinates_leftCheck = QLabel('Left Hemisphere')
+        self.grid_coordinates_leftCheck = QLabel('\tLeft\t')
         for i in range(0, 8):
             for j in range(0, 4):
                 if j == 0:
@@ -224,7 +228,7 @@ class IntraoperativeDialog(QDialog):
                     self.grid_coordinates_left.addWidget(QLineEdit(), i, j)
 
         self.grid_coordinates_right = QGridLayout()
-        self.grid_coordinates_rightCheck = QLabel('Right Hemisphere')
+        self.grid_coordinates_rightCheck = QLabel('\tRight\t')
         for i in range(0, 8):
             for j in range(0, 4):
                 if j != 3:
@@ -290,20 +294,21 @@ class IntraoperativeDialog(QDialog):
         layout_general.addWidget(self.optionbox7, 3, 0)
 
         self.DBS_settings_left = QGridLayout()
-        self.DBS_settings_leftCheck = QLabel ('Left Hemisphere')
         for i in range(0, 1):
+            if i == 0:
+                self.DBS_settings_left.addWidget(QLabel('Left:\t'), i, 0)
             for j in range(0, 8):
-                self.DBS_settings_left.addWidget(QLineEdit(), i, j)
+                self.DBS_settings_left.addWidget(QLineEdit(), i, j+1)
 
         self.DBS_settings_right = QGridLayout()
-        self.DBS_settings_rightCheck = QLabel ('Right Hemisphere')
         for i in range(0, 1):
+            if i == 0:
+                self.DBS_settings_right.addWidget(QLabel('Right:\t'), i, 0)
             for j in range(0, 8):
-                self.DBS_settings_right.addWidget(QLineEdit(), i, j)
+                self.DBS_settings_right.addWidget(QLineEdit(), i, j+1)
 
-        self.optionbox7Content.addWidget(self.DBS_settings_leftCheck)
+        self.optionbox7Content.addStretch(2)
         self.optionbox7Content.addLayout(self.DBS_settings_left)
-        self.optionbox7Content.addWidget(self.DBS_settings_rightCheck)
         self.optionbox7Content.addLayout(self.DBS_settings_right)
 
         #optionbox 3th row right
@@ -312,40 +317,53 @@ class IntraoperativeDialog(QDialog):
         self.optionbox8Content = QVBoxLayout(self.optionbox8)
         layout_general.addWidget(self.optionbox8, 3, 1)
 
-        self.AmplitudeLeft = QLabel('Amplitude Left [in mA]:')
-        self.lineEditAmplitudeLeft = QLineEdit()
-        self.PulseLeft = QLabel('Pulse Width Left [in µs]:')
-        self.lineEditPulseLeft = QLineEdit()
-        self.FrequencyLeft = QLabel('Frequency Left [in Hz]:')
-        self.lineEditFrequencyLeft = QLineEdit()
+        self.grid_settings_right = QGridLayout()
+        self.grid_settings_right.addWidget(QLabel('Left:\t'), 1, 0)
+        self.grid_settings_right.addWidget(QLabel('Right:\t'), 2, 0)
+        self.grid_settings_right.addWidget(QLabel('Amplitude [mA]'), 0, 1)
+        self.grid_settings_right.addWidget(QLabel('Pulse Width [µs]:'), 0, 2)
+        self.grid_settings_right.addWidget(QLabel('Frequency [Hz]'), 0, 3)
 
-        box8line1 = QHBoxLayout()
-        box8line1.addWidget(self.AmplitudeLeft)
-        box8line1.addWidget(self.lineEditAmplitudeLeft)
-        box8line1.addWidget(self.PulseLeft)
-        box8line1.addWidget(self.lineEditPulseLeft)
-        box8line1.addWidget(self.FrequencyLeft)
-        box8line1.addWidget(self.lineEditFrequencyLeft)
-        box8line1.addStretch()
+        for i in range(1, 3):
+            for j in range(1, 4):
+                print(i, j)
+                self.grid_settings_right.addWidget(QLineEdit(), i, j)
+        self.optionbox8Content.addLayout(self.grid_settings_right)
 
-        self.AmplitudeRight = QLabel('Amplitude Right [in mA]:')
-        self.lineEditAmplitudeRight = QLineEdit()
-        self.PulseRight = QLabel('Pulse Width Right [in µs]:')
-        self.lineEditPulseRight = QLineEdit()
-        self.FrequencyRight = QLabel('Frequency Right [in Hz]:')
-        self.lineEditFrequencyRight = QLineEdit()
+        # self.AmplitudeLeft = QLabel('Amplitude Left [in mA]:')
+        # self.lineEditAmplitudeLeft = QLineEdit()
+        # self.PulseLeft = QLabel('Pulse Width Left [in µs]:')
+        # self.lineEditPulseLeft = QLineEdit()
+        # self.FrequencyLeft = QLabel('Frequency Left [in Hz]:')
+        # self.lineEditFrequencyLeft = QLineEdit()
+        #
+        # box8line1 = QHBoxLayout()
+        # box8line1.addWidget(self.AmplitudeLeft)
+        # box8line1.addWidget(self.lineEditAmplitudeLeft)
+        # box8line1.addWidget(self.PulseLeft)
+        # box8line1.addWidget(self.lineEditPulseLeft)
+        # box8line1.addWidget(self.FrequencyLeft)
+        # box8line1.addWidget(self.lineEditFrequencyLeft)
+        # box8line1.addStretch()
+        #
+        # self.AmplitudeRight = QLabel('Amplitude Right [in mA]:')
+        # self.lineEditAmplitudeRight = QLineEdit()
+        # self.PulseRight = QLabel('Pulse Width Right [in µs]:')
+        # self.lineEditPulseRight = QLineEdit()
+        # self.FrequencyRight = QLabel('Frequency Right [in Hz]:')
+        # self.lineEditFrequencyRight = QLineEdit()
+        #
+        # box8line2 = QHBoxLayout()
+        # box8line2.addWidget(self.AmplitudeRight)
+        # box8line2.addWidget(self.lineEditAmplitudeRight)
+        # box8line2.addWidget(self.PulseRight)
+        # box8line2.addWidget(self.lineEditPulseRight)
+        # box8line2.addWidget(self.FrequencyRight)
+        # box8line2.addWidget(self.lineEditFrequencyRight)
+        # box8line2.addStretch()
 
-        box8line2 = QHBoxLayout()
-        box8line2.addWidget(self.AmplitudeRight)
-        box8line2.addWidget(self.lineEditAmplitudeRight)
-        box8line2.addWidget(self.PulseRight)
-        box8line2.addWidget(self.lineEditPulseRight)
-        box8line2.addWidget(self.FrequencyRight)
-        box8line2.addWidget(self.lineEditFrequencyRight)
-        box8line2.addStretch()
-
-        self.optionbox8Content.addLayout(box8line1)
-        self.optionbox8Content.addLayout(box8line2)
+        #self.optionbox8Content.addLayout(box8line1)
+        #self.optionbox8Content.addLayout(box8line2)
         self.optionbox8.setLayout(self.optionbox8Content)
 
     # buttons
@@ -354,19 +372,17 @@ class IntraoperativeDialog(QDialog):
         self.button_openGUI_Medication.setText("Medication")
         self.button_openGUI_Medication.setCheckable(True)
 
-        self.button_save = QPushButton('Save')
+        self.button_save = QPushButton('Save and \nReturn')
         self.button_save.clicked.connect(self.onClickedSaveReturn)
 
 
         hlay_bottom = QHBoxLayout()
-        hlay_bottom.addStretch(2)
+        hlay_bottom.addStretch(5)
         hlay_bottom.addWidget(self.button_openGUI_Medication)
         hlay_bottom.addWidget(self.button_save)
         hlay_bottom.addStretch(1)
 
-        layout_general.addLayout(hlay_bottom, 4, 0, 1,3)
-
-
+        layout_general.addLayout(hlay_bottom, 4, 0, 1, 3)
 
     # In the next lines, actions are defined when Buttons are pressed
     @QtCore.pyqtSlot()
@@ -383,8 +399,6 @@ class IntraoperativeDialog(QDialog):
         print('Done!')
         self.hide()
 
-        #self.saveFileDialog()
-
     def saveFileDialog(self):
         options = QFileDialog.Options()
         options |= QFileDialog.DontUseNativeDialog
@@ -395,8 +409,6 @@ class IntraoperativeDialog(QDialog):
     # for opening
     def open_dialog_box(self):
         option = QFileDialog.Options()
-        # first parameter is self; second is the Window Title, third title is Default File Name, fourth is FileType,
-        # fifth is options
         file = QFileDialog.getOpenFileName(self, "Save File Window Title", "default.txt", "All Files (*)",
                                            options=option)
         print(file)
