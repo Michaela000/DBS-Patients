@@ -15,7 +15,7 @@ class PostoperativeDialog(QDialog):
 
         self.setWindowTitle('Postoperative Information')
         self.setGeometry(200, 100, 280, 170)
-        self.move(850, 200)
+        self.move(400, 200)
 
         layout = QGridLayout(self)
         self.setLayout(layout)
@@ -153,6 +153,7 @@ class PostoperativeDialog(QDialog):
         box2line3 = QHBoxLayout()
         box2line3.addWidget(self.QualiPaCheck)
         box2line3.addWidget(self.QualiPa)
+        box2line3.addStretch()
 
         self.optionbox3Content.addLayout(box2line1)
         self.optionbox3Content.addLayout(box2line2)
@@ -165,16 +166,21 @@ class PostoperativeDialog(QDialog):
         self.optionbox4Content = QVBoxLayout(self.optionbox4)
         layout.addWidget(self.optionbox4, 1, 1)
 
-        self.UPDRSI = QLabel('UPDRS I:\t\t')
+        self.UPDRSI = QLabel('UPDRS I:')
         self.lineEditUPDRSI = QLineEdit()
+        self.lineEditUPDRSI.setFixedWidth(50)
         self.UPDRSIV = QLabel('UPDRS IV:')
         self.lineEditUPDRSIV = QLineEdit()
-        self.TSS = QLabel('TSS:\t')
+        self.lineEditUPDRSIV.setFixedWidth(50)
+        self.TSS = QLabel('TSS:')
         self.lineEditTSS = QLineEdit()
-        self.CGICPat = QLabel('CGIC patient:\t')
+        self.lineEditTSS.setFixedWidth(50)
+        self.CGICPat = QLabel('CGIC patient:')
         self.lineEditCGICPat = QLineEdit()
-        self.CGICClinician = QLabel('CGIC clinician and cargiver:\t')
+        self.lineEditCGICPat.setFixedWidth(50)
+        self.CGICClinician = QLabel('CGIC clinician and cargiver:')
         self.lineEditCGICClinician = QLineEdit()
+        self.lineEditCGICClinician.setFixedWidth(50)
 
         box4line1 = QHBoxLayout()
         box4line1.addWidget(self.UPDRSI)
@@ -189,20 +195,27 @@ class PostoperativeDialog(QDialog):
         box4line1.addWidget(self.lineEditCGICClinician)
         box4line1.addStretch()
 
-        self.UPDRSON = QLabel('UPDRS On:\t')
+        self.UPDRSON = QLabel('UPDRS On:')
         self.lineEditUPDRSON = QLineEdit()
-        self.UPDRSII = QLabel('UPDRS II:\t')
+        self.lineEditUPDRSON.setFixedWidth(50)
+        self.UPDRSII = QLabel('UPDRS II:')
         self.lineEditUPDRSII = QLineEdit()
-        self.HRUQ = QLabel('HRUQ:\t')
+        self.lineEditUPDRSII.setFixedWidth(50)
+        self.HRUQ = QLabel('HRUQ:')
         self.lineEditHRUQ = QLineEdit()
-        self.MoCa = QLabel('MoCa:\t')
+        self.lineEditHRUQ.setFixedWidth(50)
+        self.MoCa = QLabel('MoCa:')
         self.lineEditMoCa = QLineEdit()
-        self.MMST = QLabel('MMST:\t')
+        self.lineEditMoCa.setFixedWidth(50)
+        self.MMST = QLabel('MMST:')
         self.lineEditMMST = QLineEdit()
-        self.BDIII = QLabel('BDI-II:\t')
+        self.lineEditMMST.setFixedWidth(50)
+        self.BDIII = QLabel('BDI-II:')
         self.lineEditBDIII = QLineEdit()
-        self.NMSQ = QLabel('NMSQ:\t')
+        self.lineEditBDIII.setFixedWidth(50)
+        self.NMSQ = QLabel('NMSQ:')
         self.lineEditNMSQ = QLineEdit()
+        self.lineEditNMSQ.setFixedWidth(50)
 
         box4line2 = QHBoxLayout()
         box4line2.addWidget(self.UPDRSON)
@@ -221,20 +234,27 @@ class PostoperativeDialog(QDialog):
         box4line2.addWidget(self.lineEditNMSQ)
         box4line2.addStretch()
 
-        self.UPDRSOff = QLabel('UPDRS Off:\t')
+        self.UPDRSOff = QLabel('UPDRS Off:')
         self.lineEditUPDRSOff = QLineEdit()
-        self.HY = QLabel('H&Y:\t')
+        self.lineEditUPDRSOff.setFixedWidth(50)
+        self.HY = QLabel('H&Y:')
         self.lineEditHY = QLineEdit()
-        self.EQ5D = QLabel('EQ5D:\t')
+        self.lineEditHY.setFixedWidth(50)
+        self.EQ5D = QLabel('EQ5D:')
         self.lineEditEQ5D = QLineEdit()
+        self.lineEditEQ5D.setFixedWidth(50)
         self.DemTect = QLabel('DemTect:\t')
         self.lineEditDemTect = QLineEdit()
-        self.PDQ8 = QLabel('PDQ8:\t')
+        self.lineEditDemTect.setFixedWidth(50)
+        self.PDQ8 = QLabel('PDQ8:')
         self.lineEditPDQ8 = QLineEdit()
-        self.PDQ39 = QLabel('PDQ39:\t')
+        self.lineEditPDQ8.setFixedWidth(50)
+        self.PDQ39 = QLabel('PDQ39:')
         self.lineEditPDQ39 = QLineEdit()
-        self.SE = QLabel('S&E:\t')
+        self.lineEditPDQ39.setFixedWidth(50)
+        self.SE = QLabel('S&E:')
         self.lineEditSE = QLineEdit()
+        self.lineEditSE.setFixedWidth(50)
 
         box4line3 = QHBoxLayout()
         box4line3.addWidget(self.UPDRSOff)
@@ -253,10 +273,12 @@ class PostoperativeDialog(QDialog):
         box4line3.addWidget(self.lineEditSE)
         box4line3.addStretch()
 
-        self.UDDRSOn = QLabel('UDDRS On:\t')
+        self.UDDRSOn = QLabel('UDDRS On:')
         self.lineEditUDDRSOn = QLineEdit()
+        self.lineEditUDDRSOn.setFixedWidth(50)
         self.TRSOn = QLabel('TRS On:\t')
         self.lineEditTRSOn = QLineEdit()
+        self.lineEditTRSOn.setFixedWidth(50)
 
         box4line4 = QHBoxLayout()
         box4line4.addWidget(self.UDDRSOn)
@@ -265,10 +287,12 @@ class PostoperativeDialog(QDialog):
         box4line4.addWidget(self.lineEditTRSOn)
         box4line4.addStretch()
 
-        self.UDDRSOff = QLabel('UDDRS Off:\t')
+        self.UDDRSOff = QLabel('UDDRS Off:')
         self.lineEditUDDRSOff = QLineEdit()
+        self.lineEditUDDRSOff.setFixedWidth(50)
         self.TRSOff = QLabel('TRS Off:\t')
         self.lineEditTRSOff = QLineEdit()
+        self.lineEditTRSOff.setFixedWidth(50)
 
         box4line5 = QHBoxLayout()
         box4line5.addWidget(self.UDDRSOff)
@@ -284,64 +308,71 @@ class PostoperativeDialog(QDialog):
         self.optionbox4Content.addLayout(box4line5)
         self.optionbox4.setLayout(self.optionbox4Content)
 
+
         # optionbox 5 row 3 left
 
-        self.optionbox5 = QGroupBox('DBS settings after dismissal/after contact')
-        self.optionbox5Content = QHBoxLayout(self.optionbox5)
+        self.optionbox5 = QGroupBox('DBS settings after dismissal')
+        self.optionbox5Content = QVBoxLayout(self.optionbox5)
         layout.addWidget(self.optionbox5, 3, 0)
+
         self.DBS_settings_left = QGridLayout()
+        self.DBS_settings_leftCheck = QLabel ('Left Hemisphere')
         for i in range(0, 1):
             for j in range(0, 8):
                 self.DBS_settings_left.addWidget(QLineEdit(), i, j)
 
         self.DBS_settings_right = QGridLayout()
+        self.DBS_settings_rightCheck = QLabel ('Right Hemisphere')
         for i in range(0, 1):
             for j in range(0, 8):
                 self.DBS_settings_right.addWidget(QLineEdit(), i, j)
 
+        self.optionbox5Content.addWidget(self.DBS_settings_leftCheck)
         self.optionbox5Content.addLayout(self.DBS_settings_left)
+        self.optionbox5Content.addWidget(self.DBS_settings_rightCheck)
         self.optionbox5Content.addLayout(self.DBS_settings_right)
 
         #optionbox 6: 3rd row right
 
         self.optionbox6 = QGroupBox('Amplitude, Pulse and Frequency')
-        self.optionbox6Content = QHBoxLayout(self.optionbox6)
+        self.optionbox6Content = QVBoxLayout(self.optionbox6)
         layout.addWidget(self.optionbox6, 3, 1)
 
-        self.Amplitude = QLabel('Amplitude [in mA]:\t')
-        self.lineEditAmplitude = QLineEdit()
-        self.Pulse = QLabel('Pulse width [in µs]:\t')
-        self.lineEditPulse = QLineEdit()
-        self.Frequency = QLabel('Frequency [in Hz]:\t')
-        self.lineEditFrequency = QLineEdit()
+        self.AmplitudeLeft = QLabel('Amplitude Left [in mA]:')
+        self.lineEditAmplitudeLeft = QLineEdit()
+        self.PulseLeft = QLabel('Pulse Width Left [in µs]:')
+        self.lineEditPulseLeft = QLineEdit()
+        self.FrequencyLeft = QLabel('Frequency Left [in Hz]:')
+        self.lineEditFrequencyLeft = QLineEdit()
 
         box6line1 = QHBoxLayout()
-        box6line1.addWidget(self.Amplitude)
-        box6line1.addWidget(self.lineEditAmplitude)
-        box6line1.addWidget(self.Pulse)
-        box6line1.addWidget(self.lineEditPulse)
-        box6line1.addWidget(self.Frequency)
-        box6line1.addWidget(self.lineEditFrequency)
+        box6line1.addWidget(self.AmplitudeLeft)
+        box6line1.addWidget(self.lineEditAmplitudeLeft)
+        box6line1.addWidget(self.PulseLeft)
+        box6line1.addWidget(self.lineEditPulseLeft)
+        box6line1.addWidget(self.FrequencyLeft)
+        box6line1.addWidget(self.lineEditFrequencyLeft)
         box6line1.addStretch()
 
+        self.AmplitudeRight = QLabel('Amplitude Right [in mA]:')
+        self.lineEditAmplitudeRight = QLineEdit()
+        self.PulseRight = QLabel('Pulse Width Right [in µs]:')
+        self.lineEditPulseRight = QLineEdit()
+        self.FrequencyRight = QLabel('Frequency Right [in Hz]:')
+        self.lineEditFrequencyRight = QLineEdit()
+
+        box6line2 = QHBoxLayout()
+        box6line2.addWidget(self.AmplitudeRight)
+        box6line2.addWidget(self.lineEditAmplitudeRight)
+        box6line2.addWidget(self.PulseRight)
+        box6line2.addWidget(self.lineEditPulseRight)
+        box6line2.addWidget(self.FrequencyRight)
+        box6line2.addWidget(self.lineEditFrequencyRight)
+        box6line2.addStretch()
+
         self.optionbox6Content.addLayout(box6line1)
-
-        # buttons
-
-        self.button_openGUI_Medication = QPushButton('Open GUI \nMedication')
-        self.button_openGUI_Medication.setText("Medication")
-        self.button_openGUI_Medication.setCheckable(True)
-
-        self.button_save = QPushButton('Save')
-        self.button_save.clicked.connect(self.onClickedSaveReturn)
-
-        hlay_bottom = QHBoxLayout()
-        hlay_bottom.addStretch(2)
-        hlay_bottom.addWidget(self.button_openGUI_Medication)
-        hlay_bottom.addWidget(self.button_save)
-        hlay_bottom.addStretch(1)
-
-        layout.addLayout(hlay_bottom, 4, 0, 1, 3)
+        self.optionbox6Content.addLayout(box6line2)
+        self.optionbox6.setLayout(self.optionbox6Content)
 
     # In the next lines, actions are defined when Buttons are pressed
     @QtCore.pyqtSlot()

@@ -8,7 +8,9 @@ from GUI.GUI_Main import ChooseGUI
 
 
 class CheckPID(QDialog):
-    """Dialog."""
+    """Very first GUI only providing a means to enter a PID (according to the ORBIS system at the
+    Department of Neurology at the University Hospital of Gießen and Marburg. Several options are possible
+    after entering a PID: 1. if existent -> GUI_Start -> Gui_Main, 2. if inexistent enter data in general table"""
 
     def __init__(self, parent=None):
         """Initializer."""
@@ -18,7 +20,7 @@ class CheckPID(QDialog):
 
         self.setWindowTitle('Please enter the PID to search for')
         self.setGeometry(400, 100, 500, 300)  # left, right, width, height
-        self.move(850, 425)
+        self.move(750, 300)
 
         self.layout = QVBoxLayout(self)  # entire layout for GUI
         self.content_box = QVBoxLayout(self)  # content of the box

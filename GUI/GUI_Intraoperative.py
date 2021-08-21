@@ -1,20 +1,28 @@
-# Hallo David. Ich habe mal angefangen alles andere einzufügen.
-# Ich werde heute Abend noch weiter daran arbeiten, aber ich wollte schon einmal einen Teil hochladen.
-# Gerade habe ich noch Probleme damit die Tabelle aufzuteilen und die Knöpfe zu erstellen.
+# Hallo David. Vielen Dank für die Hilfe. Jetzt hat eigentlich alles geklappt.
+
+# Ich bin heute nochmal alle GUI's durchgegangen und hab einiges nochmal geändert bzw. verbessert anhand Deiner Bilder.
+# Dabei sind mir ein paar Sachen aufgefallen:
+# 1. Sollen wir noch einen Callback_Savebutton einführen? Wenn ja gehört er dann zu GUIcheckPID?
+# 2. ich bekomme die GUI_Main buttons nicht zentriert, obwohl addStretch da ist (das gilt auch für ein paar andere Buttons später in pre- post und intraoperative GUI)
+# 3. die beiden if present Bilder sind etwas anders, weil wir dafür GUI_Start haben. Daher hab ich das bisher noch nicht verändert
+# 4. Das Layout besonders von Preoperative ist noch etwas detaillierter als auf den Bildern, aber ich fand es eigentlich nicht so schlecht,
+# deswegen habe ich es bisher nicht verändert, soll ich das noch tun?
+# 5. Das Layout von Intra und Postoperative muss ich noch etwas anpassen. Ich habe ein paar Schwierigkeiten damit, die Wörter
+#    "Right Hemisphere" und "Left Hemisphere" über die Tabelle zu bekommen und ich finde es sehr schwierig alle "Tests" in Postoperative
+#    auf eine Höhe zu bekommen.
 
 import sys
 
 from PyQt5 import QtCore
-from PyQt5.QtWidgets import QApplication, QDialog, QPushButton, QVBoxLayout, QGroupBox, QSpacerItem, QSizePolicy, \
+from PyQt5.QtWidgets import QApplication, QDialog, QPushButton, QVBoxLayout, QGroupBox,  QSpacerItem, QSizePolicy, \
     QHBoxLayout, QFileDialog, QWidget, QGridLayout, QLineEdit, QLabel, QListWidget, QCheckBox
-
 from GUI.GUI_Medication import MedicationDialog
 
 textfield_width = 450
 
 
 class IntraoperativeDialog(QDialog):
-    """Dialog to introduce the medication at a specific date. All unrelated """
+    """Dialog to introduce all important information of intraoperative patients. """
 
     def __init__(self, parent=None):
         """Initializer."""
@@ -23,7 +31,7 @@ class IntraoperativeDialog(QDialog):
         # ====================    Create General Layout      ====================
         self.setWindowTitle('Please insert the data from the intraoperative patient contact ...')
         self.setGeometry(200, 100, 280, 170)
-        self.move(850, 200)
+        self.move(400, 100)
 
         layout_general = QGridLayout(self)
         self.setLayout(layout_general)
@@ -134,7 +142,7 @@ class IntraoperativeDialog(QDialog):
 
         self.DurationSurgery = QLabel('Duration \nsurgery (min):\t')
         self.lineEditDurationSurgery = QLineEdit()
-        self.Trajectories = QLabel('Trajectories:\t')
+        self.Trajectories = QLabel('Trajectories:')
         self.lineEditTrajectories = QLineEdit()
 
         box3line3 = QHBoxLayout()
@@ -144,7 +152,7 @@ class IntraoperativeDialog(QDialog):
         box3line3.addWidget(self.lineEditTrajectories)
         box3line3.addStretch()
 
-        self.testingNeur = QLabel('Testing Neurologist(s):\t')
+        self.testingNeur = QLabel('Testing Neurologist(s):')
         self.testingNeurList = QListWidget()
         self.testingNeurList.show()
         ls = ['Oehrn/Weber', 'Pedrosa', 'Waldthaler', 'Other']
@@ -207,6 +215,7 @@ class IntraoperativeDialog(QDialog):
         layout_general.addWidget(self.optionbox5, 2, 0)
 
         self.grid_coordinates_left = QGridLayout()
+        self.grid_coordinates_leftCheck = QLabel('Left Hemisphere')
         for i in range(0, 8):
             for j in range(0, 4):
                 if j == 0:
@@ -215,6 +224,7 @@ class IntraoperativeDialog(QDialog):
                     self.grid_coordinates_left.addWidget(QLineEdit(), i, j)
 
         self.grid_coordinates_right = QGridLayout()
+        self.grid_coordinates_rightCheck = QLabel('Right Hemisphere')
         for i in range(0, 8):
             for j in range(0, 4):
                 if j != 3:
@@ -227,8 +237,10 @@ class IntraoperativeDialog(QDialog):
                     self.grid_coordinates_right.addWidget(QLabel(str(i)), i, j)
 
         self.optionbox5Content.addStretch()
+        self.optionbox5Content.addWidget(self.grid_coordinates_leftCheck)
         self.optionbox5Content.addLayout(self.grid_coordinates_left)
         self.optionbox5Content.addStretch()
+        self.optionbox5Content.addWidget(self.grid_coordinates_rightCheck)
         self.optionbox5Content.addLayout(self.grid_coordinates_right)
         self.optionbox5Content.addLayout(self.grid_coordinates_right)
         self.optionbox5Content.addStretch()
@@ -278,40 +290,63 @@ class IntraoperativeDialog(QDialog):
         layout_general.addWidget(self.optionbox7, 3, 0)
 
         self.DBS_settings_left = QGridLayout()
+        self.DBS_settings_leftCheck = QLabel ('Left Hemisphere')
         for i in range(0, 1):
             for j in range(0, 8):
                 self.DBS_settings_left.addWidget(QLineEdit(), i, j)
 
         self.DBS_settings_right = QGridLayout()
+        self.DBS_settings_rightCheck = QLabel ('Right Hemisphere')
         for i in range(0, 1):
             for j in range(0, 8):
                 self.DBS_settings_right.addWidget(QLineEdit(), i, j)
 
+        self.optionbox7Content.addWidget(self.DBS_settings_leftCheck)
         self.optionbox7Content.addLayout(self.DBS_settings_left)
+        self.optionbox7Content.addWidget(self.DBS_settings_rightCheck)
         self.optionbox7Content.addLayout(self.DBS_settings_right)
 
         #optionbox 3th row right
+
         self.optionbox8 = QGroupBox('Amplitude, Pulse and Frequency')
-        self.optionbox8Content = QHBoxLayout(self.optionbox8)
+        self.optionbox8Content = QVBoxLayout(self.optionbox8)
         layout_general.addWidget(self.optionbox8, 3, 1)
 
-        self.Amplitude = QLabel('Amplitude [in mA]:\t')
-        self.lineEditAmplitude = QLineEdit()
-        self.Pulse = QLabel('Pulse width [in µs]:\t')
-        self.lineEditPulse = QLineEdit()
-        self.Frequency = QLabel('Frequency [in Hz]:\t')
-        self.lineEditFrequency = QLineEdit()
+        self.AmplitudeLeft = QLabel('Amplitude Left [in mA]:')
+        self.lineEditAmplitudeLeft = QLineEdit()
+        self.PulseLeft = QLabel('Pulse Width Left [in µs]:')
+        self.lineEditPulseLeft = QLineEdit()
+        self.FrequencyLeft = QLabel('Frequency Left [in Hz]:')
+        self.lineEditFrequencyLeft = QLineEdit()
 
         box8line1 = QHBoxLayout()
-        box8line1.addWidget(self.Amplitude)
-        box8line1.addWidget(self.lineEditAmplitude)
-        box8line1.addWidget(self.Pulse)
-        box8line1.addWidget(self.lineEditPulse)
-        box8line1.addWidget(self.Frequency)
-        box8line1.addWidget(self.lineEditFrequency)
+        box8line1.addWidget(self.AmplitudeLeft)
+        box8line1.addWidget(self.lineEditAmplitudeLeft)
+        box8line1.addWidget(self.PulseLeft)
+        box8line1.addWidget(self.lineEditPulseLeft)
+        box8line1.addWidget(self.FrequencyLeft)
+        box8line1.addWidget(self.lineEditFrequencyLeft)
         box8line1.addStretch()
 
+        self.AmplitudeRight = QLabel('Amplitude Right [in mA]:')
+        self.lineEditAmplitudeRight = QLineEdit()
+        self.PulseRight = QLabel('Pulse Width Right [in µs]:')
+        self.lineEditPulseRight = QLineEdit()
+        self.FrequencyRight = QLabel('Frequency Right [in Hz]:')
+        self.lineEditFrequencyRight = QLineEdit()
+
+        box8line2 = QHBoxLayout()
+        box8line2.addWidget(self.AmplitudeRight)
+        box8line2.addWidget(self.lineEditAmplitudeRight)
+        box8line2.addWidget(self.PulseRight)
+        box8line2.addWidget(self.lineEditPulseRight)
+        box8line2.addWidget(self.FrequencyRight)
+        box8line2.addWidget(self.lineEditFrequencyRight)
+        box8line2.addStretch()
+
         self.optionbox8Content.addLayout(box8line1)
+        self.optionbox8Content.addLayout(box8line2)
+        self.optionbox8.setLayout(self.optionbox8Content)
 
     # buttons
 

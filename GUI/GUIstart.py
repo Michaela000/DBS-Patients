@@ -7,9 +7,8 @@ from GUI.GUI_Main import ChooseGUI
 
 
 class CheckForGUIMain(QDialog):
-    """Very first GUI only providing a means to enter a PID (according to the ORBIS system at the
-    Department of Neurology at the University Hospital of Gießen and Marburg. Several options are possible
-    after entering a PID: 1. if existent -> GuiMain, 2. if inexistent enter data in general table"""
+    """This GUI provides the choice to open GUI_Main in order to get access to preoperative, intraoperative and postoperative data.
+    The second option is to close the GUI."""
 
     def __init__(self, parent=None):
         """Initialize."""
@@ -18,7 +17,7 @@ class CheckForGUIMain(QDialog):
         super().__init__(parent)
         self.setWindowTitle('Choose GUI')
         self.setGeometry(400, 100, 500, 300)  # left, right, width, height
-        self.move(850, 425)
+        self.move(750, 300)
 
         self.layout = QVBoxLayout(self)  # entire layout for GUI
         self.content_box = QVBoxLayout(self)  # content of the box
