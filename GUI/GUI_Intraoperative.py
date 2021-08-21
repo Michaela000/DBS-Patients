@@ -15,6 +15,10 @@
 # Klar, das muss noch mit Callbacks, usw. gefüllt werden, usw. Aber lass uns mal diese WOche sprechen und schauen, was
 # Du noch machst und was ich, ok?
 
+#--> Sehr gerne. Ich habe an sich immer Zeit aber ich müsste es einen Tag vorher wissen, besonders wenn es früh morgens ist.
+#    Wäre es Dir telefonsich oder persönlich lieber? Es kann sein, dass ich relativ kurzfristig noch einen Werkstatt Termin erhalte,
+#    aber ich würde Dir dann direkt Bescheid geben.
+
 import sys
 
 from PyQt5 import QtCore
