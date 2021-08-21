@@ -3,7 +3,7 @@ from PyQt5 import QtCore
 
 from PyQt5.QtWidgets import QApplication, QDialog, QPushButton, QVBoxLayout, QGroupBox, \
     QHBoxLayout, QFileDialog, QWidget, QGridLayout, QLabel, QLineEdit, QComboBox, QCheckBox
-from GUI.GUI_Medication import MedicationDialog
+from GUI.GUImedication import MedicationDialog
 
 
 class PostoperativeDialog(QDialog):
