@@ -3,13 +3,15 @@
 # Gerade habe ich noch Probleme damit die Tabelle aufzuteilen und die Knöpfe zu erstellen.
 
 import sys
-from PyQt5.Qt import *
+
 from PyQt5 import QtCore
-from PyQt5.QtWidgets import QApplication, QDialog, QPushButton, QVBoxLayout, QGroupBox,  QSpacerItem, QSizePolicy, QFrame, \
-    QHBoxLayout, QFileDialog, QWidget, QRadioButton, QGridLayout, QLineEdit, QLabel, QComboBox, QListWidget, QCheckBox, QButtonGroup
+from PyQt5.QtWidgets import QApplication, QDialog, QPushButton, QVBoxLayout, QGroupBox, QSpacerItem, QSizePolicy, \
+    QHBoxLayout, QFileDialog, QWidget, QGridLayout, QLineEdit, QLabel, QListWidget, QCheckBox
+
 from GUI.GUI_Medication import MedicationDialog
 
 textfield_width = 450
+
 
 class IntraoperativeDialog(QDialog):
     """Dialog to introduce the medication at a specific date. All unrelated """
@@ -18,27 +20,27 @@ class IntraoperativeDialog(QDialog):
         """Initializer."""
         super().__init__(parent)
 
-        self.setWindowTitle('Please insert the data from the intraoperative patint contact ...')
+        # ====================    Create General Layout      ====================
+        self.setWindowTitle('Please insert the data from the intraoperative patient contact ...')
         self.setGeometry(200, 100, 280, 170)
         self.move(850, 200)
 
         layout_general = QGridLayout(self)
-        widget = QWidget(self)
         self.setLayout(layout_general)
 
-        # Optionbox upper left corner
-        self.optionbox1 = QGroupBox('Admissions')
-        self.optionbox1Content = QVBoxLayout(self.optionbox1)
+        # ====================    Optionbox left upper corner      ====================
+        self.optionbox1 = QGroupBox('Admission and Dimission dates')
+        self.optionbox1_layout = QVBoxLayout(self.optionbox1)
         layout_general.addWidget(self.optionbox1, 0, 0)
 
         self.admission_NCh = QLabel('Admission Neurosurgery (dd/mm/yyyy):\t')
         self.lineEditAdmNCh = QLineEdit()
         self.admission_Neur = QLabel('Admission Neurology (dd/mm/yyyy):\t')
         self.lineEditAdmNeur = QLineEdit()
-        self.dismission_NCh = QLabel('Dismission Neurosurgery (dd/mm/yyyy):\t')
-        self.lineEditDismNCh = QLineEdit()
         self.dismission_Neur = QLabel('Dismission Neurology (dd/mm/yyyy):\t')
         self.lineEditDismNeur = QLineEdit()
+        self.dismission_NCh = QLabel('Dismission Neurosurgery (dd/mm/yyyy):\t')
+        self.lineEditDismNCh = QLineEdit()
 
         box1line1 = QHBoxLayout()
         box1line1.addWidget(self.admission_NCh)
@@ -51,36 +53,37 @@ class IntraoperativeDialog(QDialog):
         box1line2.addStretch()
 
         box1line3 = QHBoxLayout()
-        box1line3.addWidget(self.dismission_NCh)
-        box1line3.addWidget(self.lineEditDismNCh)
+        box1line3.addWidget(self.dismission_Neur)
+        box1line3.addWidget(self.lineEditDismNeur)
         box1line3.addStretch()
 
         box1line4 = QHBoxLayout()
-        box1line4.addWidget(self.dismission_Neur)
-        box1line4.addWidget(self.lineEditDismNeur)
+        box1line4.addWidget(self.dismission_NCh)
+        box1line4.addWidget(self.lineEditDismNCh)
         box1line4.addStretch()
 
-        self.optionbox1Content.addLayout(box1line1)
-        self.optionbox1Content.addLayout(box1line2)
-        self.optionbox1Content.addLayout(box1line3)
-        self.optionbox1Content.addLayout(box1line4)
-        self.optionbox1.setLayout(self.optionbox1Content)
+        self.optionbox1_layout.addLayout(box1line1)
+        self.optionbox1_layout.addLayout(box1line2)
+        self.optionbox1_layout.addLayout(box1line3)
+        self.optionbox1_layout.addLayout(box1line4)
+        self.optionbox1.setLayout(self.optionbox1_layout)
 
         # Optionbox upper right corner
         self.optionbox2 = QGroupBox('Surgery')
         self.optionbox2Content = QVBoxLayout(self.optionbox2)
         layout_general.addWidget(self.optionbox2, 0, 1)
 
-        self.surgeryDate = QLabel('Surgery Date (dd/mm/yyyy):\t\t')
-        self.lineEditAdmNCh = QLineEdit()
+        self.surgeryDate = QLabel('Surgery Date \n(dd/mm/yyyy):\t\t')
+        self.lineEditSurgery = QLineEdit()
 
         box2line1 = QHBoxLayout()
-        box2line1.addWidget(self.dismission_NCh)
-        box2line1.addWidget(self.lineEditDismNCh)
+        box2line1.addWidget(self.surgeryDate)
+        box2line1.addWidget(self.lineEditSurgery)
         box2line1.addStretch()
 
-        self.target = QLabel('Target:\t\t\t\t\t')
+        self.target = QLabel('Target:\t\t\t')
         self.targetList = QListWidget()
+        self.target.setAlignment(QtCore.Qt.AlignTop)
         self.targetList.show()
         ls = ['STN', 'GPi', 'VLp', 'Other']
         for k in ls:
@@ -92,6 +95,7 @@ class IntraoperativeDialog(QDialog):
         box2line2.addStretch()
 
         self.optionbox2Content.addLayout(box2line1)
+        self.optionbox2Content.addStretch()
         self.optionbox2Content.addLayout(box2line2)
         self.optionbox2.setLayout(self.optionbox2Content)
 
@@ -102,29 +106,33 @@ class IntraoperativeDialog(QDialog):
 
         self.ReportNeurCheck = QCheckBox()
         self.ReportNeur = QLabel('Report Neurology')
+        self.ReportNeur.setAlignment(QtCore.Qt.AlignLeft)
         self.AwakePatientCheck = QCheckBox()
         self.AwakePatient = QLabel('Awake Patient')
 
         box3line1 = QHBoxLayout()
         box3line1.addWidget(self.ReportNeurCheck)
         box3line1.addWidget(self.ReportNeur)
+        box3line1.addStretch()
         box3line1.addWidget(self.AwakePatientCheck)
         box3line1.addWidget(self.AwakePatient)
         box3line1.addStretch()
 
         self.ReportNeurSurgCheck = QCheckBox()
         self.ReportNeurSurg = QLabel('Report Neurosurgery')
+        self.ReportNeurSurg.setAlignment(QtCore.Qt.AlignLeft)
         self.ProtocolNeurCheck = QCheckBox()
         self.ProtocolNeur = QLabel('Protocol Neurology')
 
         box3line2 = QHBoxLayout()
         box3line2.addWidget(self.ReportNeurSurgCheck)
         box3line2.addWidget(self.ReportNeurSurg)
+        box3line2.addStretch()
         box3line2.addWidget(self.ProtocolNeurCheck)
         box3line2.addWidget(self.ProtocolNeur)
         box3line2.addStretch()
 
-        self.DurationSurgery = QLabel('Duration surgery (min):\t')
+        self.DurationSurgery = QLabel('Duration \nsurgery (min):\t')
         self.lineEditDurationSurgery = QLineEdit()
         self.Trajectories = QLabel('Trajectories:\t')
         self.lineEditTrajectories = QLineEdit()
@@ -145,8 +153,9 @@ class IntraoperativeDialog(QDialog):
 
         box3line4 = QHBoxLayout()
         box3line4.addWidget(self.testingNeur)
+        #box3line4.addStretch()
         box3line4.addWidget(self.testingNeurList)
-        box3line4.addStretch()
+        #box3line4.addStretch()
 
         self.optionbox3Content.addLayout(box3line1)
         self.optionbox3Content.addLayout(box3line2)
@@ -162,6 +171,7 @@ class IntraoperativeDialog(QDialog):
 
         self.LeadImplanted = QLabel('Lead:\t\t\t')
         self.LeadImplantedList = QListWidget()
+        self.LeadImplanted.setAlignment(QtCore.Qt.AlignTop)
         self.LeadImplantedList.show()
         ls = ['Medtronic 3389', 'Medtronic 3389', 'Boston Scientific 2202-30/-45',
               'St. Jude 6146/6147/6148/6149', 'Other']
@@ -174,6 +184,7 @@ class IntraoperativeDialog(QDialog):
         box4line1.addStretch()
 
         self.IPGImplanted = QLabel('IPG:\t\t\t')
+        self.IPGImplanted.setAlignment(QtCore.Qt.AlignTop)
         self.IPGImplantedList = QListWidget()
         self.IPGImplantedList.show()
         ls = ['Medtronic Activa PC', 'Medtronic Activa RC', 'Medtronic Activa SC',
@@ -239,18 +250,22 @@ class IntraoperativeDialog(QDialog):
         box6line1 = QHBoxLayout()
         box6line1.addWidget(self.PostopCTScanCheck)
         box6line1.addWidget(self.PostopCTScan)
+        box6line1.addStretch(1)
 
         box6line2 = QHBoxLayout()
         box6line2.addWidget(self.ImplVERCISE_DBSCheck)
         box6line2.addWidget(self.ImplVERCISE_DBS)
+        box6line2.addStretch(1)
 
         box6line3 = QHBoxLayout()
         box6line3.addWidget(self.ActiveVERCISE_DBSCheck)
         box6line3.addWidget(self.ActiveVERCISE_DBS)
+        box6line3.addStretch(1)
 
         box6line4 = QHBoxLayout()
         box6line4.addWidget(self.InclusionQualiPaCheck)
         box6line4.addWidget(self.InclusionQualiPa)
+        box6line4.addStretch(1)
 
         self.optionbox6Content.addLayout(box6line1)
         self.optionbox6Content.addLayout(box6line2)
