@@ -8,7 +8,7 @@ from PyQt5.QtWidgets import QApplication, QDialog, QPushButton, QVBoxLayout, \
 
 from GUI.GUI_Intraoperative import IntraoperativeDialog
 from GUI.GUI_Postoperative import PostoperativeDialog
-from GUI.GUI_Preoperative import PreoperativeDialog
+from GUI.GUI_Preoperative_old import PreoperativeDialog
 from dependencies import ROOTDIR
 
 
