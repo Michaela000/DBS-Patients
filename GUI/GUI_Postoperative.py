@@ -17,13 +17,13 @@ class PostoperativeDialog(QDialog):
         self.setGeometry(200, 100, 280, 170)
         self.move(400, 200)
 
-        layout = QGridLayout(self)
-        self.setLayout(layout)
+        layout_general = QGridLayout(self)
+        self.setLayout(layout_general)
 
         # Create one optionbox for the time being left
         self.optionbox1 = QGroupBox('Important Dates')
         self.optionbox1Content = QVBoxLayout(self.optionbox1)
-        layout.addWidget(self.optionbox1, 0, 0)
+        layout_general.addWidget(self.optionbox1, 0, 0)
 
         self.subj_Admission_Nch = QLabel('Admission Neurosurgery (dd/mm/yyyy):\t')
         self.lineEditAdmission_Nch = QLineEdit()
@@ -86,7 +86,7 @@ class PostoperativeDialog(QDialog):
         # Create second optionbox top right
         self.optionbox2 = QGroupBox('Reason')
         self.optionbox2Content = QVBoxLayout(self.optionbox2)
-        layout.addWidget(self.optionbox2, 0, 1)
+        layout_general.addWidget(self.optionbox2, 0, 1)
 
         self.subj_reason = QLabel('Reason:\t\t')
         self.lineEditreason = QComboBox()
@@ -113,7 +113,7 @@ class PostoperativeDialog(QDialog):
         # Create third optionbox on the second row left
         self.optionbox3 = QGroupBox('Reports')
         self.optionbox3Content = QVBoxLayout(self.optionbox3)
-        layout.addWidget(self.optionbox3, 1, 0)
+        layout_general.addWidget(self.optionbox3, 1, 0)
 
         self.ReportNeurCheck = QCheckBox()
         self.ReportNeur = QLabel('Report Neurology \t\t')
@@ -164,7 +164,7 @@ class PostoperativeDialog(QDialog):
 
         self.optionbox4 = QGroupBox('Tests')
         self.optionbox4Content = QVBoxLayout(self.optionbox4)
-        layout.addWidget(self.optionbox4, 1, 1)
+        layout_general.addWidget(self.optionbox4, 1, 1)
 
         self.UPDRSI = QLabel('UPDRS I:')
         self.lineEditUPDRSI = QLineEdit()
@@ -308,73 +308,64 @@ class PostoperativeDialog(QDialog):
         self.optionbox4Content.addLayout(box4line5)
         self.optionbox4.setLayout(self.optionbox4Content)
 
-
-        # optionbox 5 row 3 left
-
+        # ====================    Optionbox (5) lower left      ====================
         self.optionbox5 = QGroupBox('DBS settings after dismissal')
         self.optionbox5Content = QVBoxLayout(self.optionbox5)
-        layout.addWidget(self.optionbox5, 3, 0)
+        layout_general.addWidget(self.optionbox5, 3, 0)
 
-        self.DBS_settings_left = QGridLayout()
-        self.DBS_settings_leftCheck = QLabel ('Left Hemisphere')
+        self.DBSpercentageLeft = QGridLayout()
         for i in range(0, 1):
+            if i == 0:
+                self.DBSpercentageLeft.addWidget(QLabel('Left:\t'), i, 0)
             for j in range(0, 8):
-                self.DBS_settings_left.addWidget(QLineEdit(), i, j)
+                self.DBSpercentageLeft.addWidget(QLineEdit(), i, j + 1)
 
-        self.DBS_settings_right = QGridLayout()
-        self.DBS_settings_rightCheck = QLabel ('Right Hemisphere')
+        self.DBSpercentageRight = QGridLayout()
         for i in range(0, 1):
+            if i == 0:
+                self.DBSpercentageRight.addWidget(QLabel('Right:\t'), i, 0)
             for j in range(0, 8):
-                self.DBS_settings_right.addWidget(QLineEdit(), i, j)
+                self.DBSpercentageRight.addWidget(QLineEdit(), i, j + 1)
 
-        self.optionbox5Content.addWidget(self.DBS_settings_leftCheck)
-        self.optionbox5Content.addLayout(self.DBS_settings_left)
-        self.optionbox5Content.addWidget(self.DBS_settings_rightCheck)
-        self.optionbox5Content.addLayout(self.DBS_settings_right)
+        self.optionbox5Content.addStretch(2)
+        self.optionbox5Content.addLayout(self.DBSpercentageLeft)
+        self.optionbox5Content.addLayout(self.DBSpercentageRight)
 
-        #optionbox 6: 3rd row right
-
+        # ====================    Optionbox (8) lower right      ====================
         self.optionbox6 = QGroupBox('Amplitude, Pulse and Frequency')
         self.optionbox6Content = QVBoxLayout(self.optionbox6)
-        layout.addWidget(self.optionbox6, 3, 1)
+        layout_general.addWidget(self.optionbox6, 3, 1)
 
-        self.AmplitudeLeft = QLabel('Amplitude Left [in mA]:')
-        self.lineEditAmplitudeLeft = QLineEdit()
-        self.PulseLeft = QLabel('Pulse Width Left [in µs]:')
-        self.lineEditPulseLeft = QLineEdit()
-        self.FrequencyLeft = QLabel('Frequency Left [in Hz]:')
-        self.lineEditFrequencyLeft = QLineEdit()
+        self.gridDBSsettings = QGridLayout()
+        self.gridDBSsettings.addWidget(QLabel('Left:\t'), 1, 0)
+        self.gridDBSsettings.addWidget(QLabel('Right:\t'), 2, 0)
+        self.gridDBSsettings.addWidget(QLabel('Amplitude [mA]'), 0, 1)
+        self.gridDBSsettings.addWidget(QLabel('Pulse Width [µs]:'), 0, 2)
+        self.gridDBSsettings.addWidget(QLabel('Frequency [Hz]'), 0, 3)
 
-        box6line1 = QHBoxLayout()
-        box6line1.addWidget(self.AmplitudeLeft)
-        box6line1.addWidget(self.lineEditAmplitudeLeft)
-        box6line1.addWidget(self.PulseLeft)
-        box6line1.addWidget(self.lineEditPulseLeft)
-        box6line1.addWidget(self.FrequencyLeft)
-        box6line1.addWidget(self.lineEditFrequencyLeft)
-        box6line1.addStretch()
+        for i in range(1, 3):
+            for j in range(1, 4):
+                self.gridDBSsettings.addWidget(QLineEdit(), i, j)
+        self.optionbox6Content.addLayout(self.gridDBSsettings)
 
-        self.AmplitudeRight = QLabel('Amplitude Right [in mA]:')
-        self.lineEditAmplitudeRight = QLineEdit()
-        self.PulseRight = QLabel('Pulse Width Right [in µs]:')
-        self.lineEditPulseRight = QLineEdit()
-        self.FrequencyRight = QLabel('Frequency Right [in Hz]:')
-        self.lineEditFrequencyRight = QLineEdit()
-
-        box6line2 = QHBoxLayout()
-        box6line2.addWidget(self.AmplitudeRight)
-        box6line2.addWidget(self.lineEditAmplitudeRight)
-        box6line2.addWidget(self.PulseRight)
-        box6line2.addWidget(self.lineEditPulseRight)
-        box6line2.addWidget(self.FrequencyRight)
-        box6line2.addWidget(self.lineEditFrequencyRight)
-        box6line2.addStretch()
-
-        self.optionbox6Content.addLayout(box6line1)
-        self.optionbox6Content.addLayout(box6line2)
         self.optionbox6.setLayout(self.optionbox6Content)
 
-    # In the next lines, actions are defined when Buttons are pressed
+        # ====================   Adds buttons at the bottom of the GUI      ====================
+        self.ButtonEnterMedication = QPushButton('Open GUI \nMedication')
+        self.button_save = QPushButton('Save and \nReturn')
+
+        hlay_bottom = QHBoxLayout()
+        hlay_bottom.addStretch(5)
+        hlay_bottom.addWidget(self.ButtonEnterMedication)
+        hlay_bottom.addWidget(self.button_save)
+        hlay_bottom.addStretch(1)
+        layout_general.addLayout(hlay_bottom, 4, 0, 1, 3)
+
+        # ====================   Actions when buttons are pressed      ====================
+        #self.ButtonEnterMedication.clicked.connect(self.onClickedMedication)
+        #self.button_save.clicked.connect(self.onClickedSaveReturn)
+
+    # ====================   Defines actions when buttons are pressed      ====================
     @QtCore.pyqtSlot()
     def onClickedSaveReturn(self):
         self.saveFileDialog()

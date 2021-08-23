@@ -1,24 +1,4 @@
-# Hallo David. Vielen Dank für die Hilfe. Jetzt hat eigentlich alles geklappt.
-
-# Ich bin heute nochmal alle GUI's durchgegangen und hab einiges nochmal geändert bzw. verbessert anhand Deiner Bilder.
-# Dabei sind mir ein paar Sachen aufgefallen:
-# 1. Sollen wir noch einen Callback_Savebutton einführen? Wenn ja gehört er dann zu GUIcheckPID?
-# 2. ich bekomme die GUI_Main buttons nicht zentriert, obwohl addStretch da ist (das gilt auch für ein paar andere Buttons später in pre- post und intraoperative GUI)
-# 3. die beiden if present Bilder sind etwas anders, weil wir dafür GUI_Start haben. Daher hab ich das bisher noch nicht verändert
-# 4. Das Layout besonders von Preoperative ist noch etwas detaillierter als auf den Bildern, aber ich fand es eigentlich nicht so schlecht,
-# deswegen habe ich es bisher nicht verändert, soll ich das noch tun?
-# 5. Das Layout von Intra und Postoperative muss ich noch etwas anpassen. Ich habe ein paar Schwierigkeiten damit, die Wörter
-#    "Right Hemisphere" und "Left Hemisphere" über die Tabelle zu bekommen und ich finde es sehr schwierig alle "Tests" in Postoperative
-#    auf eine Höhe zu bekommen.
-
-##==> Schau mal, wie das bisher aussieht (habe nur GUI_Intraoperative.py geschaut). Das hast Du sehr gut gemacht.
-# Klar, das muss noch mit Callbacks, usw. gefüllt werden, usw. Aber lass uns mal diese WOche sprechen und schauen, was
-# Du noch machst und was ich, ok?
-
-#--> Sehr gerne. Ich habe an sich immer Zeit aber ich müsste es einen Tag vorher wissen, besonders wenn es früh morgens ist.
-#    Wäre es Dir telefonsich oder persönlich lieber? Es kann sein, dass ich relativ kurzfristig noch einen Werkstatt Termin erhalte,
-#    aber ich würde Dir dann direkt Bescheid geben.
-
+#!/usr/bin/env python3
 import sys
 
 from PyQt5 import QtCore
@@ -94,7 +74,7 @@ class IntraoperativeDialog(QDialog):
         box2line1 = QHBoxLayout()
         box2line1.addWidget(self.SurgeryDate)
         box2line1.addWidget(self.lineEditSurgeryDate)
-        #box2line1.addStretch()
+        # box2line1.addStretch()
 
         self.targetLabel = QLabel('Target:\t\t')
         self.targetLabel.setAlignment(QtCore.Qt.AlignTop)
@@ -113,7 +93,7 @@ class IntraoperativeDialog(QDialog):
         self.optionbox2Content.addLayout(box2line2)
         self.optionbox2.setLayout(self.optionbox2Content)
 
-        # ====================    Optionbox (3) middle left      ====================
+        # ====================    Optionbox (3) upper middle left      ====================
         self.optionbox3 = QGroupBox('Intraoperative')
         self.optionbox3Content = QVBoxLayout(self.optionbox3)
         layout_general.addWidget(self.optionbox3, 1, 0)
@@ -168,7 +148,7 @@ class IntraoperativeDialog(QDialog):
 
         box3line4 = QHBoxLayout()
         box3line4.addWidget(self.testingNeurLabel)
-        #box3line4.addStretch()
+        # box3line4.addStretch()
         box3line4.addWidget(self.testingNeurList)
         box3line4.addStretch()
 
@@ -179,25 +159,25 @@ class IntraoperativeDialog(QDialog):
 
         self.optionbox3.setLayout(self.optionbox3Content)
 
-        # Optionbox middle right
-        self.optionbox4 = QGroupBox('System')
+        # ====================    Optionbox (4) upper middle right      ====================
+        self.optionbox4 = QGroupBox('System Information')
         self.optionbox4Content = QVBoxLayout(self.optionbox4)
         layout_general.addWidget(self.optionbox4, 1, 1)
 
-        self.LeadImplanted = QLabel('Lead:\t\t')
+        self.LeadImplantedLabel = QLabel('Lead:\t\t')
         self.LeadImplantedList = QListWidget()
-        self.LeadImplanted.setAlignment(QtCore.Qt.AlignTop)
+        self.LeadImplantedLabel.setAlignment(QtCore.Qt.AlignTop)
         self.LeadImplantedList.show()
         ls = ['Medtronic 3389', 'Medtronic 3389', 'Boston Scientific 2202-30/-45',
               'St. Jude 6146/6147/6148/6149', 'Other']
         [self.LeadImplantedList.addItem(k) for k in ls]
 
         box4line1 = QHBoxLayout()
-        box4line1.addWidget(self.LeadImplanted)
+        box4line1.addWidget(self.LeadImplantedLabel)
         box4line1.addWidget(self.LeadImplantedList)
 
-        self.IPGImplanted = QLabel('IPG:\t\t')
-        self.IPGImplanted.setAlignment(QtCore.Qt.AlignTop)
+        self.IPGImplantedLabel = QLabel('IPG:\t\t')
+        self.IPGImplantedLabel.setAlignment(QtCore.Qt.AlignTop)
         self.IPGImplantedList = QListWidget()
         self.IPGImplantedList.show()
         ls = ['Medtronic Activa PC', 'Medtronic Activa RC', 'Medtronic Activa SC',
@@ -205,80 +185,80 @@ class IntraoperativeDialog(QDialog):
         [self.IPGImplantedList.addItem(k) for k in ls]
 
         box4line2 = QHBoxLayout()
-        box4line2.addWidget(self.IPGImplanted)
+        box4line2.addWidget(self.IPGImplantedLabel)
         box4line2.addWidget(self.IPGImplantedList)
 
         self.optionbox4Content.addLayout(box4line1)
         self.optionbox4Content.addLayout(box4line2)
         self.optionbox4.setLayout(self.optionbox4Content)
 
-        # Optionbox lower middle left
+        # ====================    Optionbox (5) lower middle left      ====================
         self.optionbox5 = QGroupBox('Coordinates DBS leads')
         self.optionbox5Content = QHBoxLayout(self.optionbox5)
         layout_general.addWidget(self.optionbox5, 2, 0)
 
-        self.grid_coordinates_left = QGridLayout()
-        self.grid_coordinates_leftCheck = QLabel('\tLeft\t')
+        self.GridCoordinatesLeft = QGridLayout()
+        self.GridCoordinatesLeftLabel = QLabel('\tLeft\t')
         for i in range(0, 8):
             for j in range(0, 4):
                 if j == 0:
-                    self.grid_coordinates_left.addWidget(QLabel(str(i)), i, j)
+                    self.GridCoordinatesLeft.addWidget(QLabel(str(i)), i, j)
                 else:
-                    self.grid_coordinates_left.addWidget(QLineEdit(), i, j)
+                    self.GridCoordinatesLeft.addWidget(QLineEdit(), i, j)
 
-        self.grid_coordinates_right = QGridLayout()
-        self.grid_coordinates_rightCheck = QLabel('\tRight\t')
+        self.GridCoordinatesRight = QGridLayout()
+        self.GridCoordinatesRightLabel = QLabel('\tRight\t')
         for i in range(0, 8):
             for j in range(0, 4):
                 if j != 3:
                     hspacer = QSpacerItem(QSizePolicy.Expanding, QSizePolicy.Minimum)  # necessary?!
-                    self.grid_coordinates_right.addItem(hspacer, 0, i, -1, 1)
-                    self.grid_coordinates_right.addWidget(QLineEdit(), i, j)
+                    self.GridCoordinatesRight.addItem(hspacer, 0, i, -1, 1)
+                    self.GridCoordinatesRight.addWidget(QLineEdit(), i, j)
 
                 else:
-                    self.grid_coordinates_right.addWidget(QLabel(str(i)), i, j)
+                    self.GridCoordinatesRight.addWidget(QLabel(str(i)), i, j)
 
         self.optionbox5Content.addStretch()
-        self.optionbox5Content.addWidget(self.grid_coordinates_leftCheck)
-        self.optionbox5Content.addLayout(self.grid_coordinates_left)
+        self.optionbox5Content.addWidget(self.GridCoordinatesLeftLabel)
+        self.optionbox5Content.addLayout(self.GridCoordinatesLeft)
         self.optionbox5Content.addStretch()
-        self.optionbox5Content.addWidget(self.grid_coordinates_rightCheck)
-        self.optionbox5Content.addLayout(self.grid_coordinates_right)
-        self.optionbox5Content.addLayout(self.grid_coordinates_right)
+        self.optionbox5Content.addWidget(self.GridCoordinatesRightLabel)
+        self.optionbox5Content.addLayout(self.GridCoordinatesRight)
+        self.optionbox5Content.addLayout(self.GridCoordinatesRight)
         self.optionbox5Content.addStretch()
 
-        #optionbox lower middle right
+        # ====================    Optionbox (6) lower middle right      ====================
         self.optionbox6 = QGroupBox('Activation')
         self.optionbox6Content = QVBoxLayout(self.optionbox6)
         layout_general.addWidget(self.optionbox6, 2, 1)
 
         self.PostopCTScanCheck = QCheckBox()
-        self.PostopCTScan = QLabel('Postoperative CT Scan')
-        self.ImplVERCISE_DBSCheck = QCheckBox()
-        self.ImplVERCISE_DBS = QLabel('Implantation VERCISE DBS')
-        self.ActiveVERCISE_DBSCheck = QCheckBox()
-        self.ActiveVERCISE_DBS = QLabel('Activation VERCISE DBS')
+        self.PostopCTScanLabel = QLabel('Postoperative CT Scan')
+        self.ImplVerciseDBSCheck = QCheckBox()
+        self.ImplVerciseDBSCheckLabel = QLabel('Implantation VERCISE DBS')
+        self.ActivateVerciseDBSCheck = QCheckBox()
+        self.ActivateVerciseDBSLabel = QLabel('Activation VERCISE DBS')
         self.InclusionQualiPaCheck = QCheckBox()
-        self.InclusionQualiPa = QLabel('Inclusion QualiPa')
+        self.InclusionQualiPaLabel = QLabel('Inclusion QualiPa')
 
         box6line1 = QHBoxLayout()
         box6line1.addWidget(self.PostopCTScanCheck)
-        box6line1.addWidget(self.PostopCTScan)
+        box6line1.addWidget(self.PostopCTScanLabel)
         box6line1.addStretch(1)
 
         box6line2 = QHBoxLayout()
-        box6line2.addWidget(self.ImplVERCISE_DBSCheck)
-        box6line2.addWidget(self.ImplVERCISE_DBS)
+        box6line2.addWidget(self.ImplVerciseDBSCheck)
+        box6line2.addWidget(self.ImplVerciseDBSCheckLabel)
         box6line2.addStretch(1)
 
         box6line3 = QHBoxLayout()
-        box6line3.addWidget(self.ActiveVERCISE_DBSCheck)
-        box6line3.addWidget(self.ActiveVERCISE_DBS)
+        box6line3.addWidget(self.ActivateVerciseDBSCheck)
+        box6line3.addWidget(self.ActivateVerciseDBSLabel)
         box6line3.addStretch(1)
 
         box6line4 = QHBoxLayout()
         box6line4.addWidget(self.InclusionQualiPaCheck)
-        box6line4.addWidget(self.InclusionQualiPa)
+        box6line4.addWidget(self.InclusionQualiPaLabel)
         box6line4.addStretch(1)
 
         self.optionbox6Content.addLayout(box6line1)
@@ -286,65 +266,62 @@ class IntraoperativeDialog(QDialog):
         self.optionbox6Content.addLayout(box6line3)
         self.optionbox6Content.addLayout(box6line4)
 
-        #optionbox 3th row left
+        # ====================    Optionbox (7) lower left      ====================
         self.optionbox7 = QGroupBox('DBS settings after dismissal')
         self.optionbox7Content = QVBoxLayout(self.optionbox7)
         layout_general.addWidget(self.optionbox7, 3, 0)
 
-        self.DBS_settings_left = QGridLayout()
+        self.DBSpercentageLeft = QGridLayout()
         for i in range(0, 1):
             if i == 0:
-                self.DBS_settings_left.addWidget(QLabel('Left:\t'), i, 0)
+                self.DBSpercentageLeft.addWidget(QLabel('Left:\t'), i, 0)
             for j in range(0, 8):
-                self.DBS_settings_left.addWidget(QLineEdit(), i, j+1)
+                self.DBSpercentageLeft.addWidget(QLineEdit(), i, j + 1)
 
-        self.DBS_settings_right = QGridLayout()
+        self.DBSpercentageRight = QGridLayout()
         for i in range(0, 1):
             if i == 0:
-                self.DBS_settings_right.addWidget(QLabel('Right:\t'), i, 0)
+                self.DBSpercentageRight.addWidget(QLabel('Right:\t'), i, 0)
             for j in range(0, 8):
-                self.DBS_settings_right.addWidget(QLineEdit(), i, j+1)
+                self.DBSpercentageRight.addWidget(QLineEdit(), i, j + 1)
 
         self.optionbox7Content.addStretch(2)
-        self.optionbox7Content.addLayout(self.DBS_settings_left)
-        self.optionbox7Content.addLayout(self.DBS_settings_right)
+        self.optionbox7Content.addLayout(self.DBSpercentageLeft)
+        self.optionbox7Content.addLayout(self.DBSpercentageRight)
 
-        #optionbox 3th row right
+        # ====================    Optionbox (8) lower right      ====================
         self.optionbox8 = QGroupBox('Amplitude, Pulse and Frequency')
         self.optionbox8Content = QVBoxLayout(self.optionbox8)
         layout_general.addWidget(self.optionbox8, 3, 1)
 
-        self.grid_settings_right = QGridLayout()
-        self.grid_settings_right.addWidget(QLabel('Left:\t'), 1, 0)
-        self.grid_settings_right.addWidget(QLabel('Right:\t'), 2, 0)
-        self.grid_settings_right.addWidget(QLabel('Amplitude [mA]'), 0, 1)
-        self.grid_settings_right.addWidget(QLabel('Pulse Width [µs]:'), 0, 2)
-        self.grid_settings_right.addWidget(QLabel('Frequency [Hz]'), 0, 3)
+        self.gridDBSsettings = QGridLayout()
+        self.gridDBSsettings.addWidget(QLabel('Left:\t'), 1, 0)
+        self.gridDBSsettings.addWidget(QLabel('Right:\t'), 2, 0)
+        self.gridDBSsettings.addWidget(QLabel('Amplitude [mA]'), 0, 1)
+        self.gridDBSsettings.addWidget(QLabel('Pulse Width [µs]:'), 0, 2)
+        self.gridDBSsettings.addWidget(QLabel('Frequency [Hz]'), 0, 3)
 
         for i in range(1, 3):
             for j in range(1, 4):
-                print(i, j)
-                self.grid_settings_right.addWidget(QLineEdit(), i, j)
-        self.optionbox8Content.addLayout(self.grid_settings_right)
+                self.gridDBSsettings.addWidget(QLineEdit(), i, j)
+        self.optionbox8Content.addLayout(self.gridDBSsettings)
 
         self.optionbox8.setLayout(self.optionbox8Content)
 
         # ====================   Adds buttons at the bottom of the GUI      ====================
-        self.button_openGUI_Medication = QPushButton('Open GUI \nMedication')
-        self.button_openGUI_Medication.setText("Medication")
-        self.button_openGUI_Medication.setCheckable(True)
-        self.button_openGUI_Medication.clicked.connect(self.onClickedMedication)
-
+        self.ButtonEnterMedication = QPushButton('Open GUI \nMedication')
         self.button_save = QPushButton('Save and \nReturn')
-        self.button_save.clicked.connect(self.onClickedSaveReturn)
 
         hlay_bottom = QHBoxLayout()
         hlay_bottom.addStretch(5)
-        hlay_bottom.addWidget(self.button_openGUI_Medication)
+        hlay_bottom.addWidget(self.ButtonEnterMedication)
         hlay_bottom.addWidget(self.button_save)
         hlay_bottom.addStretch(1)
-
         layout_general.addLayout(hlay_bottom, 4, 0, 1, 3)
+
+        # ====================   Actions when buttons are pressed      ====================
+        self.ButtonEnterMedication.clicked.connect(self.onClickedMedication)
+        self.button_save.clicked.connect(self.onClickedSaveReturn)
 
     # ====================   Defines actions when buttons are pressed      ====================
     @QtCore.pyqtSlot()
