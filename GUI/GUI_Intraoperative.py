@@ -1,23 +1,10 @@
-# Hallo David. Vielen Dank für die Hilfe. Jetzt hat eigentlich alles geklappt.
-
-# Ich bin heute nochmal alle GUI's durchgegangen und hab einiges nochmal geändert bzw. verbessert anhand Deiner Bilder.
-# Dabei sind mir ein paar Sachen aufgefallen:
-# 1. Sollen wir noch einen Callback_Savebutton einführen? Wenn ja gehört er dann zu GUIcheckPID?
-# 2. ich bekomme die GUI_Main buttons nicht zentriert, obwohl addStretch da ist (das gilt auch für ein paar andere Buttons später in pre- post und intraoperative GUI)
-# 3. die beiden if present Bilder sind etwas anders, weil wir dafür GUI_Start haben. Daher hab ich das bisher noch nicht verändert
-# 4. Das Layout besonders von Preoperative ist noch etwas detaillierter als auf den Bildern, aber ich fand es eigentlich nicht so schlecht,
-# deswegen habe ich es bisher nicht verändert, soll ich das noch tun?
-# 5. Das Layout von Intra und Postoperative muss ich noch etwas anpassen. Ich habe ein paar Schwierigkeiten damit, die Wörter
-#    "Right Hemisphere" und "Left Hemisphere" über die Tabelle zu bekommen und ich finde es sehr schwierig alle "Tests" in Postoperative
-#    auf eine Höhe zu bekommen.
-
 ##==> Schau mal, wie das bisher aussieht (habe nur GUI_Intraoperative.py geschaut). Das hast Du sehr gut gemacht.
 # Klar, das muss noch mit Callbacks, usw. gefüllt werden, usw. Aber lass uns mal diese WOche sprechen und schauen, was
 # Du noch machst und was ich, ok?
 
 #--> Sehr gerne. Ich habe an sich immer Zeit aber ich müsste es einen Tag vorher wissen, besonders wenn es früh morgens ist.
-#    Wäre es Dir telefonsich oder persönlich lieber? Es kann sein, dass ich relativ kurzfristig noch einen Werkstatt Termin erhalte,
-#    aber ich würde Dir dann direkt Bescheid geben.
+#    Nur am Dienstag hätte ich frühestens am Nachmittag Zeit (kann aber noch nicht sagen wann genau, weil mein Auto da in der Werkstatt ist).
+#    Wäre es Dir telefonisch oder persönlich lieber? 
 
 import sys
 
