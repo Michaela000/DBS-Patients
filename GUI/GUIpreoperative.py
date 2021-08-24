@@ -19,7 +19,7 @@ class PreoperativeDialog(QDialog):
         self.setGeometry(200, 100, 280, 170)
         self.move(400, 100)
         self.date = 'preoperative'  # defines the date at which data are taken from/saved at
-
+        textwidth = 300
         layout_general = QGridLayout(self)
         self.setLayout(layout_general)
 
@@ -30,34 +30,46 @@ class PreoperativeDialog(QDialog):
 
         self.FirstDiagnosed = QLabel('First diagnosed:\t\t')
         self.lineEditFirstDiagnosed = QLineEdit()
+        self.lineEditFirstDiagnosed.setFixedWidth(textwidth)
         self.AdmNeurIndCheckLabel = QLabel('Admission (dd/mm/yyyy):\t')
         self.lineEditAdmNeurIndCheck = QLineEdit()
+        self.lineEditAdmNeurIndCheck.setFixedWidth(textwidth)
         self.DismNeurIndCheck = QLabel('Dismission (dd/mm/yyyy):\t')
         self.DismNeurIndCheckLabel = QLineEdit()
-        self.OutpatientContact = QLabel('Outpatient contact (dd/mm/yyyy):\t')
+        self.DismNeurIndCheckLabel.setFixedWidth(textwidth)
+        self.OutpatientContact = QLabel('Outpatient contact (dd/mm/yyyy):\t\t')
         self.lineEditOutpatientContact = QLineEdit()
+        self.lineEditOutpatientContact.setFixedWidth(textwidth)
         self.NChContact = QLabel('Neurosurgical contact (dd/mm/yyyy):\t')
         self.lineEditNChContact = QLineEdit()
-        self.DBSconferenceDate = QLabel('DBS conference (dd/mm/yyyy):\t')
+        self.lineEditNChContact.setFixedWidth(textwidth)
+        self.DBSconferenceDate = QLabel('DBS conference (dd/mm/yyyy):\t\t')
         self.lineEditDBSconferenceDate = QLineEdit()
+        self.lineEditDBSconferenceDate.setFixedWidth(textwidth)
 
         box1line1 = QHBoxLayout()
         box1line1.addWidget(self.FirstDiagnosed)
         box1line1.addWidget(self.lineEditFirstDiagnosed)
+        box1line1.addStretch()
         box1line1.addWidget(self.OutpatientContact)
         box1line1.addWidget(self.lineEditOutpatientContact)
+        box1line1.addStretch()
 
         box1line2 = QHBoxLayout()
         box1line2.addWidget(self.AdmNeurIndCheckLabel)
         box1line2.addWidget(self.lineEditAdmNeurIndCheck)
+        box1line2.addStretch()
         box1line2.addWidget(self.NChContact)
         box1line2.addWidget(self.lineEditNChContact)
+        box1line2.addStretch()
 
         box1line3 = QHBoxLayout()
         box1line3.addWidget(self.DismNeurIndCheck)
         box1line3.addWidget(self.DismNeurIndCheckLabel)
+        box1line3.addStretch()
         box1line3.addWidget(self.DBSconferenceDate)
         box1line3.addWidget(self.lineEditDBSconferenceDate)
+        box1line3.addStretch()
 
         self.optionbox1Content.addLayout(box1line1)
         self.optionbox1Content.addLayout(box1line2)
@@ -91,6 +103,7 @@ class PreoperativeDialog(QDialog):
         box2line1.addWidget(self.ReportNChLabel)
         box2line1.addWidget(self.ProtocolNeurCheck)
         box2line1.addWidget(self.ProtocolNeurLabel)
+        box2line1.addStretch()
 
         self.optionbox2Content.addLayout(box2line1)
         self.optionbox2.setLayout(self.optionbox2Content)
