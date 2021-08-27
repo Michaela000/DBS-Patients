@@ -5,6 +5,7 @@ from PyQt5 import QtCore
 from PyQt5.QtWidgets import QApplication, QDialog, QPushButton, QVBoxLayout, QGroupBox,  QSpacerItem, QSizePolicy, \
     QHBoxLayout, QWidget, QGridLayout, QLineEdit, QLabel, QListWidget, QCheckBox
 from GUI.GUImedication import MedicationDialog
+from utils.helper_functions import General
 
 
 class PreoperativeDialog(QDialog):
@@ -14,11 +15,13 @@ class PreoperativeDialog(QDialog):
         """Initializer."""
         super().__init__(parent)
 
+        self.date = 'preoperative'  # defines the date at which data are taken from/saved at
+        subj_details = General.read_current_subj()
+        data_temp = General.get_data_subject(self.date, subj_details.code[0])
         # ====================    Create General Layout      ====================
-        self.setWindowTitle('Please insert the data from the preoperative patient contact ...')
+        self.setWindowTitle('Please enter preoperative data (PID: {})'.format(str(int(subj_details.code))))
         self.setGeometry(200, 100, 280, 170)
         self.move(400, 100)
-        self.date = 'preoperative'  # defines the date at which data are taken from/saved at
         textwidth = 300
         layout_general = QGridLayout(self)
         self.setLayout(layout_general)
@@ -81,6 +84,7 @@ class PreoperativeDialog(QDialog):
         self.optionbox2Content = QVBoxLayout(self.optionbox2)
         layout_general.addWidget(self.optionbox2, 1, 0)
 
+        # TODO: Check Boxes should be aligned in the middle to match the text!
         self.ReportNeurCheck = QCheckBox()
         self.ReportNeurLabel = QLabel('Report')
         self.ReportNeurLabel.setAlignment(QtCore.Qt.AlignLeft)
@@ -113,18 +117,45 @@ class PreoperativeDialog(QDialog):
         self.optionbox3Content = QHBoxLayout(self.optionbox3)
         layout_general.addWidget(self.optionbox3, 2, 0)
 
-        content = [['UPDRS III ON', 'UPDRS II', 'HRUQ', 'MoCa', 'MMST', 'BDI-II', 'NMSQ'],
-                   ['UPDRS III OFF', 'H&Y (OFF-ON)', 'EQ5D', 'DemTect', 'PDQ8', 'PDQ39', 'S&E']]
+        # TODO: the next part(s) should be moved to a helper function per condition to promote readability
+        self.updrsON = QLineEdit()
+        self.updrsII = QLineEdit()
+        self.hruq = QLineEdit()
+        self.moca = QLineEdit()
+        self.mmst = QLineEdit()
+        self.bdi2 = QLineEdit()
+        self.nmsq = QLineEdit()
+        self.updrsOFF = QLineEdit()
+        self.hy = QLineEdit()
+        self.eq5d = QLineEdit()
+        self.demtect = QLineEdit()
+        self.pdq8 = QLineEdit()
+        self.pdq39 = QLineEdit()
+        self.se = QLineEdit()
+
+        content = [{'UPDRS III ON': self.updrsON,
+                    'UPDRS II': self.updrsII,
+                    'HRUQ': self.hruq,
+                    'MoCa': self.moca,
+                    'MMST': self.mmst,
+                    'BDI-II': self.bdi2,
+                    'NMSQ': self.nmsq},
+                    {'UPDRS III OFF': self.updrsOFF,
+                    'H&Y': self.hy,
+                    'EQ5D': self.eq5d,
+                    'DemTect': self.demtect,
+                    'PDQ8': self.pdq8,
+                    'PDQ39': self.pdq39,
+                    'S&E': self.se}]
 
         self.GridCoordinatesLeft = QGridLayout()
         for i in range(0, 2):  # rows
             idx_cols = 0
-            for j in range(0, 7):  # columns
-                self.GridCoordinatesLeft.addWidget(QLabel(content[i][j]), i, idx_cols)
+            for k, v in content[i].items():  # columns
+                self.GridCoordinatesLeft.addWidget(QLabel(k), i, idx_cols)
                 idx_cols += 1
-                self.GridCoordinatesLeft.addWidget(QLineEdit(), i, idx_cols)
+                self.GridCoordinatesLeft.addWidget(v, i, idx_cols)
                 idx_cols += 1
-
         self.optionbox3Content.addStretch()
         self.optionbox3Content.addLayout(self.GridCoordinatesLeft)
         self.optionbox3Content.addStretch()

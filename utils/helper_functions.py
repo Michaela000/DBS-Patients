@@ -4,6 +4,8 @@
 import rstr
 import csv
 import os
+import shutil
+
 import pandas as pds
 from dependencies import ROOTDIR, FILEDIR
 from PyQt5.QtWidgets import QMessageBox, QFileDialog
@@ -44,6 +46,36 @@ class General:
             writer = csv.writer(f)
             writer.writerow(header)
             writer.writerow(data)
+
+    @staticmethod
+    def read_current_subj(default_filename='current_subj.csv'):
+        """reads data from temporary information"""
+
+        try:
+            subj_details = pds.read_csv(os.path.join(ROOTDIR, 'temp', default_filename))  # Read currently used subj.
+        except FileNotFoundError:
+            print('Data not found! Please make sure that a file named "current_subj.csv" exists in the "temp" folder')
+            subj_details = []
+
+        return subj_details
+
+    @staticmethod
+    def get_data_subject(flag, pid2lookfor):
+        """gets data from available dataframes for a single subject or creates empty file if not present"""
+
+        file2read = os.path.join(ROOTDIR, 'data', '{}.csv'.format(flag))
+        try:
+            data_all = General.import_dataframe(file2read)
+            pid2lookfor = pid2lookfor.lstrip('0')  # string that is searched for in metadata file
+            idxPID = data_all.index[data_all['PID'] == int(pid2lookfor)].to_list()
+            data_subj = data_all.iloc[idxPID]
+        except FileNotFoundError:
+            print('No file names {} found, creating new file from template in {}/.install '.format(file2read, ROOTDIR))
+            file2write = os.path.join(ROOTDIR, '.install', '{}_template.csv'.format(flag))
+            shutil.copyfile(file2read, file2write)
+            data_subj = []
+
+        return data_subj
 
 
 class Output:
