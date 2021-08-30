@@ -17,7 +17,9 @@ class PreoperativeDialog(QDialog):
 
         self.date = 'preoperative'  # defines the date at which data are taken from/saved at
         subj_details = General.read_current_subj()
-        data_temp = General.get_data_subject(self.date, subj_details.code[0])
+        data_temp = General.get_data_subject(self.date, subj_details.pid[0])
+        General.synchronize_data_with_general(self.date, subj_details.id[0])
+
         # ====================    Create General Layout      ====================
         self.setWindowTitle('Please enter preoperative data (PID: {})'.format(str(int(subj_details.code))))
         self.setGeometry(200, 100, 280, 170)

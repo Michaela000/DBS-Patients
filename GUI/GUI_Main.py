@@ -30,7 +30,7 @@ class ChooseGUI(QDialog):
         groupbox = QGroupBox("Which visit?", checkable=False)
         self.layout.addWidget(groupbox)
 
-        self.setWindowTitle('Choose GUI for subj with PID: {}'.format(str(int(subj_details.code))))
+        self.setWindowTitle('Choose GUI for subj with PID: {}'.format(str(int(subj_details.pid))))
         self.setGeometry(400, 100, 800, 300)  # left, right, width, height
         self.move(750, 375)
 
